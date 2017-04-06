@@ -1,0 +1,70 @@
+<ion-view>
+  <ion-nav-title>
+    Feed
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()">
+    </button>
+    <span class="badge-nav blue-color">3</span>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-ios-americanfootball-outline" ng-click="stateFavorite()">
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="bg-app p-5 light">
+    <div class="p-5" ng-repeat="item in items">
+      <div class="card-score">
+        <div class="header-score" horizontal layout>
+          <div flex class="club-score" horizontal layout center ng-class="{active: item.score1 > item.score2}">
+            <img ng-src="{{item.logo1}}" alt="" width="40" height="40" style="padding: 5px"/>
+            <div class="bold" flex>{{item.name1}}</div>
+            <div class="bold padding">{{item.score1}}</div>
+          </div>
+          <div flex class="club-score" horizontal layout center ng-class="{active: item.score1 < item.score2}">
+            <div class="bold padding">{{item.score2}}</div>
+            <div class="bold" flex horizontal layout end-justified>{{item.name2}}</div>
+            <img ng-src="{{item.logo2}}" alt="" width="40" height="40" style="padding: 5px"/>
+          </div>
+        </div>
+        <div class="content-score text-gray" ng-if="!item.isFinal">
+          <div class="padding text-center">
+            4th 05:26
+          </div>
+          <div class="arrow-line"></div>
+          <ul class="list-line">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <ul class="list-number">
+            <li></li>
+            <li><span>10</span></li>
+            <li><span>20</span></li>
+            <li><span>30</span></li>
+            <li><span>40</span></li>
+            <li><span>50</span></li>
+            <li><span>40</span></li>
+            <li><span>30</span></li>
+            <li><span>20</span></li>
+            <li><span>10</span></li>
+          </ul>
+        </div>
+        <div class="content-score text-gray" ng-if="item.isFinal">
+          <div class="padding text-center">
+            Final
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </ion-content>
+</ion-view>

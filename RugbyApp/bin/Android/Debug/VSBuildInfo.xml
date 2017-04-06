@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--ESTE ARCHIVO LO GENERA EL PROCESO DE COMPILACIÓN DE VS CON FINES DE TELEMETRÍA-->
+<VSBuildInfo xmlns="http://schemas.microsoft.com/developer/appx/2012/build">
+  <Metadata>
+    <Item Name="VisualStudio" Version="15.0" />
+    <Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2017" />
+    <Item Name="OperatingSystem" Version="10.0.14393.0 (rs1_release.160715-1616)" />
+    <Item Name="ProjectGUID" Value="8f7e55ae-93d8-4f96-b556-f7030a147a93" />
+  </Metadata>
+</VSBuildInfo>

@@ -1,0 +1,46 @@
+<ion-view>
+  <ion-nav-title>
+    Feed
+  </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()">
+    </button>
+    <span class="badge-nav blue-color">3</span>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-ios-americanfootball-outline" ng-click="stateFavorite()">
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="bg-app p-5">
+    <div class="p-5" ng-repeat="item in items">
+      <div class="list card n-m">
+
+        <div class="item item-avatar">
+          <img ng-src="{{item.avatar}}">
+          <h2>{{item.name}}</h2>
+          <p>Lorem Ipsum is not simply</p>
+        </div>
+
+        <div class="item item-body n-p">
+          <img class="full-image" ng-src="{{item.img}}" ng-if="item.img">
+
+          <p class="padding n-m">
+            It is a long established fact that a reader will be distracted by the readable content.
+          </p>
+          <div class="n-m action-social" horizontal layout center>
+            <a class="padding" ng-class="{'blue-color': item.active}"><i class="ion ion-ios-heart-outline"></i> {{item.like}} </a>
+            <span>|</span>
+            <a class="padding" ng-class="{'blue-color': item.active}"><i class="ion ion-ios-chatboxes-outline"></i> {{item.comment}}</a>
+            <div flex></div>
+            <a class="share-button" ng-class="{'blue-color': item.active}"><i class="ion ion-social-facebook-outline"></i></a>
+            <a class="share-button" ng-class="{'blue-color': item.active}"><i class="ion ion-social-twitter-outline"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </ion-content>
+</ion-view>
+<a class="add-news"><i class="ion ion-edit"></i></a>

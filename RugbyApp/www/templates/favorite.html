@@ -1,0 +1,16 @@
+<ion-view>
+  <ion-content class="bg-favorite">
+    <div horizontal layout center center-justified>
+      <div class="text-center favorite-text" horizontal layout center>
+        <i class="ion ion-ios-close-empty" ng-click="goFeed()"></i> Pick your <span class="balanced"> favorite </span> team <i class="ion ion-ios-arrow-right"></i>
+      </div>
+    </div>
+    <div class="padding" style="overflow: hidden">
+      <div class="padding item-logo-club" ng-repeat="item in items">
+        <div class="logo-club">
+          <img ng-src="{{item.logo}}" alt="" width="40" height="40"/>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
