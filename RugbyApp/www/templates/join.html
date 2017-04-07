@@ -1,0 +1,78 @@
+﻿<ion-view>
+    <ion-nav-title>
+        Únete a nosotros
+    </ion-nav-title>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()"></button>
+        <span class="badge-nav blue-color">3</span>
+    </ion-nav-buttons>
+    <ion-content class="bg-app-edit light" scroll="false" vertical layout>
+        <div flex>
+            <div class="panel-body">
+                <div class="text-center">
+                    <div style="font-size: 18px">Si quieres ser parte de tu club favorito! Registrate aquí!</div>
+                </div>
+                <div class="profile-img-edit-profile col-xs-5">
+                    <img ng-src="./img/photo.png" alt="" width="100" height="100" />
+                </div>
+                <div class="form-group input-group col-xs-7 first-custome-edit">
+                    <span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="Nombre">
+                </div>
+                <div class="form-group input-group col-xs-7">
+                    <span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="Apellido">
+                </div>
+                <div class="form-group input-group col-xs-12">
+                    <span class="input-group-addon"><i class="fa fa-id-card-o" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="Cédula">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="ion ion-ios-americanfootball"></i></span>
+                    <input type="text" class="form-control" placeholder="Club">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="Fecha de Nacimiento">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="Dirección / Barrio ">
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-hospital-o" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="EPS ">
+                </div>
+                <div class="button-profile" horizontal layout center center-justified>
+                    <button ng-click="goBack()" class="button button-light button-small" horizontal layout center center-justified>
+                        <i  class="ion ion-ios-plus-empty"></i> Cancelar
+                    </button>
+                    <button class="button button-light button-small" data-toggle="modal" data-target="#myModal" horizontal layout center center-justified>
+                        <i class="ion ion-ios-email-outline"></i> Enviar
+                    </button>
+                   
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title" id="myModalLabel">Mensaje Enviado!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Estos datos llegan al administrador mediante un correo electrónico que se genera automáticamente en el momento de enviar el registro del aspirante. El administrador en conjunto con el club se encargará de realizar  el proceso de selección.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -377,3 +377,18 @@
 .button-profile-custome{
   padding: 10px;
 }
+.profile-img-edit-profile {
+    padding: 20px;
+}
+
+.first-custome-edit {
+    margin-top: 30px;
+}
+
+.bg-app-edit {
+    background: linear-gradient( rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.29) ), url(../img/bg-edit.png)no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

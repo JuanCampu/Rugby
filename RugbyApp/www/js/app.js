@@ -62,7 +62,17 @@ angular.module('starter', ['ionic', 'ui.bootstrap'])
             controller: 'ProfileCtrl'
           }
         }
-      })
+        })
+
+        .state('app.join', {
+            url: '/join',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/join.html',
+                    controller: 'JoinCtrl'
+                }
+            }
+        })
 
       .state('app.draft', {
         url: '/draft',
