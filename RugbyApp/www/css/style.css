@@ -392,3 +392,7 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
+.popup {
+    background-color:#fff;
+}

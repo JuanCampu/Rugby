@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('JoinCtrl', function ($scope, $state) {
+    .controller('JoinCtrl', function ($scope, $state, $ionicPopup) {
 
         $scope.items = [
             {
@@ -55,6 +55,31 @@ angular.module('starter')
                 name: 'David Bone'
             }
         ];
+
+        $scope.showPopup = function () {
+            $scope.data = {}
+
+            // Custom popup
+            var myPopup = $ionicPopup.show({
+                template: '<input type = "text" ng-model = "data.model">',
+                title: 'Estado del mensaje',
+                template: '!Su solicitud ha sido enviada de manera exitosa',
+                scope: $scope,
+
+                buttons: [
+                    {
+                        text: '<b>Cerrar</b>',
+                        type: 'button-positive'
+                    }
+                ]
+            });
+
+            myPopup.then(function (res) {
+                console.log('Tapped!', res);
+            });
+        };
+
+        // go to Nav page
         $scope.goBack = function () {
             $state.go('nav')
         }
