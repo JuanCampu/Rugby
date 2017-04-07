@@ -8,35 +8,38 @@ angular.module('starter')
 
   .controller('FavoriteCtrl', function($scope, $state) {
 
-    $scope.items = [
-      {
-        logo: './img/c1.jpg'
-      },
-      {
-        logo: './img/c2.jpg'
-      },
-      {
-        logo: './img/c3.jpg'
-      },
-      {
-        logo: './img/c6.jpg'
-      },
-      {
-        logo: './img/c10.jpg'
-      },
-      {
-        logo: './img/c11.jpg'
-      },
-      {
-        logo: './img/c12.jpg'
-      },
-      {
-        logo: './img/c14.jpg'
-      }
-    ];
+      $scope.items = [
+          {
+              logo: './img/c1.jpg'
+          },
+          {
+              logo: './img/c2.jpg'
+          },
+          {
+              logo: './img/c3.jpg'
+          },
+          {
+              logo: './img/c6.jpg'
+          },
+          {
+              logo: './img/c10.jpg'
+          },
+          {
+              logo: './img/c11.jpg'
+          },
+          {
+              logo: './img/c12.jpg'
+          },
+          {
+              logo: './img/c14.jpg'
+          }
+      ];
 
-    $scope.goFeed = function () {
-      $state.go('app.score')
-    }
+      $scope.goNav = function () {
+          $state.go('nav')
+      }
+      $scope.goBack = function () {
+          $state.go('inicio')
+      }
 
   });

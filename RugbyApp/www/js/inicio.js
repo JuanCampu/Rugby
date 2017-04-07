@@ -59,7 +59,6 @@ angular.module('starter')
       $state.go('sign')
     }
     $scope.goGuest = function () {
-      $state.go('nav')
+        $state.go('favorite')
     }
-
   });

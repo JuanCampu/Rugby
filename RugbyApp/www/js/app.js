@@ -74,6 +74,26 @@ angular.module('starter', ['ionic', 'ui.bootstrap'])
             }
         })
 
+        .state('app.match-one', {
+            url: '/match-one',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/match-one.html',
+                    controller: 'MatchOneCtrl'
+                }
+            }
+        })
+
+        .state('app.match-second', {
+            url: '/match-second',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/match-second.html',
+                    controller: 'MatchSecondCtrl'
+                }
+            }
+        })
+
       .state('app.draft', {
         url: '/draft',
         views: {

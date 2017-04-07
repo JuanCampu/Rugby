@@ -1,0 +1,120 @@
+﻿<ion-view>
+    <ion-nav-title>
+        Feed
+    </ion-nav-title>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()"></button>
+        <span class="badge-nav blue-color">3</span>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-ios-americanfootball-outline" ng-click="stateFavorite()"></button>
+    </ion-nav-buttons>
+    <ion-content class="bg-app light" scroll="false" vertical layout>
+        <div class="header-draft" horizontal layout center>
+            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                2016/05/23
+            </div>
+            <div>|</div>
+            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                07:32
+            </div>
+        </div>
+        <!--
+        <div horizontal layout center style="padding: 10px 0">
+            <div>
+                Nuevo Partido
+            </div>
+        </div>    
+        -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Información General</a></li>
+        </ul>
+            <div flex class="light-bg" style="color: #444; overflow-y: scroll">
+                <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
+                    <uib-tab index="0" heading="">
+                        <div class="panel-body">
+                            <div class="form-group col-xs-12 ">
+                                <label for="disabledSelect">Seleccione el Torneo:</label>
+                                <div class="form-group input-group col-xs-12">
+                                    <span class="input-group-addon"><i class="fa fa-trophy" aria-hidden="true"></i></span>
+                                    <select class="form-control">
+                                        <option>Torneo 1</option>
+                                        <option>Torneo 2</option>
+                                        <option>Torneo 3</option>
+                                        <option>Torneo 4</option>
+                                        <option>Torneo 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-6">
+                                <label for="disabledSelect">Seleccione el equipo local:</label>
+                                <div class="form-group input-group col-xs-12">
+                                    <span class="input-group-addon"><i class="ion ion-ios-americanfootball-outline"></i></span>
+                                    <select class="form-control">
+                                        <option>Equipo 1</option>
+                                        <option>Equipo 2</option>
+                                        <option>Equipo 3</option>
+                                        <option>Equipo 4</option>
+                                        <option>Equipo 5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-xs-6 ">
+                                <label for="disabledSelect">Seleccione el equipo visitante:</label>
+                                <div class="form-group input-group col-xs-12">
+                                    <span class="input-group-addon"><i class="ion ion-ios-americanfootball-outline"></i></span>
+                                    <select class="form-control">
+                                        <option>Equipo 1</option>
+                                        <option>Equipo 2</option>
+                                        <option>Equipo 3</option>
+                                        <option>Equipo 4</option>
+                                        <option>Equipo 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 ">
+                                <label for="disabledSelect">Seleccione de Jueces:</label>
+                                <div class="form-group input-group col-xs-12">
+                                    <span class="input-group-addon"><i class="fa fa-gavel" aria-hidden="true"></i></span>
+                                    <select class="form-control">
+                                        <option>Juez 1</option>
+                                        <option>Juez 2</option>
+                                        <option>Juez 3</option>
+                                        <option>Juez 4</option>
+                                        <option>Juez 5</option>
+                                    </select>
+                                </div>
+                                <div class="form-group input-group col-xs-12">
+                                    <span class="input-group-addon"><i class="fa fa-gavel" aria-hidden="true"></i></span>
+                                    <select class="form-control">
+                                        <option> Juez 1</option>
+                                        <option>Juez 2</option>
+                                        <option>Juez 3</option>
+                                        <option>Juez 4</option>
+                                        <option>Juez 5</option>
+                                    </select>
+                                </div>
+                                <div class="form-group input-group col-xs-12">
+                                    <span class="input-group-addon"><i class="fa fa-gavel" aria-hidden="true"></i></span>
+                                    <select class="form-control">
+                                        <option> Juez 1</option>
+                                        <option>Juez 2</option>
+                                        <option>Juez 3</option>
+                                        <option>Juez 4</option>
+                                        <option>Juez 5</option>
+                                    </select>
+                                </div>
+                            </div>    
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+</ion-content>
+    <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
+        <div class="button-profile" horizontal layout center center-justified>
+            <button type="button" ng-click="goNext()" class="btn btn-info">Siguiente</button>
+        </div>
+    </ion-footer-bar>
+</ion-view>
