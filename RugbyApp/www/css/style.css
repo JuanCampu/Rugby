@@ -293,17 +293,18 @@
   padding: 10px !important;
   color: #173865;
 }
-.nav li label:hover {
+.nav li label:hover, .nav li label:active {
     text-decoration: none;
-    background-color: #eee;
+    background-color: #173865;
     position: relative;
     display: block;
-    padding: 10px 15px;
+    padding: 10px 30px;
+    color:#fff;
 }
 .nav li label {
     position: relative;
     display: block;
-    padding: 10px 15px;
+    padding: 10px 30px;
 }
 .list-tabs-draft .nav-tabs li.active {
   background-color: transparent !important;
@@ -452,4 +453,24 @@
     padding-right: 0px;
     padding-bottom: 15px;
     padding-left: 0px;
+}
+
+.form-group-right-match{
+    padding-right: 0px;
+}
+
+.form-group-left-match {
+    padding-left: 0px;
+}
+
+.form-group-right-match-select {
+    margin-right: 15px;
+}
+
+.form-group-left-match-select {
+    margin-left: 15px;
+}
+
+.li-margin-custom-left {
+    margin-left:0px !important;
 }

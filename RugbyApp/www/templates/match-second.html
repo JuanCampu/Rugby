@@ -47,67 +47,89 @@
                         <div class="form-group col-xs-6 " horizontal layout center center-justified>
                             <label center center-justified  for="disabledSelect">Azules</label>
                         </div>
-                        <div class="form-group col-xs-6">
-                            <label for="disabledSelect">Seleccione jugador:</label>
-                                <div class="form-group ">
-                                    <select class="form-control">
-                                        <option>jugador 1</option>
-                                        <option>jugador 2</option>
-                                        <option>jugador 3</option>
-                                        <option>jugador 4</option>
-                                        <option>jugador 5</option>
-                                    </select>
-                                </div>
-                            <div class="form-group">
+                        <div class="form-group col-xs-6 form-group-left-match">
+                            <div class="form-group form-group-left-match-select">
+                                <label>Seleccione jugador:</label>
+                            </div>
+                            
+                            <div class="form-group form-group-left-match-select">
+                                <select class="form-control ">
+                                    <option>jugador 1</option>
+                                    <option>jugador 2</option>
+                                    <option>jugador 3</option>
+                                    <option>jugador 4</option>
+                                    <option>jugador 5</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-left-match-select">
                                 <label>Selecciones el evento</label>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">In (entrada)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Out (salida)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">El T(try)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">C(conversión)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">P(penal)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <ionic-numberpicker input-obj="numberPickerObject">
-                                            
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
-                                           
-                                        </ionic-numberpicker>
-                                        
-                                    </label>
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label>Observaciones</label>
+                                <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                    <li class="radio radio-li li-margin-custom-left">
+
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">In (entrada)
+                                        </label>
+
+                                    </li>
+                                    <li class="radio radio-li li-margin-custom-left">
+
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Out (salida)
+                                        </label>
+
+                                    </li>
+                                    <li class="radio radio-li li-margin-custom-left">
+
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">El T(try)
+                                        </label>
+
+                                    </li>
+                                    <li class="radio radio-li li-margin-custom-left">
+
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">C(conversión)
+                                        </label>
+
+                                    </li>
+                                    <li class="radio radio-li li-margin-custom-left">
+
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">P(penal)
+                                        </label>
+
+                                    </li>
+                                    <li class="radio radio-li li-margin-custom-left">
+
+                                        <label>
+                                            <ionic-numberpicker input-obj="numberPickerObject">
+
+                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
+
+                                            </ionic-numberpicker>
+
+                                        </label>
+
+                                    </li>
+                                </ul>
                             </div>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <div class="form-group form-group-left-match-select">
+                                <label>Observaciones</label>
+
+                                <textarea class="form-control " rows="3"></textarea>
                                 <div class="button-profile col-xs-9" horizontal layout center center-justified>
                                     <button type="button" class="btn btn-primary col-xs-9">Guardar</button>
                                 </div>
                             </div>
-                        <div class="form-group col-xs-6">
-                            <label for="disabledSelect">Seleccione jugador:</label>
+                        </div>
+                        <div class="form-group col-xs-6 form-group-right-match">
                             <div class="form-group ">
-                                <select class="form-control">
+                                <label>Seleccione jugador:</label>
+                            </div>
+                            <div class="form-group form-group-right-match-select">
+                                <select class="form-control ">
                                     <option>jugador 1</option>
                                     <option>jugador 2</option>
                                     <option>jugador 3</option>
@@ -117,71 +139,72 @@
                             </div>
                             <div class="form-group">
                                 <label>Selecciones el evento</label>
-                                
-                                
-                             
+                            </div>    
+                            <div class="form-group">
+
                                 <ul class="nav nav-second-level collapse in" aria-expanded="true">
                                     <li class="radio radio-li">
-                                        
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">In (entrada)
-                                            </label>
-                                        
-                                    </li>
-                                    <li class="radio radio-li">
-                                        
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Out (salida)
-                                            </label>
-                                        
-                                    </li>
-                                    <li class="radio radio-li">
-                                        
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">El T(try)
-                                            </label>
-                                       
-                                    </li>
-                                    <li class="radio radio-li">
-                                        
-                                            <label class="radio">
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">C(conversión)
-                                            </label>
-                                        
-                                    </li>
-                                    <li class="radio radio-li">
-                                        
-                                            <label class="radio">
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">P(penal)
-                                            </label>
-                                        
-                                    </li>
-                                    <li class="radio radio-li">
-                                        
-                                            <label>
-                                                <ionic-numberpicker input-obj="numberPickerObject">
 
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">In (entrada)
+                                        </label>
 
-                                                </ionic-numberpicker>
+                                    </li>
+                                    <li class="radio radio-li">
 
-                                            </label>
-                                        
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Out (salida)
+                                        </label>
+
+                                    </li>
+                                    <li class="radio radio-li">
+
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">El T(try)
+                                        </label>
+
+                                    </li>
+                                    <li class="radio radio-li">
+
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">C(conversión)
+                                        </label>
+
+                                    </li>
+                                    <li class="radio radio-li">
+
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">P(penal)
+                                        </label>
+
+                                    </li>
+                                    <li class="radio radio-li">
+
+                                        <label>
+                                            <ionic-numberpicker input-obj="numberPickerObject">
+
+                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
+
+                                            </ionic-numberpicker>
+
+                                        </label>
+
                                     </li>
                                 </ul>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group form-group-right-match-select">
                                 <label>Observaciones</label>
-                            </div>
-                            <textarea class="form-control" rows="3"></textarea>
-                            <div class="button-profile col-xs-9" horizontal layout center center-justified>
-                                <button type="button"  class="btn btn-primary col-xs-9">Guardar</button>
+
+                                <textarea class="form-control " rows="3"></textarea>
+                                <div class="button-profile col-xs-9" horizontal layout center center-justified>
+                                    <button type="button" class="btn btn-primary col-xs-9">Guardar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </uib-tab>
                 <uib-tab index="1" heading="Faltas">
-                    <div class="panel-body">
+                    <div class="panel-body-match-cutome">
                         <div class="form-group col-xs-6" horizontal layout center center-justified>
                             <label center center-justified for="disabledSelect">Alianza</label>
                         </div>
