@@ -40,26 +40,7 @@
         <div flex class="light-bg" style="color: #444; overflow-y: scroll">
             <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
                 <uib-tab index="0" heading="Eventos">
-                  <ion-list>
-  <div class="item" ion-datetime-picker ng-model="datetimeValue">
-    {{datetimeValue| date: "yyyy-MM-dd H:mm:ss"}}
-  </div>
-
-
-</ion-list>
-                    <div class="item item-input">
-                        <span class="input-label">Weight</span>
-                        <ionic-numberpicker input-obj="numberPickerObject">
-                            <button class="button button-positive order-button">
-                                <i class="ion-archive"></i>
-                            </button>
-                        </ionic-numberpicker>&nbsp;
-                        <b>{{ weight }} </b>
-                    </div>
-
-
-                
-                    <div class="panel-body">
+                    <div class="panel-body-match-cutome">
                         <div class="form-group col-xs-6" horizontal layout center center-justified>
                             <label center center-justified  for="disabledSelect">Alianza</label>
                         </div>
@@ -68,12 +49,7 @@
                         </div>
                         <div class="form-group col-xs-6">
                             <label for="disabledSelect">Seleccione jugador:</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
+                                <div class="form-group ">
                                     <select class="form-control">
                                         <option>jugador 1</option>
                                         <option>jugador 2</option>
@@ -111,7 +87,12 @@
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
+                                        <ionic-numberpicker input-obj="numberPickerObject">
+                                            
+                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
+                                           
+                                        </ionic-numberpicker>
+                                        
                                     </label>
                                 </div>
                             </div>
@@ -125,12 +106,7 @@
                             </div>
                         <div class="form-group col-xs-6">
                             <label for="disabledSelect">Seleccione jugador:</label>
-                            <div class="form-group input-group">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
+                            <div class="form-group ">
                                 <select class="form-control">
                                     <option>jugador 1</option>
                                     <option>jugador 2</option>
@@ -141,38 +117,58 @@
                             </div>
                             <div class="form-group">
                                 <label>Selecciones el evento</label>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">In (entrada)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Out (salida)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">El T(try)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">C(conversión)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">P(penal)
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
+                                
+                                
+                             
+                                <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                    <li class="radio radio-li">
+                                        
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">In (entrada)
+                                            </label>
+                                        
+                                    </li>
+                                    <li class="radio radio-li">
+                                        
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Out (salida)
+                                            </label>
+                                        
+                                    </li>
+                                    <li class="radio radio-li">
+                                        
+                                            <label>
+                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">El T(try)
+                                            </label>
+                                       
+                                    </li>
+                                    <li class="radio radio-li">
+                                        
+                                            <label class="radio">
+                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">C(conversión)
+                                            </label>
+                                        
+                                    </li>
+                                    <li class="radio radio-li">
+                                        
+                                            <label class="radio">
+                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">P(penal)
+                                            </label>
+                                        
+                                    </li>
+                                    <li class="radio radio-li">
+                                        
+                                            <label>
+                                                <ionic-numberpicker input-obj="numberPickerObject">
 
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
 
-                                    </label>
-                                </div>
+                                                </ionic-numberpicker>
+
+                                            </label>
+                                        
+                                    </li>
+                                </ul>
                             </div>
                             <div class="form-group">
                                 <label>Observaciones</label>
@@ -193,20 +189,17 @@
                             <label center center-justified for="disabledSelect">Azules</label>
                         </div>
                         <div class="form-group col-xs-6">
-                            <label for="disabledSelect">Seleccione jugador:</label>
-                            <div class="form-group input-group">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                                <select class="form-control">
-                                    <option>jugador 1</option>
-                                    <option>jugador 2</option>
-                                    <option>jugador 3</option>
-                                    <option>jugador 4</option>
-                                    <option>jugador 5</option>
-                                </select>
+                            <div class="form-group">
+                                <label for="disabledSelect">Seleccione jugador:</label>
+                                <div class="form-group ">
+                                    <select class="form-control">
+                                        <option>jugador 1</option>
+                                        <option>jugador 2</option>
+                                        <option>jugador 3</option>
+                                        <option>jugador 4</option>
+                                        <option>jugador 5</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group  ">
                                 <fieldset disabled="">
@@ -230,20 +223,17 @@
                             </div>
                         </div>
                         <div class="form-group col-xs-6">
-                            <label for="disabledSelect">Seleccione jugador:</label>
-                            <div class="form-group input-group">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                                <select class="form-control">
-                                    <option>jugador 1</option>
-                                    <option>jugador 2</option>
-                                    <option>jugador 3</option>
-                                    <option>jugador 4</option>
-                                    <option>jugador 5</option>
-                                </select>
+                            <div class="form-group">
+                                <label for="disabledSelect">Seleccione jugador:</label>
+                                <div class="form-group ">
+                                    <select class="form-control">
+                                        <option>jugador 1</option>
+                                        <option>jugador 2</option>
+                                        <option>jugador 3</option>
+                                        <option>jugador 4</option>
+                                        <option>jugador 5</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group  ">
                                 <fieldset disabled="">
@@ -269,14 +259,14 @@
                     </div>
                 </uib-tab>
                 <uib-tab index="2" heading="Historial">
-                    <div class="page-wrapper-custome">
+                    <div class="">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Sanciones pasadas del equipo
                             </div>
                             <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <div class="table-responsive">
+                            
+                                <div class="table-responsive table-responsive-custome">
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
@@ -292,16 +282,16 @@
                                         <tbody>
                                             <tr>
                                                 <td>Maria Pineda</td>
-                                                <td></td>
+                                                <td>9</td>
                                                 <td></td>
                                                 <td>X</td>
                                                 <td></td>
                                                 <td></td>
-                                                <tdtd>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Andrés Cubillos</td>
-                                                <td></td>
+                                                <td>11</td>
                                                 <td>X</td>
                                                 <td></td>
                                                 <td></td>
@@ -312,18 +302,18 @@
                                     </table>
                                 </div>
                                 <!-- /.table-responsive -->
-                            </div>
+                            
                             <!-- /.panel-body -->
                         </div>
                     </div>
-                    <div class="page-wrapper-custome">
+                    <div class="page-wrapper-custome-top">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Sanciones actuales del equipo
                             </div>
                             <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <div class="table-responsive">
+                         
+                                <div class="table-responsive table-responsive-custome">
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
@@ -339,16 +329,16 @@
                                         <tbody>
                                             <tr>
                                                 <td>Maria Pineda</td>
-                                                <td></td>
+                                                <td>9</td>
                                                 <td></td>
                                                 <td>X</td>
                                                 <td></td>
                                                 <td></td>
-                                                <tdtd>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Andrés Cubillos</td>
-                                                <td></td>
+                                                <td>11</td>
                                                 <td>X</td>
                                                 <td></td>
                                                 <td></td>
@@ -359,9 +349,11 @@
                                     </table>
                                 </div>
                                 <!-- /.table-responsive -->
-                            </div>
+                            
                             <!-- /.panel-body -->
                         </div>
+                    </div>
+                    <div class="page-wrapper-custome">
                         <div class="form-group">
                             <label>Observaciones</label>
                         </div>
@@ -369,7 +361,6 @@
                             <textarea class="form-control" id="disabledInput" rows="3">Ninguna</textarea>
                         </fieldset>
                     </div>
-
                 </uib-tab>
             </uib-tabset>
         </div>

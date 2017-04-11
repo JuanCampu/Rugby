@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('MatchSecondCtrl', function ($scope, $state, $ionicPopup) {
+    .controller('WhistleCtrl', function ($scope, $state, $ionicPopup) {
 
         $scope.items = [
             {

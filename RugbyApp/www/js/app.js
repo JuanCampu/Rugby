@@ -94,6 +94,16 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
             }
         })
 
+        .state('app.whistle', {
+            url: '/whistle',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/whistle.html',
+                    controller: 'WhistleCtrl'
+                }
+            }
+        })
+
       .state('app.draft', {
         url: '/draft',
         views: {

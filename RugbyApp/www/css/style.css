@@ -293,6 +293,18 @@
   padding: 10px !important;
   color: #173865;
 }
+.nav li label:hover {
+    text-decoration: none;
+    background-color: #eee;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+.nav li label {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
 .list-tabs-draft .nav-tabs li.active {
   background-color: transparent !important;
   border-radius: 0 !important;
@@ -417,4 +429,27 @@
 }
 .page-wrapper-custome {
     padding:10px;
+}
+
+.match-icon {
+    font-size:32px !important;
+}
+
+.radio-li {
+    margin-left:14px;
+}
+
+.table-responsive-custome {
+    margin-bottom:0px !important;
+}
+
+.page-wrapper-custome-top {
+    margin-top:-20px !important;
+}
+
+.panel-body-match-cutome {
+    padding-top: 15px;
+    padding-right: 0px;
+    padding-bottom: 15px;
+    padding-left: 0px;
 }
