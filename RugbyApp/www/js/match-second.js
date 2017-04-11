@@ -56,32 +56,35 @@ angular.module('starter')
             }
         ];
 
-        $scope.showPopup = function () {
-            $scope.data = {}
-
-            // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'Estado del mensaje',
-                template: '!Su solicitud ha sido enviada de manera exitosa',
-                scope: $scope,
-
-                buttons: [
-                    {
-                        text: '<b>Cerrar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
-        };
-
         // go to Nav page
         $scope.goBack = function () {
             $state.go('nav')
+        };
+
+        function timePickerCallback(val) {
+            if (typeof (val) === 'undefined') {
+                console.log('Time not selected');
+            } else {
+               
+            }
         }
-       
+        $scope.numberPickerObject = {
+            inputValue: 0, //Optional 
+            minValue: 0,
+            maxValue: 10,
+            precision: 3,  //Optional 
+            format: "WHOLE",  //Optional - "WHOLE" or "DECIMAL" 
+            unit: "PT",  //Optional - "m", "kg", "℃" or whatever you want 
+            titleLabel: 'Seleccione los puntos anotados',  //Optional 
+            setLabel: 'Guardar',  //Optional 
+            closeLabel: 'Cerrar',  //Optional 
+            setButtonType: 'button-positive',  //Optional 
+            closeButtonType: 'button-stable',  //Optional 
+            callback: function (val) {    //Mandatory 
+                timePickerCallback(val);
+            }
+        };
+
     });
+
+    

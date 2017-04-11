@@ -1,7 +1,9 @@
 {
-    "name": "RugbyApp",
-    "version": "1.0.0",
-    "private": true,
-    "dependencies": {
-    }
+  "name": "RugbyApp",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "ion-datetime-picker": "^0.5.2",
+    "ionic-numberpicker": "^1.1.4"
+  }
 }
