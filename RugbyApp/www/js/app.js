@@ -74,22 +74,12 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
             }
         })
 
-        .state('app.match-one', {
-            url: '/match-one',
+        .state('app.match', {
+            url: '/match',
             views: {
                 'menuContent': {
-                    templateUrl: 'templates/match-one.html',
-                    controller: 'MatchOneCtrl'
-                }
-            }
-        })
-
-        .state('app.match-second', {
-            url: '/match-second',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/match-second.html',
-                    controller: 'MatchSecondCtrl'
+                    templateUrl: 'templates/match.html',
+                    controller: 'MatchCtrl'
                 }
             }
         })
