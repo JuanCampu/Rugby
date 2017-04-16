@@ -6,11 +6,16 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('MatchCtrl', function ($scope, $state, $ionicPopup) {
+    .controller('PrevScoreCtrl', function ($scope, $state, $ionicPopup) {
         $scope.timeValue = "00:00";
 
         $scope.dateValue = "0000-00-00";
-
+        $scope.date = new Date();
+        $scope.hours = $scope.date.getHours();
+        $scope.minutes = $scope.date.getMinutes();
+        $scope.timeString = "" + (($scope.hours > 12) ? $scope.hours - 12 : $scope.hours);
+        $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
+        $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
 
         $scope.items = [
             {
@@ -90,7 +95,7 @@ angular.module('starter')
 
         // go to Nextv page
         $scope.goNext = function () {
-            $state.go('app.match-second')
+            $state.go('app.score')
         }
     });
 

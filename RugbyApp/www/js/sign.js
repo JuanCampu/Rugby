@@ -56,6 +56,6 @@ angular.module('starter')
       }
     ]
     $scope.goNav = function () {
-      $state.go('nav')
+      $state.go('nav-referee')
     }
   });

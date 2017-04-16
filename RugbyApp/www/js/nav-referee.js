@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-  .controller('NavCtrl', function($scope, $state) {
+    .controller('NavRefCtrl', function($scope, $state) {
 
     $scope.items = [
       {

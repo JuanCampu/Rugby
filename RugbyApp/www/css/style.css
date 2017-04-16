@@ -499,3 +499,19 @@
     background-color: rgb(217, 83, 79) !important;
     border-color: rgb(212, 63, 58) !important;
 }
+
+.nav-item-referee {
+    float: left;
+    width: 100%;
+    height: 40%;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+
+}
+.nav-item-cero {
+    float: left;
+    width: 0%;
+    height: 0%;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+}

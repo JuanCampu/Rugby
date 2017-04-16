@@ -94,6 +94,16 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
             }
         })
 
+        .state('app.prev-whistle', {
+            url: '/prev-whistle',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/prev-whistle.html',
+                    controller: 'PrevWhistleCtrl'
+                }
+            }
+        })
+
       .state('app.draft', {
         url: '/draft',
         views: {
@@ -102,6 +112,26 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
             controller: 'DraftCtrl'
           }
         }
+        })
+
+      .state('app.prev-rank', {
+            url: '/prev-rank',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/prev-rank.html',
+                    controller: 'PrevRankCtrl'
+                }
+            }
+      })
+
+      .state('app.prev-score', {
+          url: '/prev-score',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/prev-score.html',
+                    controller: 'PrevScoreCtrl'
+                }
+            }
       })
 
       .state('app.score', {
@@ -124,7 +154,13 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
         url: '/nav',
         templateUrl: 'templates/nav.html',
         controller: 'NavCtrl'
-      })
+        })
+
+       .state('nav-referee', {
+           url: '/nav-referee',
+            templateUrl: 'templates/nav-referee.html',
+            controller: 'NavRefCtrl'
+       })
 
     ;
     // if none of the above states are matched, use this as the fallback
