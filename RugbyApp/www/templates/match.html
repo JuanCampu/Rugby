@@ -29,10 +29,9 @@
         <div flex class="light-bg" style="color: #444; overflow-y: scroll">
             <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
                 <div class="item item-divider">Seleccione la hora del encuentro:</div>
-                <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" time="" ng-model="timeValue">
-                    <i class="icon ion-ios-clock positive"></i>
-
-                    <strong class="ng-binding">00:00</strong>
+                <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" time="" am-pm="" ng-model="timeValue">
+                    <i class="icon ion-ios-clock-outline positive"></i>
+                    <strong class="ng-binding">00:00 AM</strong>
                 </div>
                 <div class="item item-divider">Seleccione la fecha del encuentro:</div>
                 <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" date="" monday-first="" ng-model="dateValue">
@@ -131,7 +130,7 @@
 </ion-content>
     <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
         <div class="button-profile" horizontal layout center center-justified>
-            <button type="button" ng-click="goNext()" class="btn btn-info">Programar</button>
+            <button type="button" ng-click="showPopup()" class="btn btn-info">Programar</button>
         </div>
     </ion-footer-bar>
 </ion-view>

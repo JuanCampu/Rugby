@@ -8,6 +8,13 @@ angular.module('starter')
 
     .controller('WhistleCtrl', function ($scope, $state, $ionicPopup) {
 
+        $scope.date = new Date();
+        $scope.hours = $scope.date.getHours();
+        $scope.minutes = $scope.date.getMinutes();
+        $scope.timeString = "" + (($scope.hours > 12) ? $scope.hours - 12 : $scope.hours);
+        $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
+        $scope.timeString  += ($scope.hours >= 12) ? " P.M." : " A.M.";
+
         $scope.items = [
             {
                 avatar: './img/a1.jpg',
@@ -85,6 +92,108 @@ angular.module('starter')
             }
         };
 
+        $scope.showEventTR = function () {
+            $scope.data = {}
+
+            // Custom popup
+            var myPopup = $ionicPopup.show({
+                template: '<input type = "text" ng-model = "data.model">',
+                title: 'Estado del mensaje',
+                template: '!El jugador Daniel Correa ha sacado un tarjeta roja',
+                scope: $scope,
+
+                buttons: [
+                    { text: 'Cancel' }, {
+                            text: '<b>Guardar</b>',
+                            type: 'button-positive'
+                    }
+                ]
+            });
+
+            myPopup.then(function (res) {
+                console.log('Tapped!', res);
+            });
+        };
+
+        $scope.showEventTA = function () {
+            $scope.data = {}
+
+            // Custom popup
+            var myPopup = $ionicPopup.show({
+                template: '<input type = "text" ng-model = "data.model">',
+                title: 'Estado del mensaje',
+                template: '!El jugador Daniel Correa ha sacado un tarjeta amarilla',
+                scope: $scope,
+
+                buttons: [
+                    { text: 'Cancel' }, {
+                        text: '<b>Guardar</b>',
+                        type: 'button-positive'
+                    }
+                ]
+            });
+
+            myPopup.then(function (res) {
+                console.log('Tapped!', res);
+            });
+        };
+
+        $scope.showEventTC = function () {
+            $scope.data = {}
+
+            // Custom popup
+            var myPopup = $ionicPopup.show({
+                template: '<input type = "text" ng-model = "data.model">',
+                title: 'Estado del mensaje',
+                template: '!El jugador Daniel Correa ha sacado un tarjeta técnica',
+                scope: $scope,
+
+                buttons: [
+                    { text: 'Cancel' }, {
+                        text: '<b>Guardar</b>',
+                        type: 'button-positive'
+                    }
+                ]
+            });
+
+            myPopup.then(function (res) {
+                console.log('Tapped!', res);
+            });
+        };
+
+        $scope.ChangeColor= function () {
+            var cols = document.getElementsByClassName('background-label-left');
+            for (i = 0; i < cols.length; i++) {
+                cols[i].style.backgroundColor = 'blue';
+            }
+            $(this).css("background-color", "yellow");
+        };
+
+        $scope.timerRunning = true;
+
+        $scope.startTimer = function () {
+            $scope.$broadcast('timer-start');
+            $scope.timerRunning = true;
+        };
+
+        $scope.stopTimer = function () {
+            $scope.$broadcast('timer-stop');
+            $scope.timerRunning = false;
+        };
+
+        $scope.$on('timer-stopped', function (event, args) {
+            console.log('timer-stopped args = ', args);
+        });
+
+        $scope.menuItems = ['In (entrada)', 'Out (Salida)', 'El T (Try)', 'C (Conversion)', 'P (penal)', 'GC (gol de campo)'];
+        $scope.activeMenu1 = $scope.menuItems;
+        $scope.activeMenu2 = $scope.menuItems;
+
+        $scope.setActive1 = function (menuItem) {
+            $scope.activeMenu1 = menuItem
+        }
+        $scope.setActive2 = function (menuItem) {
+            $scope.activeMenu2 = menuItem
+        }
+
     });
-
-

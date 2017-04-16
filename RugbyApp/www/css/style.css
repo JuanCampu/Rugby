@@ -259,7 +259,7 @@
   border-bottom: 1px solid #ddd;
 }
 .draft-club-list {
-  width: 14.28571429%;
+  width: 22.28571429%;
   padding: 5px;
   -webkit-filter: blur(0.5px);
   -moz-filter: blur(0.5px);
@@ -445,7 +445,7 @@
 }
 
 .page-wrapper-custome-top {
-    margin-top:-20px !important;
+    margin-top:10px !important;
 }
 
 .panel-body-match-cutome {
@@ -473,4 +473,29 @@
 
 .li-margin-custom-left {
     margin-left:0px !important;
+}
+
+.match-team-icon-left {
+    font-size: 22px;
+    margin-right: 10%;
+}
+.match-team-icon-rigth {
+    font-size: 22px;
+    margin-left: 10%;
+}
+
+.active-events-first {
+    background-color: #173865;
+    color: #fff;
+}
+
+.active-events-second {
+    background-color: #173865;
+    color: #fff;
+}
+
+.btn-danger {
+    color: rgb(255, 255, 255);
+    background-color: rgb(217, 83, 79) !important;
+    border-color: rgb(212, 63, 58) !important;
 }

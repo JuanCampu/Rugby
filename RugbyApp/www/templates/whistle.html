@@ -1,6 +1,6 @@
 ﻿<ion-view>
     <ion-nav-title>
-        Feed
+        Pitar Partido
     </ion-nav-title>
     <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()"></button>
@@ -12,23 +12,24 @@
     <ion-content class="bg-app light" scroll="false" vertical layout>
         <div class="header-draft" horizontal layout center>
             <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
-                2016/05/23
+                {{date | date:'yyyy-MM-dd'}}
             </div>
             <div>|</div>
             <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
-                07:32
+               {{timeString}}
             </div>
         </div>
         <div horizontal layout center center-justified style="padding: 10px 0">
+            <span class="match-team-icon-left">22</span>
             <div class="draft-club-list text-center">
                 <img ng-src="./img/c1.jpg" alt="" />
-                <span>0</span>
+               
             </div>
             <div>VS</div>
             <div class="draft-club-list text-center">
                 <img ng-src="./img/c11.jpg" alt="" />
-                <span>0</span>
             </div>
+            <span class="match-team-icon-rigth">5</span>
         </div>
         <!--
         <div horizontal layout center style="padding: 10px 0">
@@ -66,53 +67,13 @@
                             </div>
                             <div class="form-group">
                                 <ul class="nav nav-second-level collapse in" aria-expanded="true">
-                                    <li class="radio radio-li li-margin-custom-left">
-
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">In (entrada)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li li-margin-custom-left">
-
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Out (salida)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li li-margin-custom-left">
-
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">El T(try)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li li-margin-custom-left">
-
-                                        <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">C(conversión)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li li-margin-custom-left">
-
-                                        <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">P(penal)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li li-margin-custom-left">
-
-                                        <label>
-                                            <ionic-numberpicker input-obj="numberPickerObject">
-
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
-
-                                            </ionic-numberpicker>
-
-                                        </label>
-
-                                    </li>
+                                    <div class="" ng-repeat='item in menuItems'>
+                                        <li class="radio radio-li li-margin-custom-left">
+                                            <label ng-class="{'active-events-first' : activeMenu1 === item}" ng-click="setActive1(item)" class="background-label-left">
+                                               {{ item }}
+                                            </label>
+                                        </li>
+                                    </div>
                                 </ul>
                             </div>
                             <div class="form-group form-group-left-match-select">
@@ -141,55 +102,14 @@
                                 <label>Selecciones el evento</label>
                             </div>
                             <div class="form-group">
-
                                 <ul class="nav nav-second-level collapse in" aria-expanded="true">
-                                    <li class="radio radio-li">
-
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">In (entrada)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li">
-
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Out (salida)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li">
-
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">El T(try)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li">
-
-                                        <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">C(conversión)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li">
-
-                                        <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">P(penal)
-                                        </label>
-
-                                    </li>
-                                    <li class="radio radio-li">
-
-                                        <label>
-                                            <ionic-numberpicker input-obj="numberPickerObject">
-
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Gc (gol de campo)
-
-                                            </ionic-numberpicker>
-
-                                        </label>
-
-                                    </li>
+                                    <div class="" ng-repeat='item in menuItems'>
+                                        <li class="radio radio-li li-margin-custom-left">
+                                            <label ng-class="{'active-events-second' : activeMenu2 === item}" ng-click="setActive2(item)" class="background-label-left">
+                                                {{ item }}
+                                            </label>
+                                        </li>
+                                    </div>
                                 </ul>
                             </div>
                             <div class="form-group form-group-right-match-select">
@@ -234,15 +154,15 @@
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Roja</p>
-                                <a class="btn btn-social-icon btn-pinterest"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-pinterest" ng-click="showEventTR()"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Amarilla</p>
-                                <a class="btn btn-social-icon btn-google-plus"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-google-plus" ng-click="showEventTA()"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
-                                <p class="col-xs-12"> Tarjeta Ténica</p>
-                                <a class="btn btn-social-icon btn-github "><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <p class="col-xs-12"> Tarjeta Técnica</p>
+                                <a class="btn btn-social-icon btn-github " ng-click="showEventTC()"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                         </div>
                         <div class="form-group col-xs-6">
@@ -268,15 +188,15 @@
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Roja</p>
-                                <a class="btn btn-social-icon btn-pinterest"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-pinterest" ng-click="showEventTR()"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Amarilla</p>
-                                <a class="btn btn-social-icon btn-google-plus"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-google-plus" ng-click="showEventTA()"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
-                                <p class="col-xs-12"> Tarjeta Ténica</p>
-                                <a class="btn btn-social-icon btn-github "><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <p class="col-xs-12"> Tarjeta Técnica</p>
+                                <a class="btn btn-social-icon btn-github " ng-click="showEventTC()"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -389,11 +309,13 @@
 
     </ion-content>
     <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
-        <div class="button-profile col-xs-9" horizontal layout center center-justified>
-            <fieldset disabled="">
-                <button type="button" ng-click="goBack()" class="btn btn-primary col-xs-9">Iniciar</button>
-            </fieldset>
+        <div class="button-profile col-xs-6" horizontal layout center center-justified>  
+           <button ng-click="startTimer()" class="btn btn-primary">Iniciar</button>
+            <button  ng-click="stopTimer()" class="btn btn-danger">Detener</button>
         </div>
-        <input class="form-control col-xs-3 " id="disabledInput" type="text" placeholder="00:00" disabled="">
+        <div class="button-profile col-xs-6" horizontal layout center center-justified>
+           <timer autostart="false" countdown="2400" interval="1000"> {{mminutes}} : {{sseconds}} .</timer>
+        </div>
+        
     </ion-footer-bar>
 </ion-view>
