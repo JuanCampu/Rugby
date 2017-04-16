@@ -124,6 +124,16 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
             }
       })
 
+      .state('app.rank', {
+            url: '/rank',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/rank.html',
+                    controller: 'RankCtrl'
+                }
+            }
+      })
+
       .state('app.prev-score', {
           url: '/prev-score',
             views: {

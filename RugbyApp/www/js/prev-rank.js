@@ -95,7 +95,7 @@ angular.module('starter')
 
         // go to Nextv page
         $scope.goNext = function () {
-            $state.go('app.score')
+            $state.go('app.rank')
         }
     });
 

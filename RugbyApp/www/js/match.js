@@ -9,7 +9,7 @@ angular.module('starter')
     .controller('MatchCtrl', function ($scope, $state, $ionicPopup) {
         $scope.timeValue = "00:00";
 
-        $scope.dateValue = "0000-00-00";
+        $scope.dateValue = "00-00-0000";
 
 
         $scope.items = [

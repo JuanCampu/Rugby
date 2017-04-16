@@ -515,3 +515,23 @@
     color: rgb(255, 255, 255);
     text-transform: uppercase;
 }
+
+.table-striped-two > tbody > tr:nth-of-type(2n+1) {
+    background-color: rgba(0, 19, 243, 0.17);
+}
+
+.panel-rank {
+    color: #fff;
+    background: rgba(97, 97, 99, 0.58);
+   
+}
+
+
+.panel-rank-margin {
+  margin-top:40px;
+}
+
+.timer-font {
+    font-size: 30px;
+
+}
