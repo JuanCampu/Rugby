@@ -12,8 +12,8 @@ angular.module('starter')
       {
         logo1: './img/c1.jpg',
         logo2: './img/c2.jpg',
-        name1: 'DAL',
-        name2: 'CIN',
+        name1: 'ALIANZA',
+        name2: 'JAGUAR',
         score1: 21,
         score2: 0,
         isFinal: false
@@ -56,7 +56,7 @@ angular.module('starter')
       },
       {
         logo1: './img/c2.jpg',
-        logo2: './img/c12.jpg',
+        logo2: './img/c11.jpg',
         name1: 'CLE',
         name2: 'NYG',
         score1: 7,

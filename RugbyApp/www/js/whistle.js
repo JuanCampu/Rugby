@@ -188,12 +188,19 @@ angular.module('starter')
         $scope.menuItems = ['In (entrada)', 'Out (Salida)', 'El T (Try)', 'C (Conversion)', 'P (penal)', 'GC (gol de campo)'];
         $scope.activeMenu1 = $scope.menuItems;
         $scope.activeMenu2 = $scope.menuItems;
-
-        $scope.setActive1 = function (menuItem) {
-            $scope.activeMenu1 = menuItem
-        }
         $scope.setActive2 = function (menuItem) {
-            $scope.activeMenu2 = menuItem
+            $scope.activeMenu2 = menuItem;
+            if ($scope.menuItems[5] == menuItem) {
+               
+                angular.element(document.querySelector('#number3')).triggerHandler('click');
+            }
         }
+        $scope.setActive1 = function (menuItem) {
+            $scope.activeMenu1 = menuItem;
+            if ($scope.menuItems[5] == menuItem) {
+                angular.element(document.querySelector('#number2')).triggerHandler('click');
+            }
+        }
+       
 
     });
