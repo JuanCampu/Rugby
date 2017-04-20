@@ -6,8 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-  .controller('ProfileCtrl', function($scope, $http) {
-      $http.get("http://localhost:49656/api/juez/55F6DE41-ADF4-4025-A2D9-294BF4E03450").then(function (response) {
+  .controller('ProfileCtrl', function($scope, $http, $rootScope) {
+      $http.get($rootScope.APIurl +"api/ObtenerInformacion/55F6DE41-ADF4-4025-A2D9-294BF4E03450").then(function (response) {
           console.log(response.data);
           $scope.nombres = response.data["nombres"];
           $scope.direccion = response.data["direccion"];

@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-  .controller('SignCtrl', function($scope , $state, $http) {
+    .controller('SignCtrl', function ($scope, $state, $http, $rootScope) {
 
     $scope.items = [
       {
@@ -58,7 +58,7 @@ angular.module('starter')
     $scope.goNav = function () {
         var usuario = $("#usuario").val();
         var password = $("#password").val();
-        var url = "http://localhost:49656/api/Usuario/Login?password=" + password + "&userName=" + usuario;
+        var url = $rootScope.APIurl+"api/Usuario/Login?password=" + password + "&userName=" + usuario;
         $http.get(url).then(function (response) {
             if (response.data == 200) {
                 $state.go('nav-referee');

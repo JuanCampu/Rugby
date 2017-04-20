@@ -4,9 +4,15 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+
+
+
 angular.module('starter')
 
-  .controller('InicioCtrl', function($scope , $state) {
+  .controller('InicioCtrl', function($scope , $state, $rootScope) {
+
+    //Crear variable global del API
+    $rootScope.APIurl = "http://localhost:49656/";
 
     $scope.items = [
       {

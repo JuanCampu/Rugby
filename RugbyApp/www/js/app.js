@@ -175,6 +175,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
     ;
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/inicio');
+
   })
   .controller('AppCtrl', function($scope, $ionicModal, $state) {
 
