@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('PrevWhistleCtrl', function ($scope, $state, $ionicPopup) {
+    .controller('PrevWhistleCtrl', function ($scope, $state, $ionicPopup, $http) {
         $scope.timeValue = "00:00";
 
         $scope.dateValue = "0000-00-00";
@@ -16,7 +16,6 @@ angular.module('starter')
         $scope.timeString = "" + (($scope.hours > 12) ? $scope.hours - 12 : $scope.hours);
         $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
         $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
-
         $scope.items = [
             {
                 avatar: './img/a1.jpg',
