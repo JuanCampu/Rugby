@@ -56,10 +56,9 @@ angular.module('starter')
       }
     ]
     $scope.goNav = function () {
-        
         var usuario = $("#usuario").val();
         var password = $("#password").val();
-        var url = "http://localhost:49656/api/Usuario?password=" + password + "&userName=" + usuario;
+        var url = "http://localhost:49656/api/Usuario/Login?password=" + password + "&userName=" + usuario;
         $http.get(url).then(function (response) {
             if (response.data == 200) {
                 $state.go('nav-referee');
