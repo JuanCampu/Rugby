@@ -31,13 +31,8 @@
                     <div class="input-label">
                         <i class="icon ion-ios-americanfootball-outline  match-icon"></i>
                     </div>
-
                     <select>
-                        <option selected>Azules  vs Alianza</option>
-                        <option>equipo 1 vs equipo 3</option>
-                        <option>equipo 2 vs equipo 1</option>
-                        <option>equipo 1 vs equipo 3</option>
-                        <option>equipo 2 vs equipo 4</option>
+                        <option ng-repeat="partido in partidos" value="{{partido.GuidPartido}}">{{partido.NombrePartido}}</option>
                     </select>
                 </label>
                                

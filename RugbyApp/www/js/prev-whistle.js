@@ -6,9 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('PrevWhistleCtrl', function ($scope, $state, $ionicPopup, $http) {
+    .controller('PrevWhistleCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
         $scope.timeValue = "00:00";
-
         $scope.dateValue = "0000-00-00";
         $scope.date = new Date();
         $scope.hours = $scope.date.getHours();
@@ -67,11 +66,10 @@ angular.module('starter')
         $scope.showPopup = function () {
             $scope.data = {}
 
-            // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Estado del mensaje',
-                template: '!El partido ha sido prograamado de manera exitosa',
+                template: 'El partido ha sido prograamado de manera exitosa!',
                 scope: $scope,
 
                 buttons: [
@@ -81,11 +79,17 @@ angular.module('starter')
                     }
                 ]
             });
-
             myPopup.then(function (res) {
                 console.log('Tapped!', res);
             });
         };
+        
+        var url = $rootScope.APIurl + "api/Juez/ObtenerPartidos/" + $rootScope.UserName;
+        $http.get(url).then(function (response) {
+            $scope.partidos = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta");
+        });
 
         // go to Nav page
         $scope.goBack = function () {
