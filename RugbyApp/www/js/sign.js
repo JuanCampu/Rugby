@@ -58,9 +58,13 @@ angular.module('starter')
     $scope.goNav = function () {
         var usuario = $("#usuario").val();
         var password = $("#password").val();
-        var url = $rootScope.APIurl+"api/Usuario/Login?password=" + password + "&userName=" + usuario;
+        var url = $rootScope.APIurl +"api/Usuario/Login?password=" + password + "&userName=" + usuario;
         $http.get(url).then(function (response) {
-            if (response.data == 200) {
+            console.log(response);
+            if (response.data["httpStatus"] == "OK") {
+                $rootScope.UserName = response.data["userName"];
+                $rootScope.Rol = response.data["rol"];
+                window.alert($rootScope.UserName + " SOS " + $rootScope.Rol);
                 $state.go('nav-referee');
             } else {
                 window.alert("No se logeo");

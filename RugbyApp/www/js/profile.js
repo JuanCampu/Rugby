@@ -6,12 +6,17 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-  .controller('ProfileCtrl', function($scope, $http, $rootScope) {
-      $http.get($rootScope.APIurl +"api/ObtenerInformacion/55F6DE41-ADF4-4025-A2D9-294BF4E03450").then(function (response) {
-          console.log(response.data);
-          $scope.nombres = response.data["nombres"];
-          $scope.direccion = response.data["direccion"];
-      });
+    .controller('ProfileCtrl', function ($scope, $http, $rootScope) {
+        if ($rootScope.Rol == "Juez") {
+            $http.get($rootScope.APIurl + "api/Juez/ObtenerInformacion/" + $rootScope.UserName).then(function (response) {
+                $scope.nombres = response.data["nombres"];
+                $scope.direccion = response.data["direccion"];
+            });
+        } else if ($rootScope.Rol == "Admin") {
+
+        } else {
+            $state.go('sign');
+        }
     $scope.items = [
       {
         avatar: './img/a1.jpg',
