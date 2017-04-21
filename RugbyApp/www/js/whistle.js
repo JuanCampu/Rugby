@@ -13,15 +13,29 @@ angular.module('starter')
          * if given group is the selected group, deselect it
          * else, select the given group
          */
-        $scope.toggleGroup = function (group) {
-            if ($scope.isGroupShown(group)) {
-                $scope.shownGroup = null;
+        $scope.toggleGroup = function (group, type) {
+          
+            if (type == 1) {
+                if ($scope.isGroupShown(group,type)) {
+                  
+                    $scope.shownGroup = null;
+                } else {
+                    $scope.shownGroup = group;
+                } 
             } else {
-                $scope.shownGroup = group;
+                if ($scope.isGroupShown(group, type)) {
+                    $scope.shownGroup2 = null;
+                } else {
+                    $scope.shownGroup2 = group;
+                } 
             }
+           
         };
-        $scope.isGroupShown = function (group) {
-            return $scope.shownGroup === group;
+        $scope.isGroupShown = function (group, type) {
+            if (type == 1) 
+                return $scope.shownGroup === group;
+            else
+                return $scope.shownGroup2 === group;
         };
        
         $scope.getDateValues = function () {

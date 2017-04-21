@@ -127,67 +127,85 @@
                     </div>
                 </uib-tab>
                 <uib-tab index="2" heading="Historial">
-                    <ion-header-bar class="bar-positive">
-                    <h1 class="title">Accordion List</h1>
-                    </ion-header-bar>
+                    
+                    <div class="item item-divider">Seleccione el partido que desea pitar :</div>
                     <ion-list>
                         <div >
                             <ion-item class="item-stable"
-                                      ng-click="toggleGroup('team1')"
-                                      ng-class="{active: isGroupShown('team1')}">
-                                <i class="icon" ng-class="isGroupShown('team1') ? 'ion-minus' : 'ion-plus'"></i>
+                                      ng-click="toggleGroup('team1',1)"
+                                      ng-class="{active: isGroupShown('team1',1)}">
+                                <i class="icon" ng-class="isGroupShown('team1',1) ? 'ion-minus' : 'ion-plus'"></i>
                                 &nbsp;
                               Alianza
                             </ion-item>
-                            <ion-item class="item-accordion" ng-show="isGroupShown('team1')">
+                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('team1',1)">
                                 <ion-item class="item-stable"
-                                          ng-click="toggleGroup('eveTeam1')"
-                                          ng-class="{active: isGroupShown('eveTeam1')}">
-                                    <i class="icon" ng-class="isGroupShown('eveTeam1') ? 'ion-minus' : 'ion-plus'"></i>
+                                          ng-click="toggleGroup('historial-team-one',2)"
+                                          ng-class="{active: isGroupShown('historial-team-one',2)}">
+                                    <i class="icon icon-second-level" ng-class="isGroupShown('historial-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
                                     &nbsp;
                                    Historial eventos  Alianza
                                 </ion-item>
-                                <ion-item class="item-accordion" ng-show="isGroupShown('eveTeam1')">
+                                <ion-item class="item-accordion" ng-show="isGroupShown('historial-team-one',2)">
                                     información
                                 </ion-item>
                                 <ion-item class="item-stable"
-                                          ng-click="toggleGroup('pastTeam1')"
-                                          ng-class="{active: isGroupShown('pastTeam1')}">
-                                    <i class="icon" ng-class="isGroupShown('pastTeam1') ? 'ion-minus' : 'ion-plus'"></i>
+                                          ng-click="toggleGroup('past-fault-team-one',2)"
+                                          ng-class="{active: isGroupShown('past-fault-team-one',2)}">
+                                    <i class="icon icon-second-level" ng-class="isGroupShown('past-fault-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
                                     &nbsp;
-                                    Faltas pasadas
+                                   Faltas Pasadas
                                 </ion-item>
-                                <ion-item class="item-accordion" ng-show="isGroupShown('pastTeam1')">
+                                <ion-item class="item-accordion" ng-show="isGroupShown('past-fault-team-one',2)">
                                     información
                                 </ion-item>
                                 <ion-item class="item-stable"
-                                          ng-click="toggleGroup('actTeam1')"
-                                          ng-class="{active: isGroupShown('actTeam1')}">
-                                    <i class="icon" ng-class="isGroupShown('actTeam1') ? 'ion-minus' : 'ion-plus'"></i>
+                                          ng-click="toggleGroup('current-fault-team-one',2)"
+                                          ng-class="{active: isGroupShown('current-fault-team-one',2)}">
+                                    <i class="icon icon-second-level" ng-class="isGroupShown('current-fault-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
                                     &nbsp;
-                                    Alianza
+                                  Faltas Actuales
                                 </ion-item>
-                                <ion-item class="item-accordion" ng-show="isGroupShown('actTeam1')">
+                                <ion-item class="item-accordion" ng-show="isGroupShown('current-fault-team-one',2)">
                                     información
                                 </ion-item>
                             </ion-item>
-                            <ion-item class="item-stable" ng-click="toggleGroup('team2')" ng-class="{active: isGroupShown(1)}">
-                                <i class="icon" ng-class="isGroupShown('team2') ? 'ion-minus' : 'ion-plus'"></i>
+                            <ion-item class="item-stable" ng-click="toggleGroup('team2',1)" ng-class="{active: isGroupShown(1)}">
+                                <i class="icon" ng-class="isGroupShown('team2',1) ? 'ion-minus' : 'ion-plus'"></i>
                                 &nbsp;
                                 Azules
                             </ion-item>
-                            <ion-item class="item-accordion"
-                                      ng-show="isGroupShown('team2')">
-                                  <ion-item class="item-stable"
-                                      ng-click="toggleGroup('team1')"
-                                      ng-class="{active: isGroupShown('team1')}">
-                                <i class="icon" ng-class="isGroupShown('team1') ? 'ion-minus' : 'ion-plus'"></i>
-                                &nbsp;
-                              Alianza
-                            </ion-item>
-                            <ion-item class="item-accordion" ng-show="isGroupShown('team1')">
-                              información
-                            </ion-item>
+                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('team2',1)">
+                                <ion-item class="item-stable"
+                                          ng-click="toggleGroup('historial-team-two',2)"
+                                          ng-class="{active: isGroupShown('historial-team-two',2)}">
+                                    <i class="icon icon-second-level" ng-class="isGroupShown('historial-team-two',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+                                    &nbsp;
+                                    Historial eventos  Alianza
+                                </ion-item>
+                                <ion-item class="item-accordion" ng-show="isGroupShown('historial-team-two',2)">
+                                    información
+                                </ion-item>
+                                <ion-item class="item-stable"
+                                          ng-click="toggleGroup('past-fault-team-two',2)"
+                                          ng-class="{active: isGroupShown('past-fault-team-two',2)}">
+                                    <i class="icon icon-second-level" ng-class="isGroupShown('past-fault-team-two',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+                                    &nbsp;
+                                    Faltas Pasadas
+                                </ion-item>
+                                <ion-item class="item-accordion" ng-show="isGroupShown('past-fault-team-two',2)">
+                                    información
+                                </ion-item>
+                                <ion-item class="item-stable"
+                                          ng-click="toggleGroup('current-fault-team-two',2)"
+                                          ng-class="{active: isGroupShown('current-fault-team-two',2)}">
+                                    <i class="icon icon-second-level" ng-class="isGroupShown('current-fault-team-two',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+                                    &nbsp;
+                                    Faltas Actuales
+                                </ion-item>
+                                <ion-item class="item-accordion" ng-show="isGroupShown('current-fault-team-two',2)">
+                                    información
+                                </ion-item>
                             </ion-item>
                         </div>
                     </ion-list>

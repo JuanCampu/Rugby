@@ -6,6 +6,13 @@
     display: none;
 }
 
+.icon-second-level {
+    margin-left:15px;
+}
+
+.item-accordion-pad {
+    padding: 0px;
+}
 
 @media (max-width: 1500px) and (orientation : portrait) {
     .great-family-first {
