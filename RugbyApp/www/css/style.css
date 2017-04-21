@@ -10,6 +10,11 @@
     margin-top: -25px !important;
 }
 
+.button-end-align {
+    text-align: center;
+    margin-top: 10%;
+}
+
 .item-chekbox-custome {
     padding: 13px !important;
 }
