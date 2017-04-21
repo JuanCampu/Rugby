@@ -15,40 +15,34 @@
 
       <div class="text-center">
         <div style="font-size: 18px">{{nombres}}</div>
-        <div><i class="ion ion-ios-location-outline"></i> Dallas, TX</div>
+        <div><i class="ion ion-ios-location-outline"></i> {{direccion}}</div>
       </div>
 
-      <div class="button-profile" horizontal layout center center-justified>
-        <button class="button button-light button-small" horizontal layout center center-justified>
-          <i class="ion ion-ios-plus-empty"></i> Follow
-        </button>
-        <button class="button button-light button-small" horizontal layout center center-justified>
-          <i class="ion ion-ios-email-outline"></i> Message
-        </button>
-      </div>
-
-      <div class="text-center" style="padding: 20px 25px">
-        It is a long established fact that a reader will be distracted by the readable content
-      </div>
+        <div id="ningunPartido" class="text-center"  style="padding: 20px 25px; display:none">
+            No has pitado ningún partido.
+        </div>
+        <div id="ultimoPartido" class="text-center" style="padding: 20px 25px; display:none">
+            El resultado del último partido acá.
+        </div>
     </div>
 
 
     <div class="list-social-profile">
       <div class="item-social-profile" vertical layout center center-justified>
-        <div class="bold">3k</div>
-        <div>Followers</div>
+        <div class="bold">{{experiencia}}</div>
+        <div>Experiencia</div>
       </div>
       <div class="item-social-profile" vertical layout center center-justified>
-        <div class="bold">904</div>
-        <div>Following</div>
+        <div class="bold">{{edad}}</div>
+        <div>Edad</div>
       </div>
       <div class="item-social-profile" vertical layout center center-justified>
-        <div class="bold">24</div>
-        <div>Activity</div>
+        <div class="bold">{{partidos}}</div>
+        <div>Partidos Pitados</div>
       </div>
       <div class="item-social-profile" vertical layout center center-justified>
-        <div class="bold">255</div>
-        <div>Photos</div>
+        <div class="bold">{{email}}</div>
+        <div>Correo</div>
       </div>
     </div>
 
