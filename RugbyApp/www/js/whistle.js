@@ -348,7 +348,6 @@ angular.module('starter')
             $scope.timerRunning = true;
             if (setClock == 0) {
                 $scope.getDateValues();
-                alert($scope.timeString);
                 setClock = 1;
             }
         };
