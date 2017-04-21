@@ -6,6 +6,27 @@
     display: none;
 }
 
+.checkbox-hidde {
+    margin-top: -25px !important;
+}
+
+.item-chekbox-custome {
+    padding: 13px !important;
+}
+.checkbox-custome {
+    margin-left: -16px !important;
+}
+
+
+.history-item-title {
+    color: #fff;
+    /* display: none; */
+    background: rgba(23, 56, 101, 0.88);
+    /* margin-top: -37px; */
+    width: 100%;
+    text-align: center;
+}
+
 .icon-second-level {
     margin-left:15px;
 }

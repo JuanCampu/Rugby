@@ -127,8 +127,6 @@
                     </div>
                 </uib-tab>
                 <uib-tab index="2" heading="Historial">
-                    
-                    <div class="item item-divider">Seleccione el partido que desea pitar :</div>
                     <ion-list>
                         <div >
                             <ion-item class="item-stable"
@@ -146,8 +144,118 @@
                                     &nbsp;
                                    Historial eventos  Alianza
                                 </ion-item>
-                                <ion-item class="item-accordion" ng-show="isGroupShown('historial-team-one',2)">
-                                    información
+                                <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('historial-team-one',2)">
+                                    <div class="">
+                                        <div class="panel panel-default">
+                                            <div class="table-responsive table-responsive-custome">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombres</th>
+                                                            <th>IN</th>
+                                                            <th>OUT</th>
+                                                            <th>T</th>
+                                                            <th>V</th>
+                                                            <th>P</th>
+                                                            <th>GC</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Maria Pineda</td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox" checked>
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox" >
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox" >
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox" >
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox" >
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox" >
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Andres Pineda</td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox" >
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox">
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox"checked>
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox">
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox">
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="item-chekbox-custome">
+                                                                    <label class="checkbox checkbox-hidde">
+                                                                        <input type="checkbox" >
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </ion-item>
                                 <ion-item class="item-stable"
                                           ng-click="toggleGroup('past-fault-team-one',2)"
@@ -156,8 +264,46 @@
                                     &nbsp;
                                    Faltas Pasadas
                                 </ion-item>
-                                <ion-item class="item-accordion" ng-show="isGroupShown('past-fault-team-one',2)">
-                                    información
+                                <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('past-fault-team-one',2)">
+                                    <div class="">
+                                        <div class="panel panel-default">
+                                            <div class="table-responsive table-responsive-custome">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombres</th>
+                                                            <th>No</th>
+                                                            <th>TT</th>
+                                                            <th>TR</th>
+                                                            <th>TA</th>
+                                                            <th>LES</th>
+                                                            <th>INF</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Maria Pineda</td>
+                                                            <td>9</td>
+                                                            <td></td>
+                                                            <td>X</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Andrés Cubillos</td>
+                                                            <td>11</td>
+                                                            <td>X</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </ion-item>
                                 <ion-item class="item-stable"
                                           ng-click="toggleGroup('current-fault-team-one',2)"
@@ -166,8 +312,46 @@
                                     &nbsp;
                                   Faltas Actuales
                                 </ion-item>
-                                <ion-item class="item-accordion" ng-show="isGroupShown('current-fault-team-one',2)">
-                                    información
+                                <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('current-fault-team-one',2)">
+                                    <div class="">
+                                        <div class="panel panel-default">
+                                            <div class="table-responsive table-responsive-custome">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombres</th>
+                                                            <th>No</th>
+                                                            <th>TT</th>
+                                                            <th>TR</th>
+                                                            <th>TA</th>
+                                                            <th>LES</th>
+                                                            <th>INF</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Maria Pineda</td>
+                                                            <td>9</td>
+                                                            <td></td>
+                                                            <td>X</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Andrés Cubillos</td>
+                                                            <td>11</td>
+                                                            <td>X</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </ion-item>
                             </ion-item>
                             <ion-item class="item-stable" ng-click="toggleGroup('team2',1)" ng-class="{active: isGroupShown(1)}">
@@ -193,8 +377,46 @@
                                     &nbsp;
                                     Faltas Pasadas
                                 </ion-item>
-                                <ion-item class="item-accordion" ng-show="isGroupShown('past-fault-team-two',2)">
-                                    información
+                                <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('past-fault-team-two',2)">
+                                    <div class="">
+                                        <div class="panel panel-default">
+                                            <div class="table-responsive table-responsive-custome">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombres</th>
+                                                            <th>No</th>
+                                                            <th>TT</th>
+                                                            <th>TR</th>
+                                                            <th>TA</th>
+                                                            <th>LES</th>
+                                                            <th>INF</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Maria Pineda</td>
+                                                            <td>9</td>
+                                                            <td></td>
+                                                            <td>X</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Andrés Cubillos</td>
+                                                            <td>11</td>
+                                                            <td>X</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </ion-item>
                                 <ion-item class="item-stable"
                                           ng-click="toggleGroup('current-fault-team-two',2)"
@@ -203,8 +425,46 @@
                                     &nbsp;
                                     Faltas Actuales
                                 </ion-item>
-                                <ion-item class="item-accordion" ng-show="isGroupShown('current-fault-team-two',2)">
-                                    información
+                                <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('current-fault-team-two',2)">
+                                    <div class="">
+                                        <div class="panel panel-default">
+                                            <div class="table-responsive table-responsive-custome">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombres</th>
+                                                            <th>No</th>
+                                                            <th>TT</th>
+                                                            <th>TR</th>
+                                                            <th>TA</th>
+                                                            <th>LES</th>
+                                                            <th>INF</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Maria Pineda</td>
+                                                            <td>9</td>
+                                                            <td></td>
+                                                            <td>X</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Andrés Cubillos</td>
+                                                            <td>11</td>
+                                                            <td>X</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </ion-item>
                             </ion-item>
                         </div>
