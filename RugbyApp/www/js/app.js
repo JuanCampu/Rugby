@@ -187,6 +187,10 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
       $state.go('nav')
     }
 
+    $scope.stateNavRef = function () {
+        $state.go('nav-referee')
+    }
+
     $scope.stateInicio = function () {
       $state.go('inicio')
     }

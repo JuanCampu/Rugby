@@ -3,11 +3,7 @@
         Pitar Partido
     </ion-nav-title>
     <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()"></button>
-        <span class="badge-nav blue-color">3</span>
-    </ion-nav-buttons>
-    <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-ios-americanfootball-outline" ng-click="stateFavorite()"></button>
+        <button class="button button-icon button-clear ion-navicon" ng-click="stateNavRef()"></button>
     </ion-nav-buttons>
     <ion-content class="bg-app light" scroll="false" vertical layout>
         <div class="header-draft" horizontal layout center>
@@ -50,19 +46,6 @@
                         </div>
                         <div class="form-group col-xs-6 form-group-left-match">
                             <div class="form-group form-group-left-match-select">
-                                <label>Seleccione jugador:</label>
-                            </div>
-
-                            <div class="form-group form-group-left-match-select">
-                                <select class="form-control ">
-                                    <option>jugador 1</option>
-                                    <option>jugador 2</option>
-                                    <option>jugador 3</option>
-                                    <option>jugador 4</option>
-                                    <option>jugador 5</option>
-                                </select>
-                            </div>
-                            <div class="form-group form-group-left-match-select">
                                 <label>Selecciones el evento</label>
                             </div>
                             <div class="form-group">
@@ -78,28 +61,8 @@
                             </div>
                             <ionic-numberpicker id="number2" input-obj="numberPickerObject">
                             </ionic-numberpicker>
-                            <div class="form-group form-group-left-match-select">
-                                <label>Observaciones</label>
-
-                                <textarea class="form-control " rows="3"></textarea>
-                                <div class="button-profile col-xs-9" horizontal layout center center-justified>
-                                    <button type="button" class="btn btn-primary col-xs-9">Guardar</button>
-                                </div>
-                            </div>
                         </div>
                         <div class="form-group col-xs-6 form-group-right-match">
-                            <div class="form-group ">
-                                <label>Seleccione jugador:</label>
-                            </div>
-                            <div class="form-group form-group-right-match-select">
-                                <select class="form-control ">
-                                    <option>jugador 1</option>
-                                    <option>jugador 2</option>
-                                    <option>jugador 3</option>
-                                    <option>jugador 4</option>
-                                    <option>jugador 5</option>
-                                </select>
-                            </div>
                             <div class="form-group">
                                 <label>Selecciones el evento</label>
                             </div>
@@ -116,14 +79,6 @@
                                 <ionic-numberpicker id="number3" input-obj="numberPickerObject">
                                 </ionic-numberpicker>
                             </div>
-                            <div class="form-group form-group-right-match-select">
-                                <label>Observaciones</label>
-
-                                <textarea class="form-control " rows="3"></textarea>
-                                <div class="button-profile col-xs-9" horizontal layout center center-justified>
-                                    <button type="button" class="btn btn-primary col-xs-9">Guardar</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </uib-tab>
@@ -136,23 +91,6 @@
                             <label center center-justified for="disabledSelect">Azules</label>
                         </div>
                         <div class="form-group col-xs-6">
-                            <div class="form-group">
-                                <label for="disabledSelect">Seleccione jugador:</label>
-                                <div class="form-group ">
-                                    <select class="form-control">
-                                        <option>jugador 1</option>
-                                        <option>jugador 2</option>
-                                        <option>jugador 3</option>
-                                        <option>jugador 4</option>
-                                        <option>jugador 5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group  ">
-                                <fieldset disabled="">
-                                    <input type="text" class="form-control" id="disabledInput" placeholder="Juan Pablo Vega Campuzano">
-                                </fieldset>
-                            </div>
                             <div class="form-group" horizontal layout>
                                 <label class="col-xs-12">Selecciones tipo de Falta</label>
                             </div>
@@ -170,23 +108,6 @@
                             </div>
                         </div>
                         <div class="form-group col-xs-6">
-                            <div class="form-group">
-                                <label for="disabledSelect">Seleccione jugador:</label>
-                                <div class="form-group ">
-                                    <select class="form-control">
-                                        <option>jugador 1</option>
-                                        <option>jugador 2</option>
-                                        <option>jugador 3</option>
-                                        <option>jugador 4</option>
-                                        <option>jugador 5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group  ">
-                                <fieldset disabled="">
-                                    <input type="text" class="form-control" id="disabledInput" placeholder="Nicolas Campuzano Angulo">
-                                </fieldset>
-                            </div>
                             <div class="form-group" horizontal layout>
                                 <label class="col-xs-12">Selecciones tipo de Falta</label>
                             </div>
@@ -312,11 +233,11 @@
     </ion-content>
     <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
         <div class="button-profile col-xs-6" horizontal layout center center-justified>  
-           <button ng-click="startTimer()" class="btn btn-primary">Iniciar</button>
-            <button  ng-click="stopTimer()" class="btn btn-danger">Detener</button>
+            <button ng-click="checkMethod()" class="{{timerClass}}">{{timerText}}</button>
+            <button  id="stopTimer" ng-click="stopTimer()" class="btn btn-danger btn-hidden">Detener</button>
         </div>
         <div class="button-profile col-xs-6 timer-font" horizontal layout center center-justified>
-           <timer autostart="false" countdown="2400" interval="1000"> {{mminutes}} : {{sseconds}} .</timer>
+           <timer autostart="false" countdown="4800" max-time-unit="'minute'" interval="1000"> {{mminutes}} : {{sseconds}}</timer>
         </div>
         
     </ion-footer-bar>

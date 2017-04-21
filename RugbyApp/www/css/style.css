@@ -2,12 +2,29 @@
     font-family: GreatVibes;
     src: url(font-family/GreatVibes-Regular.ttf);
 }
-.great-family-first {
-    font-family: GreatVibes;
-    font-size: 30px !important;
-   margin-top:20%;
-   font-weight:bold;
-   text-align:center;
+.btn-hidden {
+    display: none;
+}
+
+
+@media (max-width: 1500px) and (orientation : portrait) {
+    .great-family-first {
+        font-family: Stencil;
+        font-size: 50px !important;
+        margin-top: 20%;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1700px) and (orientation : landscape) {
+    .great-family-first {
+        font-family: Stencil;
+        font-size: 50px !important;
+        margin-top: 5%;
+        font-weight: bold;
+        text-align: center;
+    }
 }
 .great-family-second {
     font-family: GreatVibes;
