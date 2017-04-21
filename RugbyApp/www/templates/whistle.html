@@ -127,106 +127,72 @@
                     </div>
                 </uib-tab>
                 <uib-tab index="2" heading="Historial">
-                    <div class="">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Sanciones pasadas del equipo
-                            </div>
-                            <!-- /.panel-heading -->
-
-                            <div class="table-responsive table-responsive-custome">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombres</th>
-                                            <th>No</th>
-                                            <th>TT</th>
-                                            <th>TR</th>
-                                            <th>TA</th>
-                                            <th>LES</th>
-                                            <th>INF</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Maria Pineda</td>
-                                            <td>9</td>
-                                            <td></td>
-                                            <td>X</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Andrés Cubillos</td>
-                                            <td>11</td>
-                                            <td>X</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                            <!-- /.panel-body -->
+                    <ion-header-bar class="bar-positive">
+                    <h1 class="title">Accordion List</h1>
+                    </ion-header-bar>
+                    <ion-list>
+                        <div >
+                            <ion-item class="item-stable"
+                                      ng-click="toggleGroup('team1')"
+                                      ng-class="{active: isGroupShown('team1')}">
+                                <i class="icon" ng-class="isGroupShown('team1') ? 'ion-minus' : 'ion-plus'"></i>
+                                &nbsp;
+                              Alianza
+                            </ion-item>
+                            <ion-item class="item-accordion" ng-show="isGroupShown('team1')">
+                                <ion-item class="item-stable"
+                                          ng-click="toggleGroup('eveTeam1')"
+                                          ng-class="{active: isGroupShown('eveTeam1')}">
+                                    <i class="icon" ng-class="isGroupShown('eveTeam1') ? 'ion-minus' : 'ion-plus'"></i>
+                                    &nbsp;
+                                   Historial eventos  Alianza
+                                </ion-item>
+                                <ion-item class="item-accordion" ng-show="isGroupShown('eveTeam1')">
+                                    información
+                                </ion-item>
+                                <ion-item class="item-stable"
+                                          ng-click="toggleGroup('pastTeam1')"
+                                          ng-class="{active: isGroupShown('pastTeam1')}">
+                                    <i class="icon" ng-class="isGroupShown('pastTeam1') ? 'ion-minus' : 'ion-plus'"></i>
+                                    &nbsp;
+                                    Faltas pasadas
+                                </ion-item>
+                                <ion-item class="item-accordion" ng-show="isGroupShown('pastTeam1')">
+                                    información
+                                </ion-item>
+                                <ion-item class="item-stable"
+                                          ng-click="toggleGroup('actTeam1')"
+                                          ng-class="{active: isGroupShown('actTeam1')}">
+                                    <i class="icon" ng-class="isGroupShown('actTeam1') ? 'ion-minus' : 'ion-plus'"></i>
+                                    &nbsp;
+                                    Alianza
+                                </ion-item>
+                                <ion-item class="item-accordion" ng-show="isGroupShown('actTeam1')">
+                                    información
+                                </ion-item>
+                            </ion-item>
+                            <ion-item class="item-stable" ng-click="toggleGroup('team2')" ng-class="{active: isGroupShown(1)}">
+                                <i class="icon" ng-class="isGroupShown('team2') ? 'ion-minus' : 'ion-plus'"></i>
+                                &nbsp;
+                                Azules
+                            </ion-item>
+                            <ion-item class="item-accordion"
+                                      ng-show="isGroupShown('team2')">
+                                  <ion-item class="item-stable"
+                                      ng-click="toggleGroup('team1')"
+                                      ng-class="{active: isGroupShown('team1')}">
+                                <i class="icon" ng-class="isGroupShown('team1') ? 'ion-minus' : 'ion-plus'"></i>
+                                &nbsp;
+                              Alianza
+                            </ion-item>
+                            <ion-item class="item-accordion" ng-show="isGroupShown('team1')">
+                              información
+                            </ion-item>
+                            </ion-item>
                         </div>
-                    </div>
-                    <div class="page-wrapper-custome-top">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Sanciones actuales del equipo
-                            </div>
-                            <!-- /.panel-heading -->
-
-                            <div class="table-responsive table-responsive-custome">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombres</th>
-                                            <th>No</th>
-                                            <th>TT</th>
-                                            <th>TR</th>
-                                            <th>TA</th>
-                                            <th>LES</th>
-                                            <th>INF</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Maria Pineda</td>
-                                            <td>9</td>
-                                            <td></td>
-                                            <td>X</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Andrés Cubillos</td>
-                                            <td>11</td>
-                                            <td>X</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                            <!-- /.panel-body -->
-                        </div>
-                    </div>
-                    <div class="page-wrapper-custome">
-                        <div class="form-group">
-                            <label>Observaciones</label>
-                        </div>
-                        <fieldset disabled="">
-                            <textarea class="form-control" id="disabledInput" rows="3">Ninguna</textarea>
-                        </fieldset>
-                    </div>
+                    </ion-list>
+                   
+                 
                 </uib-tab>
             </uib-tabset>
         </div>

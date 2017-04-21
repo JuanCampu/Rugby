@@ -9,6 +9,21 @@ angular.module('starter')
     .controller('WhistleCtrl', function ($scope, $state, $ionicPopup) {
 
        
+        /*
+         * if given group is the selected group, deselect it
+         * else, select the given group
+         */
+        $scope.toggleGroup = function (group) {
+            if ($scope.isGroupShown(group)) {
+                $scope.shownGroup = null;
+            } else {
+                $scope.shownGroup = group;
+            }
+        };
+        $scope.isGroupShown = function (group) {
+            return $scope.shownGroup === group;
+        };
+       
         $scope.getDateValues = function () {
             $scope.date = new Date();
             $scope.hours = $scope.date.getHours();
@@ -103,7 +118,7 @@ angular.module('starter')
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Tarjeta Roja',
-                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3">Ninguna</textarea>',
+                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3"></textarea>',
                 scope: $scope,
 
                 buttons: [
@@ -149,7 +164,7 @@ angular.module('starter')
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Tarjeta Técnica',
-                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3">Ninguna</textarea>',
+                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3"></textarea>',
                 scope: $scope,
 
                 buttons: [

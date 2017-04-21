@@ -11,7 +11,7 @@
     .great-family-first {
         font-family: Stencil;
         font-size: 50px !important;
-        margin-top: 20%;
+        margin-top: 12%;
         font-weight: bold;
         text-align: center;
     }
@@ -27,13 +27,16 @@
     }
 }
 .great-family-second {
-    font-family: GreatVibes;
+    font-family: Stencil;
     font-size: 50px !important;
-    color: rgb(226, 255, 0);
+    color: #c10000;
     font-weight: bold;
     text-align: center;
 }
 
+.nav-ref-width {
+    width: 100% !important;
+}
 .bar-dark {
     border-color: #173865 !important;
     background-color: #173865 !important;
