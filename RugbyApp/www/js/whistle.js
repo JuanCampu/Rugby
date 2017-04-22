@@ -430,7 +430,10 @@ angular.module('starter')
             torneoId = response.data["torneoId"];
             team1 = response.data["jugadoresClub1"];
             team2 = response.data["jugadoresClub2"];
-           localStorage.eventosClub1 = "";
+            localStorage.eventosClub1 = "";
+            localStorage.amoClub1 = "";
+            localStorage.eventosClub2 = "";
+            localStorage.amoClub2 = "";
         for (var numeroJugadores in team1) {
             localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TA|0;";
             localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TT|0;";
@@ -442,7 +445,6 @@ angular.module('starter')
             localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|C|0;";
             localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|P|0;";
         };
-        localStorage.eventosClub2 = "";
         for (var numeroJugadores in team2) {
             localStorage.amoClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|TA|0;";
             localStorage.amoClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|TT|0;";
