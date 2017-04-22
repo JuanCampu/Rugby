@@ -37,51 +37,51 @@
         <div flex class="light-bg" style="color: #444; overflow-y: scroll">
             <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
                 <uib-tab index="0" heading="Eventos">
-                    <div class="panel-body-match-cutome">
-                        <div class="form-group col-xs-6" horizontal layout center center-justified>
-                            <label center center-justified for="disabledSelect">Alianza</label>
-                        </div>
-                        <div class="form-group col-xs-6 " horizontal layout center center-justified>
-                            <label center center-justified for="disabledSelect">Azules</label>
-                        </div>
-                        <div class="form-group col-xs-6 form-group-left-match">
-                            <div class="form-group form-group-left-match-select">
-                                <label>Selecciones el evento</label>
+                        <div class="panel-body-match-cutome">
+                          
+
+                            <div class="form-group col-xs-6" horizontal layout center center-justified>
+                                <label center center-justified for="disabledSelect">Alianza</label>
                             </div>
-                            <div class="form-group">
-                                <ul class="nav nav-second-level collapse in" aria-expanded="true">
-                                    <div class="" ng-repeat='item in menuItems'>
-                                        <li class="radio radio-li li-margin-custom-left">
-                                            <label ng-class="{'active-events-first' : activeMenu1 === item}" ng-click="setActive1(item)" class="background-label-left">
-                                               {{ item }}
-                                            </label>
-                                        </li>
-                                    </div>
-                                </ul>
+                            <div class="form-group col-xs-6 " horizontal layout center center-justified>
+                                <label center center-justified for="disabledSelect">Azules</label>
                             </div>
-                            <ionic-numberpicker id="number2" input-obj="numberPickerObject">
-                            </ionic-numberpicker>
+                            <div class="form-group col-xs-6 form-group-left-match">
+                                <div class="form-group form-group-left-match-select">
+                                    <label>Selecciones el evento</label>
+                                </div>
+                                <div class="form-group">
+                                    <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                        <div class="" ng-repeat='item in menuItems'>
+                                            <li class="radio radio-li li-margin-custom-left">
+                                                <label ng-class="{'active-events-first' : activeMenu1 === item}" ng-click="setActive1(item)" class="background-label-left">
+                                                    {{ item }}
+                                                </label>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-6 form-group-right-match">
+                                <div class="form-group">
+                                    <label>Selecciones el evento</label>
+                                </div>
+                                <div class="form-group">
+                                    <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                        <div class="" ng-repeat='item in menuItems'>
+                                            <li class="radio radio-li li-margin-custom-left">
+                                                <label ng-class="{'active-events-second' : activeMenu2 === item}" ng-click="setActive2(item)" class="background-label-left">
+                                                    {{ item }}
+                                                </label>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                    <ionic-numberpicker id="number3" input-obj="numberPickerObject">
+                                    </ionic-numberpicker>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group col-xs-6 form-group-right-match">
-                            <div class="form-group">
-                                <label>Selecciones el evento</label>
-                            </div>
-                            <div class="form-group">
-                                <ul class="nav nav-second-level collapse in" aria-expanded="true">
-                                    <div class="" ng-repeat='item in menuItems'>
-                                        <li class="radio radio-li li-margin-custom-left">
-                                            <label ng-class="{'active-events-second' : activeMenu2 === item}" ng-click="setActive2(item)" class="background-label-left">
-                                                {{ item }}
-                                            </label>
-                                        </li>
-                                    </div>
-                                </ul>
-                                <ionic-numberpicker id="number3" input-obj="numberPickerObject">
-                                </ionic-numberpicker>
-                            </div>
-                        </div>
-                    </div>
-                </uib-tab>
+</uib-tab>
                 <uib-tab index="1" heading="Faltas">
                     <div class="panel-body-match-cutome">
                         <div class="form-group col-xs-6" horizontal layout center center-justified>
@@ -160,96 +160,8 @@
                                                             <th>GC</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Maria Pineda</td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox" checked>
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox" >
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox" >
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox" >
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox" >
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox" >
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Andres Pineda</td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox" >
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox">
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox"checked>
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox">
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox">
-                                                                    </label>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="item-chekbox-custome">
-                                                                    <label class="checkbox checkbox-hidde">
-                                                                        <input type="checkbox" >
-                                                                    </label>
-                                                                </div>
-                                                            </td>
+                                                    <tbody ng-repeat="(key ,test) in arrayTest">
+                                                        <tr><td>{{test[1].nombreCompleto}}</td><td ng-repeat="t1  in test">{{t1.value}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

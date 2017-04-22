@@ -2,6 +2,9 @@
     font-family: GreatVibes;
     src: url(font-family/GreatVibes-Regular.ttf);
 }
+.wit-tel-width {
+    width:30px;
+}
 
 .sign-pass-custome {
     font-size: 18px !important;
