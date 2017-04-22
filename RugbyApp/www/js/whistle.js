@@ -147,17 +147,36 @@ angular.module('starter')
             }
         };
 
-        $scope.showEventTR = function (team) {
+        $scope.showEventTJ = function (team,tipo) {
             $scope.data = {}
-            if (team == 1)
+            var selectedPlayer = 0;
+            var setNewEvent = [];
+            var tp = tipo;
+            var tituloPop = "";
+            var value = 0;
+            switch (tipo) {
+                case 1:
+                    var tituloPop = "TR (Tarjeta Roja)";
+                    break;
+                case 2:
+                    var tituloPop = "TA (Tarjeta Amarilla)";
+                    break;
+                case 3:
+                    var tituloPop = "TT (Tarjeta Tecnica)";
+                    break;
+                case 6:
+                    day = "Saturday";
+            }
+            if (team == 1) {
                 htmlJugadores = htmlJugadores1;
-            else
-                htmlJugadores = htmlJugadores2;
+            } else {
+                htmlJugadores = htmlJugadores2; 
+            }
             // Custom popup
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
-                title: 'Tarjeta Roja',
+                title: '' + tituloPop+'',
                 template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3"></textarea>',
                 scope: $scope,
 
@@ -174,58 +193,29 @@ angular.module('starter')
             });
         };
 
-        $scope.showEventTA = function (team) {
-            $scope.data = {}
-            if (team == 1)
-                htmlJugadores = htmlJugadores1;
-            else
-                htmlJugadores = htmlJugadores2;
-            // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'Tarjeta Amarilla',
-                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
-                scope: $scope,
+        
+        function setLocalStoraPastActual(arrayTeam) {
+            var arrayLocalClub = [];
+            for (var key in arrayTeam) {
+                arrayLocalClub += arrayTeam[key]["amonestacionId"] + "|" + arrayTeam[key]["tipoJugada"] + "|" + arrayTeam[key]["descripcion"];
+                arrayLocalClub += arrayTeam[key]["amonestacionId"] + "|" + arrayTeam[key]["tipoJugada"] + "|" + arrayTeam[key]["descripcion"];
+                arrayLocalClub += arrayTeam[key]["amonestacionId"] + "|" + arrayTeam[key]["tipoJugada"] + "|" + arrayTeam[key]["descripcion"];
+            }
+            return arrayLocalClub;
+        }
+        function setLocalStoraEventosClubByTeam(arrayTeam) {
+            var arrayLocalClub = [];
+            for (var key in arrayTeam) {
+                arrayLocalClub += arrayTeam[key]["nombres"] + " " + arrayTeam[key]["apellidos"] + "|" + arrayTeam[key]["jugadorId"] + "|IN|0;";
+                arrayLocalClub += arrayTeam[key]["nombres"] + " " + arrayTeam[key]["apellidos"] + "|" + arrayTeam[key]["jugadorId"] + "|OUT|0;";
+                arrayLocalClub += arrayTeam[key]["nombres"] + " " + arrayTeam[key]["apellidos"] + "|" + arrayTeam[key]["jugadorId"] + "|TRY|0;";
+                arrayLocalClub += arrayTeam[key]["nombres"] + " " + arrayTeam[key]["apellidos"] + "|" + arrayTeam[key]["jugadorId"] + "|GC|0;";
+                arrayLocalClub += arrayTeam[key]["nombres"] + " " + arrayTeam[key]["apellidos"] + "|" + arrayTeam[key]["jugadorId"] + "|C|0;";
+                arrayLocalClub += arrayTeam[key]["nombres"] + " " + arrayTeam[key]["apellidos"] + "|" + arrayTeam[key]["jugadorId"] + "|P|0;";
+            }
+            return arrayLocalClub;
 
-                buttons: [
-                    { text: 'Cancel' }, {
-                        text: '<b>Guardar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
-        };
-
-        $scope.showEventTC = function (team) {
-            $scope.data = {}
-            if (team == 1)
-                htmlJugadores = htmlJugadores1;
-            else
-                htmlJugadores = htmlJugadores2;
-
-            // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'Tarjeta Técnica',
-                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3"></textarea>',
-                scope: $scope,
-
-                buttons: [
-                    { text: 'Cancel' }, {
-                        text: '<b>Guardar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
-        };
+        }
         function setLocalStoraEventosClub(arrayTeam) {
             var arrayLocalClub = [];
             for (var key in arrayTeam) {
@@ -235,6 +225,16 @@ angular.module('starter')
                 arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|GC|" + arrayTeam[key][5]["value"] + ";";
                 arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|C|" + arrayTeam[key][3]["value"] + ";";
                 arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|P|" + arrayTeam[key][4]["value"] + ";";
+            };
+            return arrayLocalClub;
+        }
+        function setLocalStoraAmoClub(arrayTeam) {
+            var arrayLocalClub = [];
+            for (var key in arrayTeam) {
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|TA|" + arrayTeam[key][0]["value"] + ";";
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|TR|" + arrayTeam[key][1]["value"] + ";";
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|TT|" + arrayTeam[key][2]["value"] + ";";
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|GC|" + arrayTeam[key][5]["value"] + ";";
             };
             return arrayLocalClub;
         }
@@ -282,7 +282,7 @@ angular.module('starter')
                 currentTeam = $scope.arrayTest2 ;
                 htmlJugadores = htmlJugadores2;
             }
-            console.log(currentTeam)
+    
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
@@ -301,13 +301,12 @@ angular.module('starter')
                             value = currentTeam[selectedPlayer][EV]["value"];
                             value = parseInt(value)  + 1;
                             currentTeam[selectedPlayer][EV]["value"] = String(value);
-                            alert(team);
+                           
                             if(team == 1)
                                 localStorage.eventosClub1 = setLocalStoraEventosClub(currentTeam);
                             else
                                 localStorage.eventosClub2 = setLocalStoraEventosClub(currentTeam) ;
-                            alert(localStorage.eventosClub1);
-                            alert(localStorage.eventosClub2);
+                           
                             myPopup.close();
                         }
                     }
@@ -432,8 +431,8 @@ angular.module('starter')
             team2 = response.data["jugadoresClub2"];
             localStorage.eventosClub1 = "";
             localStorage.eventosClub2 = "";
-            localStorage.eventosClub1 = setLocalStoraEventosClub(team1);
-            localStorage.eventosClub2 = setLocalStoraEventosClub(team2);
+            localStorage.eventosClub1 = setLocalStoraEventosClubByTeam(team1);
+            localStorage.eventosClub2 = setLocalStoraEventosClubByTeam(team2);
           
         setTeam(team1, localStorage.eventosClub1, 1, 0, 0);
         setTeam(team2, localStorage.eventosClub2, 2, 0, 0);
