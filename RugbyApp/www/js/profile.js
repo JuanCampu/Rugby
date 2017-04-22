@@ -9,15 +9,8 @@ angular.module('starter')
     .controller('ProfileCtrl', function ($scope, $http, $rootScope) {
         if ($rootScope.Rol == "Juez") {
             $http.get($rootScope.APIurl + "api/Juez/ObtenerInformacion/" + $rootScope.UserName).then(function (response) {
-                console.log(response.data["añosDeExperiencia"]);
-                console.log(response);
-                $scope.nombres = response.data["nombres"] + " " + response.data["apellidos"];
-                $scope.edad = response.data["edad"];
-                $scope.direccion = response.data["direccion"];
-                $scope.experiencia = response.data["experiencia"];
-                $scope.partidos = response.data["partidosPitados"];
-                $scope.email = response.data["email"];
-                if ($scope.partidos == 0) {
+                $scope.juez = response.data;
+                if ($scope.juez.partidos == 0) {
                     $("#ningunPartido").show();
                 } else {
                     $("#ultimoPartido").show();

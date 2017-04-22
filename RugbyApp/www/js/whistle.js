@@ -6,9 +6,10 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('WhistleCtrl', function ($scope, $state, $ionicPopup) {
+    .controller('WhistleCtrl', function ($scope, $state, $ionicPopup,  $http, $rootScope) {
 
-       
+
+
         /*
          * if given group is the selected group, deselect it
          * else, select the given group

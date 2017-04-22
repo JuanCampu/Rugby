@@ -63,7 +63,7 @@ angular.module('starter')
             if (response.data["httpStatus"] == "OK") {
                 $rootScope.UserName = response.data["userName"];
                 $rootScope.Rol = response.data["rol"];
-                $state.go('nav-referee');
+                $rootScope.stateNav("s");
             } else {
                 window.alert("No se logeo");
             }

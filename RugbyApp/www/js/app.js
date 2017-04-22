@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ionic-numberpicker', 'ionic-numberpicker.templates', 'timer'])
 
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform, $rootScope, $state) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -18,6 +18,15 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
       if (window.StatusBar) {
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
+      }
+      $rootScope.stateNav = function () {
+          if ($rootScope.Rol == "Juez") {
+              $state.go('nav-referee');
+          } else if ($rootScope.Rol == "Admin") {
+              $state.go('nav');
+          } else {
+              $state.go('nav');
+          }
       }
     });
   })
@@ -177,19 +186,14 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
     $urlRouterProvider.otherwise('/inicio');
 
   })
-  .controller('AppCtrl', function($scope, $ionicModal, $state) {
+  .controller('AppCtrl', function($scope, $ionicModal, $state, $rootScope) {
 
     $scope.stateFavorite = function () {
       $state.go('favorite')
     }
 
-    $scope.stateNav = function () {
-      $state.go('nav')
-    }
+    
 
-    $scope.stateNavRef = function () {
-        $state.go('nav-referee')
-    }
 
     $scope.stateInicio = function () {
       $state.go('inicio')
