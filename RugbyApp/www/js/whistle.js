@@ -441,9 +441,16 @@ angular.module('starter')
         var team1 = [];
         var team2 = [];
 
-
+        var clubId2;
+        var clubId1;
+        var torneoId;
         var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/" + $state.params.partidoId;
-        $http.get(url).then(function (response) {
+        $http.get(url,{
+            cache: false
+        }).then(function (response) {
+            clubId1 = response.data["clubId1"];
+            clubId2 = response.data["clubId2"];
+            torneoId = response.data["torneoId"];
             team1 = response.data["jugadoresClub1"];
             var cantidadPlayers = team1.length;
             localStorage.amonestacionesClub1 = "";
@@ -483,4 +490,31 @@ angular.module('starter')
             arrayEvents.pop();
             $scope.arrayTest = arrayEvents;
         });
+
+        $scope.Finalizar = function () {
+            var data = {
+                "partidoId": $state.params.partidoId,
+                "marcadorClub1": 0,
+                "torneoId": torneoId,
+                "clubId1": clubId1,
+                "clubId2": clubId2, 
+                "marcadorClub2": 1,
+                "amonestacionesClub1": localStorage.amoClub1,
+                "amonestacionesClub2": localStorage.amoClub2,
+                "jugadasClub1": localStorage.eventosClub1,
+                "jugadasClub2": localStorage.eventosClub2,
+
+            };
+            var urlPost = $rootScope.APIurl + "api/Partido/FinalizarPartido";
+            $http({
+                method: 'POST',
+                url: urlPost,
+                data: JSON.stringify(data),
+                cache: false,
+            }).then(function (success) {
+                window.alert("Aceptado");
+            }, function (error) {
+                window.alert(error);
+            });
+        }
     });
