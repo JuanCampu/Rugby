@@ -15,8 +15,8 @@ angular.module('starter')
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
-                title: '<div class="bar bar-header bar-positive"><div class="h1 title"> Cambio  de contraseña</div></div >',
-                template: '<div class="profile-pop-margin"><div class="item item-divider">Password Actual:</div><label class="item item-input"><input type="password"></label> <div class="item item-divider">Nuevo Password:</div><label class="item item-input"><input type="password"></label><div class="item item-divider">Confirmación Password:</div><label class="item item-input"><input type="password"></label><div>',
+                title: '<div class="bar bar-header bar-positive"><div class="h1 title"> Cambio  de contraseÃ±a</div></div >',
+                template: '<div class="profile-pop-margin"><div class="item item-divider">Password Actual:</div><label class="item item-input"><input type="password"></label> <div class="item item-divider">Nuevo Password:</div><label class="item item-input"><input type="password"></label><div class="item item-divider">ConfirmaciÃ³n Password:</div><label class="item item-input"><input type="password"></label><div>',
                 scope: $scope,
 
                 buttons: [
