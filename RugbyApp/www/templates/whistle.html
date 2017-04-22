@@ -54,7 +54,7 @@
                                     <ul class="nav nav-second-level collapse in" aria-expanded="true">
                                         <div class="" ng-repeat='item in menuItems'>
                                             <li class="radio radio-li li-margin-custom-left">
-                                                <label ng-class="{'active-events-first' : activeMenu1 === item}" ng-click="setActive1(item)" class="background-label-left">
+                                                <label ng-class="{'active-events-first' : activeMenu1 === item}" ng-click="setActive1(item,1)" class="background-label-left">
                                                     {{ item }}
                                                 </label>
                                             </li>
@@ -70,7 +70,7 @@
                                     <ul class="nav nav-second-level collapse in" aria-expanded="true">
                                         <div class="" ng-repeat='item in menuItems'>
                                             <li class="radio radio-li li-margin-custom-left">
-                                                <label ng-class="{'active-events-second' : activeMenu2 === item}" ng-click="setActive2(item)" class="background-label-left">
+                                                <label ng-class="{'active-events-second' : activeMenu2 === item}" ng-click="setActive2(item,2)" class="background-label-left">
                                                     {{ item }}
                                                 </label>
                                             </li>
@@ -96,15 +96,15 @@
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Roja</p>
-                                <a class="btn btn-social-icon btn-pinterest" ng-click="showEventTR()"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-pinterest" ng-click="showEventTR(1)"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Amarilla</p>
-                                <a class="btn btn-social-icon btn-google-plus" ng-click="showEventTA()"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-google-plus" ng-click="showEventTA(1)"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Técnica</p>
-                                <a class="btn btn-social-icon btn-github " ng-click="showEventTC()"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-github " ng-click="showEventTC(1)"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                         </div>
                         <div class="form-group col-xs-6">
@@ -113,15 +113,15 @@
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Roja</p>
-                                <a class="btn btn-social-icon btn-pinterest" ng-click="showEventTR()"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-pinterest" ng-click="showEventTR(2)"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Amarilla</p>
-                                <a class="btn btn-social-icon btn-google-plus" ng-click="showEventTA()"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-google-plus" ng-click="showEventTA(2)"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Técnica</p>
-                                <a class="btn btn-social-icon btn-github " ng-click="showEventTC()"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-github " ng-click="showEventTC(2)"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -154,10 +154,10 @@
                                                             <th>Nombres</th>
                                                             <th>IN</th>
                                                             <th>OUT</th>
-                                                            <th>T</th>
-                                                            <th>V</th>
-                                                            <th>P</th>
+                                                            <th>TRY</th>
                                                             <th>GC</th>
+                                                            <th>C</th>
+                                                            <th>P</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody ng-repeat="(key ,test) in arrayTest">
@@ -280,7 +280,31 @@
                                     Historial eventos  Alianza
                                 </ion-item>
                                 <ion-item class="item-accordion" ng-show="isGroupShown('historial-team-two',2)">
-                                    información
+                                    <div class="">
+                                        <div class="panel panel-default">
+                                            <div class="table-responsive table-responsive-custome">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombres</th>
+                                                            <th>IN</th>
+                                                            <th>OUT</th>
+                                                            <th>TRY</th>
+                                                            <th>GC</th>
+                                                            <th>C</th>
+                                                            <th>P</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody ng-repeat="(key ,test) in arrayTest2">
+                                                        <tr>
+                                                            <td>{{test[1].nombreCompleto}}</td>
+                                                            <td ng-repeat="t1  in test">{{t1.value}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </ion-item>
                                 <ion-item class="item-stable"
                                           ng-click="toggleGroup('past-fault-team-two',2)"

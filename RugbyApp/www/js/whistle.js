@@ -45,25 +45,25 @@ angular.module('starter')
             $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
         };
 
-        $scope.checkMenuItems = function (menuItem) {
+        $scope.checkMenuItems = function (menuItem,team) {
             switch (menuItem) {
                 case $scope.menuItems[0]:
-                    $scope.showEventIn();
+                    $scope.showEventIn(team);
                     break;
                 case $scope.menuItems[1]:
-                    $scope.showEventOut();
+                    $scope.showEventOut(team);
                     break;
                 case $scope.menuItems[2]:
-                    $scope.showEventT();
+                    $scope.showEventT(team);
                     break;
                 case $scope.menuItems[3]:
-                    $scope.showEventC();
+                    $scope.showEventC(team);
                     break;
                 case $scope.menuItems[4]:
-                    $scope.showEventP();
+                    $scope.showEventP(team);
                     break;
                 case $scope.menuItems[5]:
-                    $scope.showEventGC();
+                    $scope.showEventGC(team);
                     break;
                 case 6:
                     day = "Saturday";
@@ -147,15 +147,18 @@ angular.module('starter')
             }
         };
 
-        $scope.showEventTR = function () {
+        $scope.showEventTR = function (team) {
             $scope.data = {}
-
+            if (team == 1)
+                htmlJugadores = htmlJugadores1;
+            else
+                htmlJugadores = htmlJugadores2;
             // Custom popup
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Tarjeta Roja',
-                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3"></textarea>',
+                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3"></textarea>',
                 scope: $scope,
 
                 buttons: [
@@ -171,14 +174,17 @@ angular.module('starter')
             });
         };
 
-        $scope.showEventTA = function () {
+        $scope.showEventTA = function (team) {
             $scope.data = {}
-
+            if (team == 1)
+                htmlJugadores = htmlJugadores1;
+            else
+                htmlJugadores = htmlJugadores2;
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Tarjeta Amarilla',
-                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>',
+                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
                 scope: $scope,
 
                 buttons: [
@@ -194,14 +200,18 @@ angular.module('starter')
             });
         };
 
-        $scope.showEventTC = function () {
+        $scope.showEventTC = function (team) {
             $scope.data = {}
+            if (team == 1)
+                htmlJugadores = htmlJugadores1;
+            else
+                htmlJugadores = htmlJugadores2;
 
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Tarjeta Técnica',
-                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3"></textarea>',
+                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3"></textarea>',
                 scope: $scope,
 
                 buttons: [
@@ -217,14 +227,18 @@ angular.module('starter')
             });
         };
 
-        $scope.showEventIn = function () {
+        $scope.showEventIn = function (team) {
             $scope.data = {}
+            if (team == 1)
+                htmlJugadores = htmlJugadores1;
+            else
+                htmlJugadores = htmlJugadores2;
 
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'In (Entrada)',
-                template: 'Seleccione el jugador que entra:  <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>',
+                template: 'Seleccione el jugador que entra:  <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
                 scope: $scope,
 
                 buttons: [
@@ -239,14 +253,17 @@ angular.module('starter')
                 console.log('Tapped!', res);
             });
         };
-        $scope.showEventOut = function () {
+        $scope.showEventOut = function (team) {
             $scope.data = {}
-
+            if (team == 1)
+                htmlJugadores = htmlJugadores1;
+            else
+                htmlJugadores = htmlJugadores2;
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Out (Salida)',
-                template: 'Seleccione el  jugador que sale:  <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>',
+                template: 'Seleccione el  jugador que sale:  <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
                 scope: $scope,
 
                 buttons: [
@@ -262,13 +279,16 @@ angular.module('starter')
             });
         };
 
-        $scope.showEventC = function () {
+        $scope.showEventC = function (team) {
             $scope.data = {}
-
+            if (team == 1)
+                htmlJugadores = htmlJugadores1;
+            else
+                htmlJugadores = htmlJugadores2;
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'C (Conversión)',
-                template: 'Seleccione el  jugador que realizo la conversión:  <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>',
+                template: 'Seleccione el  jugador que realizo la conversión:  <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
                 scope: $scope,
 
                 buttons: [
@@ -284,14 +304,17 @@ angular.module('starter')
             });
         };
 
-        $scope.showEventP = function () {
+        $scope.showEventP = function (team) {
             $scope.data = {}
-
+            if (team == 1)
+                htmlJugadores = htmlJugadores1;
+            else
+                htmlJugadores = htmlJugadores2;
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'P (Penal)',
-                template: 'Seleccione el jugador del penal: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>',
+                template: 'Seleccione el jugador del penal: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
                 scope: $scope,
 
                 buttons: [
@@ -307,14 +330,17 @@ angular.module('starter')
             });
         };
 
-        $scope.showEventGC = function () {
+        $scope.showEventGC = function (team) {
             $scope.data = {}
-
+            if (team == 1)
+                htmlJugadores = htmlJugadores1;
+            else
+                htmlJugadores = htmlJugadores2;
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'GC (Gol de campo)',
-                template: 'Seleccione el jugador para el gol de campo: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>',
+                template: 'Seleccione el jugador para el gol de campo: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
                 scope: $scope,
 
                 buttons: [
@@ -330,14 +356,17 @@ angular.module('starter')
             });
         };
 
-        $scope.showEventT = function () {
+        $scope.showEventT = function (team) {
             $scope.data = {}
-
+            if (team == 1)
+                htmlJugadores = htmlJugadores1;
+            else
+                htmlJugadores = htmlJugadores2;
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'T (Try)',
-                template: 'Seleccione el jugador para el try: <div class="form-group "> </div><div class="form-group "><select class="form-control "><option>jugador 1</option> <option>jugador 2</option> <option>jugador 3</option><option>jugador 4</option><option>jugador 5</option> </select></div>',
+                template: 'Seleccione el jugador para el try: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
                 scope: $scope,
 
                 buttons: [
@@ -417,14 +446,14 @@ angular.module('starter')
         $scope.menuItems = ['In (entrada)', 'Out (Salida)', 'El T (Try)', 'C (Conversion)', 'P (penal)', 'GC (gol de campo)'];
         $scope.activeMenu1 = $scope.menuItems;
         $scope.activeMenu2 = $scope.menuItems;
-        $scope.setActive2 = function (menuItem) {
+        $scope.setActive2 = function (menuItem,team) {
             $scope.activeMenu2 = menuItem;
-            $scope.checkMenuItems(menuItem);
+            $scope.checkMenuItems(menuItem,team);
            
         }
-        $scope.setActive1 = function (menuItem) {
+        $scope.setActive1 = function (menuItem,team) {
             $scope.activeMenu1 = menuItem;
-            $scope.checkMenuItems(menuItem);
+            $scope.checkMenuItems(menuItem,team);
             
         }
 
@@ -440,33 +469,71 @@ angular.module('starter')
 
         var team1 = [];
         var team2 = [];
-
+        var cantidadPlayers = 0; //sdfadfa
+        var arrayFormatEventList = [];
+        var arrayEvents = []; //asdfadsf
+        var jugadorIden = 0;
+        var eventIden = 0;
+        var comparar = "P";
+        var eventList = [];//asdfadsfasdfadf
+        var htmlJugadores1 = "";
+        var htmlJugadores = "";
+        var htmlJugadores2 = "";
+        var test = 0;
+       
 
         var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/" + $state.params.partidoId;
         $http.get(url).then(function (response) {
             team1 = response.data["jugadoresClub1"];
-            var cantidadPlayers = team1.length;
-            localStorage.amonestacionesClub1 = "";
-            localStorage.eventosClub1 = "";
-            for (var numeroJugadores in team1) {
-                localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TA|0;";
-                localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TT|0;";
-                localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TR|0;";
-                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|IN|0;";
-                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|OUT|0;";
-                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TRY|0;";
-                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|GC|0;";
-                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|C|0;";
-                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|P|0;";
-            };            
-            var arrayFormatEventList = [];
-            var arrayEvents = Create2DArray(cantidadPlayers + 1);
-            var jugadorIden = 0;
-            var eventIden = 0;
-            var comparar = "P";
-            var eventList = localStorage.eventosClub1.split(";");
+            team2 = response.data["jugadoresClub2"];
+           localStorage.eventosClub1 = "";
+        for (var numeroJugadores in team1) {
+            localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TA|0;";
+            localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TT|0;";
+            localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TR|0;";
+            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|IN|0;";
+            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|OUT|0;";
+            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TRY|0;";
+            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|GC|0;";
+            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|C|0;";
+            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|P|0;";
+        };
+        localStorage.eventosClub2 = "";
+        for (var numeroJugadores in team2) {
+            localStorage.amoClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|TA|0;";
+            localStorage.amoClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|TT|0;";
+            localStorage.amoClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|TR|0;";
+            localStorage.eventosClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|IN|0;";
+            localStorage.eventosClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|OUT|0;";
+            localStorage.eventosClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|TRY|0;";
+            localStorage.eventosClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|GC|0;";
+            localStorage.eventosClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|C|0;";
+            localStorage.eventosClub2 += team2[numeroJugadores]["nombres"] + " " + team2[numeroJugadores]["apellidos"] + "|" + team2[numeroJugadores]["jugadorId"] + "|P|0;";
+        };
+
+        setTeam(team1, localStorage.eventosClub1, 1, 0, 0);
+        setTeam(team2, localStorage.eventosClub2, 2, 0, 0);
+        function setTeam(team, locStorage, teamId, jugadorIden, eventIden) {
+            setTeamVariables(team, locStorage);
+            arrayEvents = getArrayEvents(eventList, teamId, jugadorIden, eventIden);
+
+            getPlayersList(teamId, arrayEvents);
+        }
+        function setTeamVariables(team, locStorage) {
+
+            cantidadPlayers = team.length;
+
+            arrayEvents = Create2DArray(cantidadPlayers + 1);
+
+            eventList = locStorage.split(";");
+
+            test = 2;
+        }
+        function getArrayEvents(eventList, teamId, jugadorIden, eventIden) {
+
             for (var position in eventList) {
                 arrayFormatEventList = eventList[position].split("|");
+
                 arrayEvents[jugadorIden][eventIden] =
                     {
                         "nombreCompleto": arrayFormatEventList[0],
@@ -476,11 +543,34 @@ angular.module('starter')
                     };
                 eventIden++;
                 if (comparar == arrayFormatEventList[2]) {
-                    jugadorIden = jugadorIden + 1
+                    jugadorIden = jugadorIden + 1;
                     eventIden = 0;
                 }
             };
             arrayEvents.pop();
-            $scope.arrayTest = arrayEvents;
+            if (teamId == 1)
+                return $scope.arrayTest = arrayEvents;
+            else
+                return $scope.arrayTest2 = arrayEvents;
+        }
+
+        function getPlayersList(teamId, arrayEvents) {
+
+            if (teamId == 1) {
+                for (var key in arrayEvents) {
+                    htmlJugadores1 += "<option>" + arrayEvents[key][0]["nombreCompleto"] + "</option>";
+                };
+            }
+            else {
+                for (var key in arrayEvents) {
+                    htmlJugadores2 += "<option>" + arrayEvents[key][0]["nombreCompleto"] + "</option>";
+                };
+            }
+
+        }
+           
         });
+  
+        
+        
     });
