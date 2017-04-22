@@ -99,10 +99,10 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
                 'menuContent': {
                     templateUrl: 'templates/whistle.html',
                     controller: 'WhistleCtrl'
-                },
-                params: {
-                    'partidoId': ''
                 }
+            },
+            params: {
+                'partidoId': ''
             }
         })
 

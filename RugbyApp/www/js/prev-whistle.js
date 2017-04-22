@@ -98,7 +98,7 @@ angular.module('starter')
 
         // go to Nextv page
         $scope.goNext = function () {
-            $state.go('app.whistle', { 'partidoId': $("#partidoSelect").children(":selected").attr("value") });
+            $state.go('app.whistle', { 'partidoId': $("#partidoSelect").children(":selected").attr("value")});
         }
     });
 
