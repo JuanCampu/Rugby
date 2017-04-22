@@ -45,6 +45,31 @@ angular.module('starter')
             $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
         };
 
+        $scope.checkMenuItems = function (menuItem) {
+            switch (menuItem) {
+                case $scope.menuItems[0]:
+                    $scope.showEventIn();
+                    break;
+                case $scope.menuItems[1]:
+                    $scope.showEventOut();
+                    break;
+                case $scope.menuItems[2]:
+                    $scope.showEventT();
+                    break;
+                case $scope.menuItems[3]:
+                    $scope.showEventC();
+                    break;
+                case $scope.menuItems[4]:
+                    $scope.showEventP();
+                    break;
+                case $scope.menuItems[5]:
+                    $scope.showEventGC();
+                    break;
+                case 6:
+                    day = "Saturday";
+            }
+        };
+
         $scope.items = [
             {
                 avatar: './img/a1.jpg',
@@ -394,54 +419,13 @@ angular.module('starter')
         $scope.activeMenu2 = $scope.menuItems;
         $scope.setActive2 = function (menuItem) {
             $scope.activeMenu2 = menuItem;
-            switch (menuItem) {
-                case $scope.menuItems[0]:
-                    $scope.showEventIn();
-                    break;
-                case $scope.menuItems[1]:
-                    $scope.showEventOut();
-                    break;
-                case $scope.menuItems[2]:
-                    $scope.showEventT();
-                    break;
-                case $scope.menuItems[3]:
-                    $scope.showEventC();
-                    break;
-                case $scope.menuItems[4]:
-                    $scope.showEventP();
-                    break;
-                case $scope.menuItems[5]:
-                    $scope.showEventGC();
-                    break;
-                case 6:
-                    day = "Saturday";
-            }
+            $scope.checkMenuItems(menuItem);
+           
         }
         $scope.setActive1 = function (menuItem) {
             $scope.activeMenu1 = menuItem;
-
-            switch (menuItem) {
-                case $scope.menuItems[0]:
-                    $scope.showEventIn();
-                    break;
-                case $scope.menuItems[1]:
-                    $scope.showEventOut();
-                    break;
-                case $scope.menuItems[2]:
-                    $scope.showEventT();
-                    break;
-                case $scope.menuItems[3]:
-                    $scope.showEventC();
-                    break;
-                case $scope.menuItems[4]:
-                    $scope.showEventP();
-                    break;
-                case $scope.menuItems[5]:
-                    $scope.showEventGC();
-                    break;
-                case 6:
-                    day = "Saturday";
-            }
+            $scope.checkMenuItems(menuItem);
+            
         }
 
         $scope.getDateValues();
