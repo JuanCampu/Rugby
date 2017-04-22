@@ -434,7 +434,6 @@ angular.module('starter')
             localStorage.eventosClub2 = "";
             localStorage.eventosClub1 = setLocalStoraEventosClub(team1);
             localStorage.eventosClub2 = setLocalStoraEventosClub(team2);
-
           
         setTeam(team1, localStorage.eventosClub1, 1, 0, 0);
         setTeam(team2, localStorage.eventosClub2, 2, 0, 0);
