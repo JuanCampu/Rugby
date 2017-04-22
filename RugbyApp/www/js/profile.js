@@ -10,23 +10,38 @@ angular.module('starter')
 
         $scope.changePassword = function () {
             $scope.data = {}
-
-            // Custom popup
-            // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: '<div class="bar bar-header bar-positive"><div class="h1 title"> Cambio  de contraseña</div></div >',
-                template: '<div class="profile-pop-margin"><div class="item item-divider">Password Actual:</div><label class="item item-input"><input type="password"></label> <div class="item item-divider">Nuevo Password:</div><label class="item item-input"><input type="password"></label><div class="item item-divider">Confirmación Password:</div><label class="item item-input"><input type="password"></label><div>',
+                template: '<div class="profile-pop-margin"><div class="item item-divider">Password Actual:</div><label class="item item-input"><input id="actualPassword" name="actualPassword" type="password"></label> <div class="item item-divider">Nuevo Password:</div><label class="item item-input"><input id="nuevoPassword" name="nuevoPassword" type="password"></label><div class="item item-divider">Confirmación Password:</div><label class="item item-input"><input id="confirmacionPassword" name="confirmacionPassword" type="password"></label><span style="text-dangerus" id="errorMessage"></span><div>',
                 scope: $scope,
 
                 buttons: [
                     { text: 'Cancel' }, {
                         text: '<b>Cambiar</b>',
-                        type: 'button-positive'
+                        type: 'button-positive',
+                        onTap: function (e) {
+                            e.preventDefault();
+                            if ($("#nuevoPassword").val() != $("#confirmacionPassword").val()) {
+                                $("#errorMessage").html("Las contraseñas no coinciden");
+                                return;
+                            }
+                            $http.post($rootScope.APIurl + "api/Usuario/CambiarPassword?userName=" + $rootScope.UserName + "&password=" + $("#actualPassword").val() + "&newPassword=" + $("#nuevoPassword").val()).then(function (response) {
+                                if (response.data == "409") {
+                                    $("#errorMessage").html("Este usuario no existe");
+                                    return;
+                                }
+                                if (response.data == "404") {
+                                    $("#errorMessage").html("La contraseña actual está incorrecta");
+                                    return;
+                                }
+                                myPopup.close();
+                            });
+                        }
+
                     }
                 ]
             });
-
             myPopup.then(function (res) {
                 console.log('Tapped!', res);
             });

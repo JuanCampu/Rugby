@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('PrevRankCtrl', function ($scope, $state, $ionicPopup) {
+    .controller('PrevRankCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
         $scope.timeValue = "00:00";
 
         $scope.dateValue = "0000-00-00";
@@ -16,6 +16,12 @@ angular.module('starter')
         $scope.timeString = "" + (($scope.hours > 12) ? $scope.hours - 12 : $scope.hours);
         $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
         $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
+        var url = $rootScope.APIurl + "api/Torneo/ObtenerTorneos/";
+        $http.get(url).then(function (response) {
+            $scope.torneos = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta");
+        });
 
         $scope.items = [
             {

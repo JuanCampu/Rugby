@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('PrevScoreCtrl', function ($scope, $state, $ionicPopup) {
+    .controller('PrevScoreCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
         $scope.timeValue = "00:00";
 
         $scope.dateValue = "0000-00-00";
@@ -64,6 +64,8 @@ angular.module('starter')
                 name: 'David Bone'
             }
         ];
+
+
 
         $scope.showPopup = function () {
             $scope.data = {}

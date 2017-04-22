@@ -36,12 +36,7 @@
                     </div>
 
                     <select>
-                        <option selected>torneo 1</option>
-                        <option>torneo 2</option>
-                        <option>torneo 3</option>
-                        <option>torneo 1</option>
-                        <option>torneo 2</option>
-                        <option>torneo 3</option>
+                        <option ng-repeat="torneo in torneos" value="{{torneo.GuidTorneo}}">{{torneo.NombreTorneo}}</option>
                     </select>
                 </label>
                
