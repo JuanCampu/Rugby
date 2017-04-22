@@ -6,7 +6,32 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('ProfileCtrl', function ($scope, $http, $rootScope) {
+    .controller('ProfileCtrl', function ($scope, $http, $rootScope, $state, $ionicPopup) {
+
+        $scope.changePassword = function () {
+            $scope.data = {}
+
+            // Custom popup
+            // Custom popup
+            var myPopup = $ionicPopup.show({
+                template: '<input type = "text" ng-model = "data.model">',
+                title: '<div class="bar bar-header bar-positive"><div class="h1 title"> Cambio  de contraseña</div></div >',
+                template: '<div class="profile-pop-margin"><div class="item item-divider">Password Actual:</div><label class="item item-input"><input type="password"></label> <div class="item item-divider">Nuevo Password:</div><label class="item item-input"><input type="password"></label><div class="item item-divider">Confirmación Password:</div><label class="item item-input"><input type="password"></label><div>',
+                scope: $scope,
+
+                buttons: [
+                    { text: 'Cancel' }, {
+                        text: '<b>Cambiar</b>',
+                        type: 'button-positive'
+                    }
+                ]
+            });
+
+            myPopup.then(function (res) {
+                console.log('Tapped!', res);
+            });
+        };
+
         if ($rootScope.Rol == "Juez") {
             $http.get($rootScope.APIurl + "api/Juez/ObtenerInformacion/" + $rootScope.UserName).then(function (response) {
                 console.log(response.data["añosDeExperiencia"]);
@@ -74,7 +99,9 @@ angular.module('starter')
         active: false,
         name: 'David Bone'
       }
-    ]
+        ]
+
+
 
   });
 

@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('NavRefCtrl', function($scope, $state) {
+    .controller('NavRefCtrl', function ($scope, $state, $rootScope) {
 
     $scope.items = [
       {
@@ -98,6 +98,13 @@ angular.module('starter')
     $scope.goFeed = function () {
       $state.go('app.feed')
     }
+
+    // go to Nav page
+    $scope.goLogOut = function () {
+        $rootScope.UserName = null;
+        $rootScope.Rol = null;
+        $state.go('inicio');
+    };
 
   });
 

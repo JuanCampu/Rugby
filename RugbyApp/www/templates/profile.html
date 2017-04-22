@@ -1,11 +1,10 @@
-<ion-view>
+ï»¿<ion-view>
   <ion-nav-title>
     Cowboys
   </ion-nav-title>
   <ion-nav-buttons side="left">
     <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()">
     </button>
-    <span class="badge-nav blue-color">3</span>
   </ion-nav-buttons>
   <ion-content class="bg-app light" scroll="false" vertical layout>
     <div flex>
@@ -19,10 +18,15 @@
       </div>
 
         <div id="ningunPartido" class="text-center"  style="padding: 20px 25px; display:none">
-            No has pitado ningún partido.
+            No has pitado ningÃºn partido.
         </div>
         <div id="ultimoPartido" class="text-center" style="padding: 20px 25px; display:none">
-            El resultado del último partido acá.
+            El resultado del Ãºltimo partido acÃ¡.
+        </div>
+        <div class="button-profile" horizontal layout center center-justified>
+            <button ng-click="changePassword()" class="button button-light button-custome" horizontal layout center center-justified>
+                <i class="ion-ios-locked"></i> Cambiar contraseÃ±a
+            </button>
         </div>
     </div>
 
