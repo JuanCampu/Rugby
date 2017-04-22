@@ -140,6 +140,9 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
                     templateUrl: 'templates/rank.html',
                     controller: 'RankCtrl'
                 }
+            },
+            params: {
+                'torneoId': ''
             }
       })
 

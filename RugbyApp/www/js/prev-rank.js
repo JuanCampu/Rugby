@@ -101,7 +101,7 @@ angular.module('starter')
 
         // go to Nextv page
         $scope.goNext = function () {
-            $state.go('app.rank')
+            $state.go('app.rank', { 'torneoId': $("#torneoSelect").children(":selected").attr("value")})
         }
     });
 
