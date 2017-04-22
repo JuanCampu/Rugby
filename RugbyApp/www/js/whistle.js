@@ -430,41 +430,6 @@ angular.module('starter')
 
         $scope.getDateValues();
 
-        var team1 = [];
-        var team2 = [];
-
-        team1 = [
-            {
-                "jugadorId": "1",
-                "numCamiseta": "10",
-                "nombres": "Juan Pablo",
-                "apellidos": "Vega",
-                "identificacion": 123456,
-                "amonestaciones": []
-            }, {
-                "jugadorId": "2",
-                "numCamiseta": "11",
-                "nombres": "Nicolas ",
-                "apellidos": "Campuzano",
-                "identificacion": 56456546,
-                "amonestaciones": []
-            }
-        ];
-        var cantidadPlayers = team1.length;
-       
-        localStorage.amonestacionesClub1 = "";
-        localStorage.eventosClub1 = "";
-        for (var numeroJugadores in team1) {
-            localStorage.amoClub1 += team1[numeroJugadores]["nombres"] +" " + team1[numeroJugadores]["apellidos"] +"|"+ team1[numeroJugadores]["jugadorId"] + "|TA|0;";
-            localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " +  team1[numeroJugadores]["apellidos"] + "|" +team1[numeroJugadores]["jugadorId"] + "|TT|0;";
-            localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " +  team1[numeroJugadores]["apellidos"] + "|" +team1[numeroJugadores]["jugadorId"] + "|TR|0;";
-            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " +  team1[numeroJugadores]["apellidos"] + "|" +team1[numeroJugadores]["jugadorId"] + "|IN|0;";
-            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " +  team1[numeroJugadores]["apellidos"] + "|" +team1[numeroJugadores]["jugadorId"] + "|OUT|0;";
-            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " +  team1[numeroJugadores]["apellidos"] + "|" +team1[numeroJugadores]["jugadorId"] + "|TRY|0;";
-            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " +  team1[numeroJugadores]["apellidos"] + "|" +team1[numeroJugadores]["jugadorId"] + "|GC|0;";
-            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " +  team1[numeroJugadores]["apellidos"] + "|" +team1[numeroJugadores]["jugadorId"] + "|C|0;";
-            localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " +  team1[numeroJugadores]["apellidos"] + "|" +team1[numeroJugadores]["jugadorId"] + "|P|0;";
-        };
         function Create2DArray(rows) {
             var arr = [];
             for (var i = 0; i < rows; i++) {
@@ -472,37 +437,50 @@ angular.module('starter')
             }
             return arr;
         }
-        var arrayFormatEventList = [];
-        var arrayEvents = Create2DArray(cantidadPlayers+1);
-        var jugadorIden = 0;
-        var eventIden = 0;
-        var comparar = "P";
 
-        var eventList = localStorage.eventosClub1.split(";");
-        for (var position in eventList) {
-            arrayFormatEventList = eventList[position].split("|");
-            
-            arrayEvents[jugadorIden][eventIden] = 
-                {
-                    "nombreCompleto": arrayFormatEventList[0],
-                    "jugadorId": arrayFormatEventList[1],
-                    "EV": arrayFormatEventList[2],
-                    "value": arrayFormatEventList[3],   
-                };
-            eventIden++;
-            if (comparar == arrayFormatEventList[2]) {
-                
-                jugadorIden = jugadorIden + 1
-                eventIden = 0;
-            }
-            
-        };
-        arrayEvents.pop();
-        $scope.arrayTest = arrayEvents;
-        console.log(arrayEvents);
+        var team1 = [];
+        var team2 = [];
 
-        $scope.getNumber = function (num) {
-          
-            return new Array(num);
-        }
+
+        var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/" + $state.params.partidoId;
+        $http.get(url).then(function (response) {
+            team1 = response.data["jugadoresClub1"];
+            var cantidadPlayers = team1.length;
+            localStorage.amonestacionesClub1 = "";
+            localStorage.eventosClub1 = "";
+            for (var numeroJugadores in team1) {
+                localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TA|0;";
+                localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TT|0;";
+                localStorage.amoClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TR|0;";
+                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|IN|0;";
+                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|OUT|0;";
+                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|TRY|0;";
+                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|GC|0;";
+                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|C|0;";
+                localStorage.eventosClub1 += team1[numeroJugadores]["nombres"] + " " + team1[numeroJugadores]["apellidos"] + "|" + team1[numeroJugadores]["jugadorId"] + "|P|0;";
+            };            
+            var arrayFormatEventList = [];
+            var arrayEvents = Create2DArray(cantidadPlayers + 1);
+            var jugadorIden = 0;
+            var eventIden = 0;
+            var comparar = "P";
+            var eventList = localStorage.eventosClub1.split(";");
+            for (var position in eventList) {
+                arrayFormatEventList = eventList[position].split("|");
+                arrayEvents[jugadorIden][eventIden] =
+                    {
+                        "nombreCompleto": arrayFormatEventList[0],
+                        "jugadorId": arrayFormatEventList[1],
+                        "EV": arrayFormatEventList[2],
+                        "value": arrayFormatEventList[3],
+                    };
+                eventIden++;
+                if (comparar == arrayFormatEventList[2]) {
+                    jugadorIden = jugadorIden + 1
+                    eventIden = 0;
+                }
+            };
+            arrayEvents.pop();
+            $scope.arrayTest = arrayEvents;
+        });
     });
