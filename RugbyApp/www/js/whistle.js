@@ -48,22 +48,22 @@ angular.module('starter')
         $scope.checkMenuItems = function (menuItem,team) {
             switch (menuItem) {
                 case $scope.menuItems[0]:
-                    $scope.showEventIn(team);
+                    $scope.showEvent(team,0);
                     break;
                 case $scope.menuItems[1]:
-                    $scope.showEventOut(team);
+                    $scope.showEvent(team,1);
                     break;
                 case $scope.menuItems[2]:
-                    $scope.showEventT(team);
+                    $scope.showEvent(team, 2);
                     break;
                 case $scope.menuItems[3]:
-                    $scope.showEventC(team);
+                    $scope.showEvent(team, 3);
                     break;
                 case $scope.menuItems[4]:
-                    $scope.showEventP(team);
+                    $scope.showEvent(team, 4);
                     break;
                 case $scope.menuItems[5]:
-                    $scope.showEventGC(team);
+                    $scope.showEvent(team, 5);
                     break;
                 case 6:
                     day = "Saturday";
@@ -226,25 +226,90 @@ angular.module('starter')
                 console.log('Tapped!', res);
             });
         };
-
-        $scope.showEventIn = function (team) {
+        function setLocalStoraEventosClub(arrayTeam) {
+            var arrayLocalClub = [];
+            for (var key in arrayTeam) {
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|IN|" + arrayTeam[key][0]["value"] + ";";
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|OUT|" + arrayTeam[key][1]["value"] + ";";
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|TRY|" + arrayTeam[key][2]["value"] + ";";
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|GC|" + arrayTeam[key][5]["value"] + ";";
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + + "|" + arrayTeam[key][0]["jugadorId"] + "|C|" + arrayTeam[key][3]["value"] + ";";
+                arrayLocalClub += arrayTeam[key][0]["nombreCompleto"] + "|" + arrayTeam[key][0]["jugadorId"] + "|P|" + arrayTeam[key][4]["value"] + ";";
+            };
+            return arrayLocalClub;
+        }
+        $scope.showEvent = function (team, evento) {
             $scope.data = {}
-            if (team == 1)
+            var currentTeam = [];
+            var selectedPlayer = 0;
+            var setNewEvent = [];
+            var EV = evento;
+            var tituloPop = "";
+            var textoPop = "";
+            var value = 0;
+            switch (evento) {
+                case  0:
+                    var tituloPop = "IN (Entrada)";
+                    var textoPop = "entra";
+                    break;
+                case 1:
+                    var tituloPop = "OUT (Salida)";
+                    var textoPop = "sale";
+                    break;
+                case  2:
+                    var tituloPop = "(Try)";
+                    var textoPop = "realizo el try";
+                    break;
+                case  3:
+                    var tituloPop = "C (Conversion)";
+                    var textoPop = "realizo la conversion";
+                    break;
+                case  4:
+                    var tituloPop = "P (Penal)";
+                    var textoPop = "realizo el penal";
+                    break;
+                case  5:
+                    var tituloPop = "GC (Gol de Campo)";
+                    var textoPop = "realizo el gol de campo";
+                    break;
+                case 6:
+                    day = "Saturday";
+            }
+            if (team == 1) {
+                currentTeam = $scope.arrayTest ;
                 htmlJugadores = htmlJugadores1;
-            else
+            } else {
+                currentTeam = $scope.arrayTest2 ;
                 htmlJugadores = htmlJugadores2;
-
+            }
+            console.log(currentTeam)
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
-                title: 'In (Entrada)',
-                template: 'Seleccione el jugador que entra:  <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
+                title: '' + tituloPop+'',
+                template: 'Seleccione el jugador que ' + textoPop+':  <div class="form-group "> </div><div class="form-group "><select class="form-control" id="jugadorSelect">' + htmlJugadores + '</select></div>',
                 scope: $scope,
 
                 buttons: [
                     { text: 'Cancel' }, {
                         text: '<b>Guardar</b>',
-                        type: 'button-positive'
+                        type: 'button-positive',
+                        onTap: function (e) {
+
+                            e.preventDefault();
+                            selectedPlayer = $("#jugadorSelect").children(":selected").attr("value");
+                            value = currentTeam[selectedPlayer][EV]["value"];
+                            value = parseInt(value)  + 1;
+                            currentTeam[selectedPlayer][EV]["value"] = String(value);
+                            alert(team);
+                            if(team == 1)
+                                localStorage.eventosClub1 = setLocalStoraEventosClub(currentTeam);
+                            else
+                                localStorage.eventosClub2 = setLocalStoraEventosClub(currentTeam) ;
+                            alert(localStorage.eventosClub1);
+                            alert(localStorage.eventosClub2);
+                            myPopup.close();
+                        }
                     }
                 ]
             });
@@ -253,134 +318,7 @@ angular.module('starter')
                 console.log('Tapped!', res);
             });
         };
-        $scope.showEventOut = function (team) {
-            $scope.data = {}
-            if (team == 1)
-                htmlJugadores = htmlJugadores1;
-            else
-                htmlJugadores = htmlJugadores2;
-            // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'Out (Salida)',
-                template: 'Seleccione el  jugador que sale:  <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
-                scope: $scope,
-
-                buttons: [
-                    { text: 'Cancel' }, {
-                        text: '<b>Guardar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
-        };
-
-        $scope.showEventC = function (team) {
-            $scope.data = {}
-            if (team == 1)
-                htmlJugadores = htmlJugadores1;
-            else
-                htmlJugadores = htmlJugadores2;
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'C (Conversión)',
-                template: 'Seleccione el  jugador que realizo la conversión:  <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
-                scope: $scope,
-
-                buttons: [
-                    { text: 'Cancel' }, {
-                        text: '<b>Guardar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
-        };
-
-        $scope.showEventP = function (team) {
-            $scope.data = {}
-            if (team == 1)
-                htmlJugadores = htmlJugadores1;
-            else
-                htmlJugadores = htmlJugadores2;
-            // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'P (Penal)',
-                template: 'Seleccione el jugador del penal: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
-                scope: $scope,
-
-                buttons: [
-                    { text: 'Cancel' }, {
-                        text: '<b>Guardar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
-        };
-
-        $scope.showEventGC = function (team) {
-            $scope.data = {}
-            if (team == 1)
-                htmlJugadores = htmlJugadores1;
-            else
-                htmlJugadores = htmlJugadores2;
-            // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'GC (Gol de campo)',
-                template: 'Seleccione el jugador para el gol de campo: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
-                scope: $scope,
-
-                buttons: [
-                    { text: 'Cancel' }, {
-                        text: '<b>Guardar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
-        };
-
-        $scope.showEventT = function (team) {
-            $scope.data = {}
-            if (team == 1)
-                htmlJugadores = htmlJugadores1;
-            else
-                htmlJugadores = htmlJugadores2;
-            // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'T (Try)',
-                template: 'Seleccione el jugador para el try: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>',
-                scope: $scope,
-
-                buttons: [
-                    { text: 'Cancel' }, {
-                        text: '<b>Guardar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
-        };
+       
 
         $scope.ChangeColor = function () {
             var cols = document.getElementsByClassName('background-label-left');
@@ -564,12 +502,12 @@ angular.module('starter')
 
             if (teamId == 1) {
                 for (var key in arrayEvents) {
-                    htmlJugadores1 += "<option>" + arrayEvents[key][0]["nombreCompleto"] + "</option>";
+                    htmlJugadores1 += '<option value="'+key+'">' + arrayEvents[key][0]["nombreCompleto"] + '</option>';
                 };
             }
             else {
                 for (var key in arrayEvents) {
-                    htmlJugadores2 += "<option>" + arrayEvents[key][0]["nombreCompleto"] + "</option>";
+                    htmlJugadores2 += '<option value="' + key + '">' + arrayEvents[key][0]["nombreCompleto"] + '</option>';
                 };
             }
 
@@ -602,4 +540,5 @@ angular.module('starter')
                 window.alert(error);
             });
         };
+       
     });
