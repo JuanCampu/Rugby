@@ -146,30 +146,37 @@ angular.module('starter')
                 timePickerCallback(val);
             }
         };
-
+       
         $scope.showEventTJ = function (team,tipo) {
             $scope.data = {}
             var selectedPlayer = 0;
+            var description = "";
             var setNewEvent = [];
-            var tp = tipo;
+            var currentFaults = [];
+            var tp = "";
             var tituloPop = "";
             var value = 0;
             switch (tipo) {
                 case 1:
+                    tp = "TR";
                     var tituloPop = "TR (Tarjeta Roja)";
                     break;
                 case 2:
+                    tp = "TA";
                     var tituloPop = "TA (Tarjeta Amarilla)";
                     break;
                 case 3:
+                    tp = "TT";
                     var tituloPop = "TT (Tarjeta Tecnica)";
                     break;
                 case 6:
                     day = "Saturday";
             }
             if (team == 1) {
+                currentFaults = $scope.amonestacionesClub1;
                 htmlJugadores = htmlJugadores1;
             } else {
+                currentFaults = $scope.amonestacionesClub2;
                 htmlJugadores = htmlJugadores2; 
             }
             // Custom popup
@@ -177,13 +184,30 @@ angular.module('starter')
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: '' + tituloPop+'',
-                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control ">' + htmlJugadores + '</select></div>Observaciones:  <textarea class="form-control" id="disabledInput" rows="3"></textarea>',
+                template: 'Seleccione el Jugador: <div class="form-group "> </div><div class="form-group "><select class="form-control" id="jugadorSelect">' + htmlJugadores + '</select></div>Observaciones:  <textarea class="form-control" id="description" rows="3"></textarea>',
                 scope: $scope,
 
                 buttons: [
                     { text: 'Cancel' }, {
                         text: '<b>Guardar</b>',
-                        type: 'button-positive'
+                        type: 'button-positive',
+                        onTap: function (e) {
+
+                            e.preventDefault();
+                            selectedPlayer = $("#jugadorSelect").children(":selected").attr("value");
+                            description = $('textarea#description').val();
+                            description = description +  "}";
+                            currentFaults[selectedPlayer][tp] += 1;
+                            if (team == 1) {
+                                localStorage.amonestacionesClub1 = setLocalStoraCurrentFaults(currentFaults, $scope.team1, tp, description);
+                                $scope.amonestacionesClub1 = currentFaults;
+                                
+                            } else {
+                                localStorage.amonestacionesClub2 = setLocalStoraCurrentFaults(currentFaults, $scope.team2, tp, description);
+                                $scope.amonestacionesClub2 = currentFaults;
+                            }
+                            myPopup.close();
+                        }
                     }
                 ]
             });
@@ -193,15 +217,30 @@ angular.module('starter')
             });
         };
 
-        
-        function setLocalStoraPastActual(arrayTeam) {
-            var arrayLocalClub = [];
-            for (var key in arrayTeam) {
-                arrayLocalClub += arrayTeam[key]["amonestacionId"] + "|" + arrayTeam[key]["tipoJugada"] + "|" + arrayTeam[key]["descripcion"];
-                arrayLocalClub += arrayTeam[key]["amonestacionId"] + "|" + arrayTeam[key]["tipoJugada"] + "|" + arrayTeam[key]["descripcion"];
-                arrayLocalClub += arrayTeam[key]["amonestacionId"] + "|" + arrayTeam[key]["tipoJugada"] + "|" + arrayTeam[key]["descripcion"];
+        var descriptionTR = "";
+        var descriptionTA = "";
+        var descriptionTT = "";
+       
+        function setLocalStoraCurrentFaults(arrayTeam, team, tp, description) {
+         
+            switch (tp) {
+                case "TR":
+                    descriptionTR = description ;
+                    break;
+                case "TA":
+                    descriptionTA = description;
+                    break;
+                case "TT":
+                    descriptionTT = description;
+                    break;
+                case 6:
+                    day = "Saturday";
             }
-            return arrayLocalClub;
+            var arrayLocalFault = [];
+            for (var key in arrayTeam) {
+                arrayLocalFault += arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TR|" + arrayTeam[key]["TR"] + "|" + descriptionTR + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TA|" + arrayTeam[key]["TA"] + "|" + descriptionTA + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TT|" + arrayTeam[key]["TT"] + "|" + descriptionTT + ";";
+            }
+            return arrayLocalFault;
         }
         function setLocalStoraEventosClubByTeam(arrayTeam) {
             var arrayLocalClub = [];
@@ -404,8 +443,8 @@ angular.module('starter')
             return arr;
         }
 
-        var team1 = [];
-        var team2 = [];
+        $scope.team1 = [];
+        $scope.team2 = [];
         var clubId2;
         var clubId1;
         var torneoId;
@@ -416,26 +455,30 @@ angular.module('starter')
         var eventIden = 0;
         var comparar = "P";
         var eventList = [];//asdfadsfasdfadf
+        var listFaults = [];
         var htmlJugadores1 = "";
         var htmlJugadores = "";
         var htmlJugadores2 = "";
         var test = 0;
         var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/" + $state.params.partidoId;
+        var numeroCamiseta = 0;
         $http.get(url,{
             cache: false
         }).then(function (response) {
             clubId1 = response.data["clubId1"];
             clubId2 = response.data["clubId2"];
             torneoId = response.data["torneoId"];
-            team1 = response.data["jugadoresClub1"];
-            team2 = response.data["jugadoresClub2"];
+            $scope.team1 = response.data["jugadoresClub1"];
+            $scope.team2 = response.data["jugadoresClub2"];
             localStorage.eventosClub1 = "";
             localStorage.eventosClub2 = "";
-            localStorage.eventosClub1 = setLocalStoraEventosClubByTeam(team1);
-            localStorage.eventosClub2 = setLocalStoraEventosClubByTeam(team2);
+            localStorage.amonestacionesClub1 = "";
+            localStorage.amonestacionesClub2 = "";
+            localStorage.eventosClub1 = setLocalStoraEventosClubByTeam($scope.team1);
+            localStorage.eventosClub2 = setLocalStoraEventosClubByTeam($scope.team2);
           
-        setTeam(team1, localStorage.eventosClub1, 1, 0, 0);
-        setTeam(team2, localStorage.eventosClub2, 2, 0, 0);
+        setTeam($scope.team1, localStorage.eventosClub1, 1, 0, 0);
+        setTeam($scope.team2, localStorage.eventosClub2, 2, 0, 0);
         function setTeam(team, locStorage, teamId, jugadorIden, eventIden) {
             setTeamVariables(team, locStorage);
             arrayEvents = getArrayEvents(eventList, teamId, jugadorIden, eventIden);
@@ -447,7 +490,7 @@ angular.module('starter')
             cantidadPlayers = team.length;
 
             arrayEvents = Create2DArray(cantidadPlayers + 1);
-
+ 
             eventList = locStorage.split(";");
 
             test = 2;
@@ -481,14 +524,40 @@ angular.module('starter')
 
             if (teamId == 1) {
                 for (var key in arrayEvents) {
-                    htmlJugadores1 += '<option value="'+key+'">' + arrayEvents[key][0]["nombreCompleto"] + '</option>';
+                    htmlJugadores1 += '<option value="' + key + '">' + arrayEvents[key][0]["nombreCompleto"] + '</option>';
+                    listFaults[key] =
+                        {
+                            "NA": arrayEvents[key][0]["nombreCompleto"],
+                            "NC": $scope.team1[key]["numCamiseta"], 
+                            "TR": 0,
+                            "TA": 0,
+                            "TT": 0,
+                            
+                        };
+                    eventIden++;
                 };
+                eventIden = 0;
+                $scope.amonestacionesClub1 = listFaults;
+                listFaults = [];
             }
             else {
                 for (var key in arrayEvents) {
                     htmlJugadores2 += '<option value="' + key + '">' + arrayEvents[key][0]["nombreCompleto"] + '</option>';
+                    listFaults[key] =
+                        {
+                            "NA": arrayEvents[key][0]["nombreCompleto"],
+                            "NC": $scope.team1[key]["numCamiseta"], 
+                            "TR": 0,
+                            "TA": 0,
+                            "TT": 0,   
+                        };
+                    eventIden++;
                 };
+                eventIden = 0;
+                $scope.amonestacionesClub2 = listFaults;
+                listFaults = [];
             }
+            console.log(listFaults);
 
         }
            
@@ -501,11 +570,10 @@ angular.module('starter')
                 "clubId1": clubId1,
                 "clubId2": clubId2,
                 "marcadorClub2": 1,
-                "amonestacionesClub1": localStorage.amoClub1,
-                "amonestacionesClub2": localStorage.amoClub2,
+                "amonestacionesClub1": localStorage.amonestacionesClub1,
+                "amonestacionesClub2": localStorage.amonestacionesClub2,
                 "jugadasClub1": localStorage.eventosClub1,
                 "jugadasClub2": localStorage.eventosClub2,
-
             };
             var urlPost = $rootScope.APIurl + "api/Partido/FinalizarPartido";
             $http({

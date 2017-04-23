@@ -113,15 +113,15 @@
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Roja</p>
-                                <a class="btn btn-social-icon btn-pinterest" ng-click="showEventTJ(1,1)"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-pinterest" ng-click="showEventTJ(2,1)"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Amarilla</p>
-                                <a class="btn btn-social-icon btn-google-plus" ng-click="showEventTA(1,2)"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-google-plus" ng-click="showEventTJ(2,2)"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                             <div class="form-group" horizontal layout center center-justified>
                                 <p class="col-xs-12"> Tarjeta Técnica</p>
-                                <a class="btn btn-social-icon btn-github " ng-click="showEventTC(1,3)"><i class="fa fa-clone" aria-hidden="true"></i></a>
+                                <a class="btn btn-social-icon btn-github " ng-click="showEventTJ(2,3)"><i class="fa fa-clone" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -185,31 +185,14 @@
                                                         <tr>
                                                             <th>Nombres</th>
                                                             <th>No</th>
-                                                            <th>TT</th>
                                                             <th>TR</th>
                                                             <th>TA</th>
-                                                            <th>LES</th>
-                                                            <th>INF</th>
+                                                            <th>TT</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody ng-repeat="(key ,test) in amonestacionesClub1">
                                                         <tr>
-                                                            <td>Maria Pineda</td>
-                                                            <td>9</td>
-                                                            <td></td>
-                                                            <td>X</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Andrés Cubillos</td>
-                                                            <td>11</td>
-                                                            <td>X</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                            <td ng-repeat="t1  in test">{{t1}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -233,31 +216,14 @@
                                                         <tr>
                                                             <th>Nombres</th>
                                                             <th>No</th>
-                                                            <th>TT</th>
                                                             <th>TR</th>
                                                             <th>TA</th>
-                                                            <th>LES</th>
-                                                            <th>INF</th>
+                                                            <th>TT</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody ng-repeat="(key ,test) in amonestacionesClub1">
                                                         <tr>
-                                                            <td>Maria Pineda</td>
-                                                            <td>9</td>
-                                                            <td></td>
-                                                            <td>X</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Andrés Cubillos</td>
-                                                            <td>11</td>
-                                                            <td>X</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                            <td ng-repeat="t1  in test">{{t1}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -279,7 +245,7 @@
                                     &nbsp;
                                     Historial eventos  Alianza
                                 </ion-item>
-                                <ion-item class="item-accordion" ng-show="isGroupShown('historial-team-two',2)">
+                                <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('historial-team-two',2)">
                                     <div class="">
                                         <div class="panel panel-default">
                                             <div class="table-responsive table-responsive-custome">
@@ -322,31 +288,14 @@
                                                         <tr>
                                                             <th>Nombres</th>
                                                             <th>No</th>
-                                                            <th>TT</th>
                                                             <th>TR</th>
                                                             <th>TA</th>
-                                                            <th>LES</th>
-                                                            <th>INF</th>
+                                                            <th>TT</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody ng-repeat="(key ,test) in amonestacionesClub2">
                                                         <tr>
-                                                            <td>Maria Pineda</td>
-                                                            <td>9</td>
-                                                            <td></td>
-                                                            <td>X</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Andrés Cubillos</td>
-                                                            <td>11</td>
-                                                            <td>X</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                            <td ng-repeat="t1  in test">{{t1}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -370,31 +319,14 @@
                                                         <tr>
                                                             <th>Nombres</th>
                                                             <th>No</th>
-                                                            <th>TT</th>
                                                             <th>TR</th>
                                                             <th>TA</th>
-                                                            <th>LES</th>
-                                                            <th>INF</th>
+                                                            <th>TT</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody ng-repeat="(key ,test) in amonestacionesClub2">
                                                         <tr>
-                                                            <td>Maria Pineda</td>
-                                                            <td>9</td>
-                                                            <td></td>
-                                                            <td>X</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Andrés Cubillos</td>
-                                                            <td>11</td>
-                                                            <td>X</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                            <td ng-repeat="t1  in test">{{t1}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
