@@ -85,7 +85,7 @@ angular.module('starter')
         };
         
         var url = $rootScope.APIurl + "api/Juez/ObtenerPartidos/" + $rootScope.UserName;
-        $http.get(url).then(function (response) {
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
             $scope.partidos = response.data;
         }, function () {
             window.alert("No se pudo realizar la consulta");

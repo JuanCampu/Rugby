@@ -17,7 +17,7 @@ angular.module('starter')
         $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
         $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
         var url = $rootScope.APIurl + "api/Torneo/ObtenerTorneos/";
-        $http.get(url).then(function (response) {
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
             $scope.torneos = response.data;
         }, function () {
             window.alert("No se pudo realizar la consulta");

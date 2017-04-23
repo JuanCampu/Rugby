@@ -8,7 +8,7 @@ angular.module('starter')
 
     .controller('RankCtrl', function ($scope, $state, $http, $rootScope) {
         var url = $rootScope.APIurl + "api/Torneo/ObtenerLista/" + $state.params.torneoId;
-        $http.get(url).then(function (response) {
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
             $scope.infoClubes = response.data;
         }, function () {
             window.alert("No se pudo realizar la consulta");
