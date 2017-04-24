@@ -196,15 +196,20 @@ angular.module('starter')
                             e.preventDefault();
                             selectedPlayer = $("#jugadorSelect").children(":selected").attr("value");
                             description = $('textarea#description').val();
-                            description = description +  "}";
+                            description = description + "}";
+                           
                             currentFaults[selectedPlayer][tp] += 1;
                             if (team == 1) {
-                                localStorage.amonestacionesClub1 = setLocalStoraCurrentFaults(currentFaults, $scope.team1, tp, description);
+                                faultDescpList1[selectedPlayer][tp] += description;
+                                localStorage.amonestacionesClub1 = setLocalStoraCurrentFaults(currentFaults, $scope.team1, faultDescpList1 );
                                 $scope.amonestacionesClub1 = currentFaults;
+                               
                                 
                             } else {
-                                localStorage.amonestacionesClub2 = setLocalStoraCurrentFaults(currentFaults, $scope.team2, tp, description);
+                                faultDescpList2[selectedPlayer][tp] += description;
+                                localStorage.amonestacionesClub2 = setLocalStoraCurrentFaults(currentFaults, $scope.team2, faultDescpList2);
                                 $scope.amonestacionesClub2 = currentFaults;
+                                
                             }
                             myPopup.close();
                         }
@@ -217,28 +222,34 @@ angular.module('starter')
             });
         };
 
-        var descriptionTR = "";
-        var descriptionTA = "";
-        var descriptionTT = "";
-       
-        function setLocalStoraCurrentFaults(arrayTeam, team, tp, description) {
+ 
+        var faultDescpList1 = [
+        {
+            "TR": "",
+            "TA": "",
+            "TT": "",
+        },
+        {
+            "TR": "",
+            "TA": "",
+            "TT": "",
+        }];
+        var faultDescpList2 = [
+            {
+                "TR": "",
+                "TA": "",
+                "TT": "",
+            },
+            {
+                "TR": "",
+                "TA": "",
+                "TT": "",
+            }];
+        function setLocalStoraCurrentFaults(arrayTeam, team, faultList) {
          
-            switch (tp) {
-                case "TR":
-                    descriptionTR = description ;
-                    break;
-                case "TA":
-                    descriptionTA = description;
-                    break;
-                case "TT":
-                    descriptionTT = description;
-                    break;
-                case 6:
-                    day = "Saturday";
-            }
             var arrayLocalFault = [];
             for (var key in arrayTeam) {
-                arrayLocalFault += arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TR|" + arrayTeam[key]["TR"] + "|" + descriptionTR + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TA|" + arrayTeam[key]["TA"] + "|" + descriptionTA + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TT|" + arrayTeam[key]["TT"] + "|" + descriptionTT + ";";
+                arrayLocalFault += arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TR|" + arrayTeam[key]["TR"] + "|" + faultList[key]["TR"] + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TA|" + arrayTeam[key]["TA"] + "|" + faultList[key]["TA"] + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TT|" + arrayTeam[key]["TT"] + "|" + faultList[key]["TT"]  + ";";
             }
             return arrayLocalFault;
         }
