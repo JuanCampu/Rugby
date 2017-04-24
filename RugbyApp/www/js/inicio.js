@@ -12,7 +12,7 @@ angular.module('starter')
   .controller('InicioCtrl', function($scope , $state, $rootScope) {
 
     //Crear variable global del API
-      $rootScope.APIurl = "http://localhost:49656/";
+      $rootScope.APIurl = "http://apirugby.azurewebsites.net/";
 
     $scope.items = [
       {

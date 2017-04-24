@@ -22,6 +22,15 @@ angular.module('starter')
               logo: './img/c6.jpg'
           },
           {
+              logo: './img/c4.jpg'
+          },
+          {
+              logo: './img/c5.jpg'
+          },
+          {
+              logo: './img/c7.jpg'
+          },
+          {
               logo: './img/c10.jpg'
           },
           {
