@@ -1,40 +1,60 @@
-<ion-view>
+﻿<ion-view>
   <ion-content class="bg-app" scroll="false">
-      <div class=" nav-item nav-item-referee">
+      <div class=" nav-item nav-item-admin">
          <p class="great-family-first">Bienvenido</p>
-          <p class="great-family-second">Juez</p>
+          <p class="great-family-second">Administrador</p>
       </div>
       <a class=" nav-item nav-item-cero">
 
       </a>
-      <a class="nav-item " vertical layout ui-sref="app.profile">
+      <a class="nav-item " vertical layout ui-sref="app.feed">
           <div flex horizontal layout center center-justified>
               <div class="content-nav-item" horizontal layout center>
-                  <i class="ion ion-android-contact"></i>
+                  <i class="ion ion-ios-paper"></i>
               </div>
           </div>
           <div class="name-nav">
-              Perfil
+              Noticias
+          </div>
+      </a>
+      <a class="nav-item " vertical layout ui-sref="app.match">
+          <div flex horizontal layout center center-justified>
+              <div class="content-nav-item" horizontal layout center>
+                  <i class="ion-ios-americanfootball"></i>
+              </div>
+          </div>
+          <div class="name-nav">
+              Creación de partidos
+          </div>
+      </a>
+      <a class="nav-item " vertical layout ui-sref="app.profile">
+          <div flex horizontal layout center center-justified>
+              <div class="content-nav-item" horizontal layout center>
+                  <i class="ion-edit"></i>
+              </div>
+          </div>
+          <div class="name-nav">
+              Edición Partidos
           </div>
       </a>
     <a class="nav-item " vertical layout ui-sref="app.prev-whistle">
       <div flex horizontal layout center center-justified>
         <div class="content-nav-item" horizontal layout center >
-          <i class="ion ion-flag"></i>
+          <i class="ion-person-add"></i>
         </div>
       </div>
       <div class="name-nav">
-        Pitar Partido
+       Creación de usuarios
       </div>
     </a>
     <a class="nav-item " vertical layout ui-sref="app.prev-rank">
       <div flex horizontal layout center center-justified>
         <div class="content-nav-item" horizontal layout center >
-            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <i class="ion-ios-people" aria-hidden="true"></i>
         </div>
       </div>
       <div class="name-nav">
-        Posiciones
+       Adición de Jugadores
       </div>
     </a>
     <a class="nav-item " vertical layout ng-click="goLogOut()">
