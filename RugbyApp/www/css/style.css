@@ -227,7 +227,7 @@
   padding: 0 5px;
 }
 .item-logo-club {
-  width: 25%;
+  width: 33%;
   float: left;
 }
 .logo-club {
@@ -235,8 +235,8 @@
   text-align: center;
   border: 1px solid #ddd;
   border-radius: 2px;
-  width: 42px;
-  height: 42px;
+  width: 72px;
+  height: 72px;
   margin: 0 auto;
 }
 .nav-item {

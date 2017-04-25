@@ -473,6 +473,7 @@ angular.module('starter')
         var test = 0;
         var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/" + $state.params.partidoId;
         var numeroCamiseta = 0;
+        var pastFaults = [];
         $http.get(url,{
             cache: false
         }).then(function (response) {
@@ -481,6 +482,7 @@ angular.module('starter')
             torneoId = response.data["torneoId"];
             $scope.team1 = response.data["jugadoresClub1"];
             $scope.team2 = response.data["jugadoresClub2"];
+            $scope.pastFaults = [];
             localStorage.eventosClub1 = "";
             localStorage.eventosClub2 = "";
             localStorage.amonestacionesClub1 = "";
@@ -494,7 +496,7 @@ angular.module('starter')
             setTeamVariables(team, locStorage);
             arrayEvents = getArrayEvents(eventList, teamId, jugadorIden, eventIden);
 
-            getPlayersList(teamId, arrayEvents);
+            getPlayersList(teamId, arrayEvents,team);
         }
         function setTeamVariables(team, locStorage) {
 
@@ -531,7 +533,7 @@ angular.module('starter')
                 return $scope.arrayTest2 = arrayEvents;
         }
 
-        function getPlayersList(teamId, arrayEvents) {
+        function getPlayersList(teamId, arrayEvents,team) {
 
             if (teamId == 1) {
                 for (var key in arrayEvents) {
@@ -546,6 +548,8 @@ angular.module('starter')
                             
                         };
                     eventIden++;
+                    console.log(team[key]["amonestaciones"]);
+                    $scope.pastFaults[key] +=team[key]["amonestaciones"];  
                 };
                 eventIden = 0;
                 $scope.amonestacionesClub1 = listFaults;
@@ -568,7 +572,7 @@ angular.module('starter')
                 $scope.amonestacionesClub2 = listFaults;
                 listFaults = [];
             }
-            console.log(listFaults);
+           
 
         }
            
