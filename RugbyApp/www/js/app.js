@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
           if ($rootScope.Rol == "Juez") {
               $state.go('nav-referee');
           } else if ($rootScope.Rol == "Admin") {
-              $state.go('nav');
+              $state.go('nav-admin');
           } else {
               $state.go('nav');
           }
@@ -185,7 +185,13 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
            url: '/nav-referee',
             templateUrl: 'templates/nav-referee.html',
             controller: 'NavRefCtrl'
-       })
+        })
+
+        .state('nav-admin', {
+            url: '/nav-admin',
+            templateUrl: 'templates/nav-admin.html',
+            controller: 'NavAdmCtrl'
+        })
 
     ;
     // if none of the above states are matched, use this as the fallback
@@ -197,9 +203,6 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
     $scope.stateFavorite = function () {
       $state.go('favorite')
     }
-
-    
-
 
     $scope.stateInicio = function () {
       $state.go('inicio')
