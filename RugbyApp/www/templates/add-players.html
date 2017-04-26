@@ -1,0 +1,89 @@
+﻿<ion-view>
+    <ion-nav-title>
+        Adiccionar - Jugador
+    </ion-nav-title>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    </ion-nav-buttons>
+    <ion-content class="bg-app light" scroll="false" vertical layout>
+        <div class="header-draft" horizontal layout center>
+            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                2016/05/23
+            </div>
+            <div>|</div>
+            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                07:32
+            </div>
+        </div>
+        <!--
+        <div horizontal layout center style="padding: 10px 0">
+            <div>
+                Nuevo Partido
+            </div>
+        </div>
+        -->
+        <div flex class="light-bg" style="color: #444; overflow-y: scroll">
+            <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
+                
+                <div class="item item-divider">Seleccione el Club :</div>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        <i class="ion-home positive match-icon"></i>
+                    </div>
+
+                    <select>
+                        <option>Club1</option>
+                        <option selected>Club2</option>
+                    </select>
+                </label>
+                <div class="item item-divider">Seleccione el equipo :</div>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        <i class="ion-tshirt positive match-icon"></i>
+                    </div>
+
+                    <select>
+                        <option>equipo1</option>
+                        <option selected>equipo2</option>
+                    </select>
+                </label>
+                <div class="item item-divider">Nombres :</div>
+                <label class="item item-input ">
+                    <div class="input-label">
+                        <i class="ion-ios-person positive match-icon"></i>
+                    </div>
+                    <input type="text" placeholder="Nombre">
+                </label>
+                <div class="item item-divider">Apellidos:</div>
+                <label class="item item-input ">
+                    <div class="input-label">
+                        <i class="ion-ios-person-outline positive match-icon"></i>
+                    </div>
+                    <input type="text" placeholder="Apellidos">
+                </label>
+              
+                <div class="item item-divider">Identificacion:</div>
+                <label class="item item-input ">
+                    <div class="input-label">
+                        <i class="ion-card positive match-icon"></i>
+                    </div>
+                    <input type="number" placeholder="Identificacion">
+                </label>
+                <div class="item item-divider">Número de camiseta:</div>
+                <label class="item item-input ">
+                    <div class="input-label">
+                        <i class="ion-tshirt-outline positive match-icon"></i>
+                    </div>
+                    <input type="number" placeholder="Número de camiseta">
+                </label>
+            </uib-tabset>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
+        <div class="button-profile" horizontal layout center center-justified>
+            <button type="button" ng-click="showPopup()" class="btn btn-info">Adicionar Jugador</button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

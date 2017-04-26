@@ -1,0 +1,56 @@
+﻿<ion-view>
+    <ion-nav-title>
+       Edición de partidos
+    </ion-nav-title>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    </ion-nav-buttons>
+    <ion-content class="bg-app light" scroll="false" vertical layout>
+        <div class="header-draft" horizontal layout center>
+            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                {{date | date:'yyyy-MM-dd'}}
+            </div>
+            <div>|</div>
+            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+              {{timeString}}
+            </div>
+        </div>
+        <!--
+        <div horizontal layout center style="padding: 10px 0">
+            <div>
+                Nuevo Partido
+            </div>
+        </div>    
+        -->
+        <div flex class="light-bg" style="color: #444; overflow-y: scroll">
+            <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
+                <div class="item item-divider">Seleccione un torneo :</div>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        <i class="ion-trophy positive  match-icon"></i>
+                    </div>
+                    <select id="partidoSelect">
+                        <option ng-repeat="partido in partidos" value="{{partido.GuidPartido}}">{{partido.NombrePartido}}</option>
+                    </select>
+                </label>
+                <div class="item item-divider">Seleccione el partido :</div>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        <i class="icon ion-ios-americanfootball-outline positive match-icon"></i>
+                    </div>
+                    <select id="partidoSelect">
+                        <option ng-repeat="partido in partidos" value="{{partido.GuidPartido}}">{{partido.NombrePartido}}</option>
+                    </select>
+                </label>
+                               
+            </uib-tabset>
+        </div>
+</ion-content>
+    <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
+        <div class="button-profile" horizontal layout center center-justified>
+            <button type="button" ng-click="goNext()" class="btn btn-info">Seleccionar</button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

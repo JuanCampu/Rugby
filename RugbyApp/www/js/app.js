@@ -147,7 +147,39 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
             }
         })
 
-  
+        .state('app.add-players', {
+            url: '/add-player',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/add-players.html',
+                    controller: 'AddPlaCtrl'
+                }
+            }
+        })
+
+        .state('app.edit-match', {
+            url: '/edit-match',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/edit-match.html',
+                    controller: 'EdiMatCtrl'
+                }
+            },
+            params: {
+                'partidoId': ''
+            }
+        })
+
+        .state('app.pre-edit-match', {
+            url: '/pre-edit-match',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/prev-edit-match.html',
+                    controller: 'PrevEdiCtrl'
+                }
+            }
+        })
+
 
       .state('app.prev-rank', {
             url: '/prev-rank',

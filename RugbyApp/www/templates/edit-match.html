@@ -1,0 +1,260 @@
+﻿<ion-view>
+    <ion-nav-title>
+       Editar Partido
+    </ion-nav-title>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()"></button>
+    </ion-nav-buttons>
+    <ion-content class="bg-app light" scroll="false" vertical layout>
+        <div class="header-draft" horizontal layout center>
+            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                {{date | date:'yyyy-MM-dd'}}
+            </div>
+            <div>|</div>
+            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                {{timeString}}
+            </div>
+        </div>
+      
+        <!--
+        <div horizontal layout center style="padding: 10px 0">
+            <div>
+                Nuevo Partido
+            </div>
+        </div>
+        -->
+        <div flex class="light-bg" style="color: #444; overflow-y: scroll">
+            <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
+                <ion-list>
+                    <div>
+                        <ion-item class="item-stable"
+                                  ng-click="toggleGroup('team1',1)"
+                                  ng-class="{active: isGroupShown('team1',1)}">
+                            <i class="icon" ng-class="isGroupShown('team1',1) ? 'ion-minus' : 'ion-plus'"></i>
+                            &nbsp;
+                            Alianza
+                        </ion-item>
+                        <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('team1',1)">
+                            <ion-item class="item-stable"
+                                      ng-click="toggleGroup('historial-team-one',2)"
+                                      ng-class="{active: isGroupShown('historial-team-one',2)}">
+                                <i class="icon icon-second-level" ng-class="isGroupShown('historial-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+                                &nbsp;
+                                Historial eventos  Alianza
+                            </ion-item>
+                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('historial-team-one',2)">
+                                <div class="">
+                                    <div class="panel panel-default">
+                                        <div class="table-responsive table-responsive-custome">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombres</th>
+                                                        <th>IN</th>
+                                                        <th>OUT</th>
+                                                        <th>TRY</th>
+                                                        <th>C</th>
+                                                        <th>P</th>
+                                                        <th>GC</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ng-repeat="(key ,test) in arrayTest">
+                                                    <tr>
+                                                        <td>{{test[1].nombreCompleto}}</td>
+                                                        <td ng-repeat="t1  in test">
+                                                            <ionic-numberpicker id="number3" input-obj="numberPickerObject">
+                                                                <input type="text" id="#" class="item-edit-texbox" value="{{t1.value}}">
+                                                            </ionic-numberpicker>    
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="item-stable"
+                                      ng-click="toggleGroup('past-fault-team-one',2)"
+                                      ng-class="{active: isGroupShown('past-fault-team-one',2)}">
+                                <i class="icon icon-second-level" ng-class="isGroupShown('past-fault-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+                                &nbsp;
+                                Faltas Pasadas
+                            </ion-item>
+                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('past-fault-team-one',2)">
+                                <div class="">
+                                    <div class="panel panel-default">
+                                        <div class="table-responsive table-responsive-custome">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombres</th>
+                                                        <th>No</th>
+                                                        <th>TR</th>
+                                                        <th>TA</th>
+                                                        <th>TT</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ng-repeat="(key ,test) in amonestacionesClub1">
+                                                    <tr>
+                                                        <td ng-repeat="t1  in test">{{t1}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="item-stable"
+                                      ng-click="toggleGroup('current-fault-team-one',2)"
+                                      ng-class="{active: isGroupShown('current-fault-team-one',2)}">
+                                <i class="icon icon-second-level" ng-class="isGroupShown('current-fault-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+                                &nbsp;
+                                Faltas Actuales
+                            </ion-item>
+                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('current-fault-team-one',2)">
+                                <div class="">
+                                    <div class="panel panel-default">
+                                        <div class="table-responsive table-responsive-custome">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombres</th>
+                                                        <th>No</th>
+                                                        <th>TR</th>
+                                                        <th>TA</th>
+                                                        <th>TT</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ng-repeat="(key ,test) in amonestacionesClub1">
+                                                    <tr>
+                                                        <td ng-repeat="t1  in test">{{t1}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                        </ion-item>
+                        <ion-item class="item-stable" ng-click="toggleGroup('team2',1)" ng-class="{active: isGroupShown(1)}">
+                            <i class="icon" ng-class="isGroupShown('team2',1) ? 'ion-minus' : 'ion-plus'"></i>
+                            &nbsp;
+                            Azules
+                        </ion-item>
+                        <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('team2',1)">
+                            <ion-item class="item-stable"
+                                      ng-click="toggleGroup('historial-team-two',2)"
+                                      ng-class="{active: isGroupShown('historial-team-two',2)}">
+                                <i class="icon icon-second-level" ng-class="isGroupShown('historial-team-two',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+                                &nbsp;
+                                Historial eventos  Alianza
+                            </ion-item>
+                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('historial-team-two',2)">
+                                <div class="">
+                                    <div class="panel panel-default">
+                                        <div class="table-responsive table-responsive-custome">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombres</th>
+                                                        <th>IN</th>
+                                                        <th>OUT</th>
+                                                        <th>TRY</th>
+                                                        <th>C</th>
+                                                        <th>P</th>
+                                                        <th>GC</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ng-repeat="(key ,test) in arrayTest2">
+                                                    <tr>
+                                                        <td>{{test[1].nombreCompleto}}</td>
+                                                        <td ng-repeat="t1  in test">
+                                                            <ionic-numberpicker id="number3" input-obj="numberPickerObject">
+                                                                <input type="text" id="#" class="item-edit-texbox" value="{{t1.value}}">
+                                                            </ionic-numberpicker>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="item-stable"
+                                      ng-click="toggleGroup('past-fault-team-two',2)"
+                                      ng-class="{active: isGroupShown('past-fault-team-two',2)}">
+                                <i class="icon icon-second-level" ng-class="isGroupShown('past-fault-team-two',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+                                &nbsp;
+                                Faltas Pasadas
+                            </ion-item>
+                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('past-fault-team-two',2)">
+                                <div class="">
+                                    <div class="panel panel-default">
+                                        <div class="table-responsive table-responsive-custome">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombres</th>
+                                                        <th>No</th>
+                                                        <th>TR</th>
+                                                        <th>TA</th>
+                                                        <th>TT</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ng-repeat="(key ,test) in amonestacionesClub2">
+                                                    <tr>
+                                                        <td ng-repeat="t1  in test">{{t1}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="item-stable"
+                                      ng-click="toggleGroup('current-fault-team-two',2)"
+                                      ng-class="{active: isGroupShown('current-fault-team-two',2)}">
+                                <i class="icon icon-second-level" ng-class="isGroupShown('current-fault-team-two',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+                                &nbsp;
+                                Faltas Actuales
+                            </ion-item>
+                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('current-fault-team-two',2)">
+                                <div class="">
+                                    <div class="panel panel-default">
+                                        <div class="table-responsive table-responsive-custome">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombres</th>
+                                                        <th>No</th>
+                                                        <th>TR</th>
+                                                        <th>TA</th>
+                                                        <th>TT</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ng-repeat="(key ,test) in amonestacionesClub2">
+                                                    <tr>
+                                                        <td ng-repeat="t1  in test">{{t1}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                        </ion-item>
+                    </div>
+                </ion-list>
+            
+
+            </uib-tabset>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
+        <div class="button-profile col-xs-6" horizontal layout center center-justified>
+            <button type="button" class="btn btn-danger" ng-click="Finalizar()">Finalizar Edición</button>
+        </div>
+        
+
+    </ion-footer-bar>
+</ion-view>

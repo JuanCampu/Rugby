@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('AddUseCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+    .controller('AddPlaCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
 
      
 

@@ -6,10 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('AddNewCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
-
+    .controller('PrevEdiCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
         $scope.timeValue = "00:00";
-
         $scope.dateValue = "0000-00-00";
         $scope.date = new Date();
         $scope.hours = $scope.date.getHours();
@@ -17,7 +15,6 @@ angular.module('starter')
         $scope.timeString = "" + (($scope.hours > 12) ? $scope.hours - 12 : $scope.hours);
         $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
         $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
-
         $scope.items = [
             {
                 avatar: './img/a1.jpg',
@@ -66,16 +63,13 @@ angular.module('starter')
             }
         ];
 
-
-
         $scope.showPopup = function () {
             $scope.data = {}
 
-            // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Estado del mensaje',
-                template: '!El partido ha sido prograamado de manera exitosa',
+                template: 'El partido ha sido prograamado de manera exitosa!',
                 scope: $scope,
 
                 buttons: [
@@ -85,11 +79,17 @@ angular.module('starter')
                     }
                 ]
             });
-
             myPopup.then(function (res) {
                 console.log('Tapped!', res);
             });
         };
+        
+        var url = $rootScope.APIurl + "api/Juez/ObtenerPartidos/" + $rootScope.UserName;
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.partidos = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta");
+        });
 
         // go to Nav page
         $scope.goBack = function () {
@@ -98,7 +98,7 @@ angular.module('starter')
 
         // go to Nextv page
         $scope.goNext = function () {
-            $state.go('app.score')
+            $state.go('app.edit-match', { 'partidoId': $("#partidoSelect").children(":selected").attr("value")});
         }
     });
 

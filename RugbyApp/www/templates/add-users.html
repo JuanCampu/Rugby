@@ -34,107 +34,86 @@
                     </div>
 
                     <select>
-                        <option selected>torneo 1</option>
-                        <option>torneo 2</option>
-                        <option>torneo 3</option>
-                        <option>torneo 1</option>
-                        <option>torneo 2</option>
-                        <option>torneo 3</option>
+                        <option>Administrador</option>
+                        <option selected>Juez</option>
                     </select>
                 </label>
-                <div class="item item-divider">Digie el nombre del usuario :</div>
-                <label class="item item-input item-select">
+                <div class="item item-divider">Nombres :</div>
+                <label class="item item-input ">
                     <div class="input-label">
-                        <i class="icon ion-ios-americanfootball-outline  match-icon"></i>
+                        <i class="ion-ios-person positive match-icon"></i>
                     </div>
+                    <input type="text" placeholder="Nombre">
+                </label>
+                <div class="item item-divider">Apellidos:</div>
+                <label class="item item-input ">
+                    <div class="input-label">
+                        <i class="ion-ios-person-outline positive match-icon"></i>
+                    </div>
+                    <input type="text" placeholder="Apellidos">
+                </label>
+                <div class="item item-divider">Password:</div>
+                <label class="item item-input ">
+                    <input  type="password">
+                </label>
+                <div class="item item-divider">Confirmación password:</div>
+                <label class="item item-input ">
+                    <input   type="password">
+                </label>
+                <div class="item item-divider">Correo Electronico:</div>
+                <label class="item item-input ">
+                    <div class="input-label">
+                        <i class="ion-at positive match-icon"></i>
+                    </div>
+                    <input type="text" placeholder="Correo">
+                </label>
+                <div class="item item-divider">Identificacion:</div>
+                <label class="item item-input ">
+                    <div class="input-label">
+                        <i class="ion-card positive match-icon"></i>
+                    </div>
+                    <input type="text" placeholder="Identificacion">
+                </label>
+                <div class="item item-divider">Fecha de Nacimiento:</div>
+                <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" date="" monday-first="" ng-model="dateValue">
+                    <i class="icon ion-ios-calendar-outline positive"></i>
 
-                    <select>
-                        <option selected>torneo 1</option>
-                        <option>equipo 2</option>
-                        <option>equipo 3</option>
-                        <option>equipo 1</option>
-                        <option>equipo 2</option>
-                        <option>equipo 3</option>
-                    </select>
-                </label>
-                <label class="item item-input item-select">
+                    <strong class="ng-binding">{{dateValue| date: "yyyy-MM-dd"}}</strong>
+                </div>
+                <div class="item item-divider">Celular:</div>
+                <label class="item item-input ">
                     <div class="input-label">
-                        <i class="icon ion-ios-americanfootball positive match-icon"></i>
+                        <i class=" ion-android-phone-portrait positive match-icon"></i>
                     </div>
-                    <select>
-                        <option selected>equipo 1</option>
-                        <option>equipo 2</option>
-                        <option>equipo 3</option>
-                        <option>equipo 1</option>
-                        <option>equipo 2</option>
-                        <option>equipo 3</option>
-                    </select>
+                    <input type="number"  placeholder="Celular">
                 </label>
-                <div class="item item-divider">Seleccione el juez de planilla :</div>
-                <label class="item item-input item-select">
+                <div class="item item-divider">Años de experiencia:</div>
+                <label class="item item-input ">
                     <div class="input-label">
-                        <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
+                        <i class="ion-ribbon-b positive match-icon"></i>
                     </div>
-
-                    <select>
-                        <option selected>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                        <option>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                    </select>
+                    <input type="number"  placeholder="Años de experiencia">
                 </label>
-                <div class="item item-divider">Seleccione el juez central:</div>
-                <label class="item item-input item-select">
+                <div class="item item-divider">Barrio:</div>
+                <label class="item item-input ">
                     <div class="input-label">
-                        <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
+                        <i class="ion-ios-home positive match-icon"></i>
                     </div>
-
-                    <select>
-                        <option selected>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                        <option>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                    </select>
+                    <input type="text"  placeholder="Barrio">
                 </label>
-                <div class="item item-divider">Seleccione los jueces de Ingoal:</div>
-                <label class="item item-input item-select">
+                <div class="item item-divider">Direccion:</div>
+                <label class="item item-input ">
                     <div class="input-label">
-                        <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
+                        <i class="ion-ios-home-outline positive match-icon"></i>
                     </div>
-
-                    <select>
-                        <option selected>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                        <option>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                    </select>
-                </label>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
-                    </div>
-
-                    <select>
-                        <option selected>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                        <option>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                    </select>
+                    <input type="text" placeholder="Direccion">
                 </label>
             </uib-tabset>
         </div>
     </ion-content>
     <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
         <div class="button-profile" horizontal layout center center-justified>
-            <button type="button" ng-click="showPopup()" class="btn btn-info">Programar</button>
+            <button type="button" ng-click="showPopup()" class="btn btn-info">Crear Usuario</button>
         </div>
     </ion-footer-bar>
 </ion-view>
