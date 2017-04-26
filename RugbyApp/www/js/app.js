@@ -126,6 +126,29 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
         }
         })
 
+        .state('app.add-news', {
+            url: '/add-new',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/add-news.html',
+                    controller: 'AddNewCtrl'
+                }
+            }
+        })
+
+
+        .state('app.add-users', {
+            url: '/add-user',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/add-users.html',
+                    controller: 'AddUseCtrl'
+                }
+            }
+        })
+
+  
+
       .state('app.prev-rank', {
             url: '/prev-rank',
             views: {

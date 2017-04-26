@@ -27,26 +27,22 @@
         <div flex class="light-bg" style="color: #444; overflow-y: scroll">
             <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
                
-                <div class="item item-divider">Seleccione el torneo :</div>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="icon ion-trophy positive match-icon"></i>
-                    </div>
-
-                    <select>
-                        <option selected>torneo 1</option>
-                        <option>torneo 2</option>
-                        <option>torneo 3</option>
-                        <option>torneo 1</option>
-                        <option>torneo 2</option>
-                        <option>torneo 3</option>
-                    </select>
+                <div class="item item-divider">Título de la noticia:</div>
+                <label class="item item-input item-news">
+                    <input type="text" placeholder="Titulo">
+                </label>
+                <div class="item item-divider">seleccionar una imagen :</div>
+                <div class="form-group">
+                    <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+                </div>
+                <div class="item item-divider">Descripción de la noticia :</div>
+                <label class="item item-input text item-news">
+                    <textarea placeholder="Descripción" rows="1" ng-model="item.description" ng-required="true" name="description" class="ng-dirty ng-valid ng-valid-required" required="required" style="height: 52px;"></textarea>
                 </label>
                
-                               
             </uib-tabset>
         </div>
-</ion-content>
+    </ion-content>
     <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
         <div class="button-profile" horizontal layout center center-justified>
             <button type="button" ng-click="goNext()" class="btn btn-info">Seleccionar</button>

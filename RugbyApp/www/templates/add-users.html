@@ -1,6 +1,6 @@
 ﻿<ion-view>
     <ion-nav-title>
-        Nuevo Partido
+        Agregar - Usuario
     </ion-nav-title>
     <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()"></button>
@@ -22,25 +22,15 @@
             <div>
                 Nuevo Partido
             </div>
-        </div>    
+        </div>
         -->
         <div flex class="light-bg" style="color: #444; overflow-y: scroll">
             <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
-                <div class="item item-divider">Seleccione la hora del encuentro:</div>
-                <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" time="" am-pm="" ng-model="timeValue">
-                    <i class="icon ion-ios-clock-outline positive"></i>
-                    <strong class="ng-binding">{{timeValue| date: "H:mm"}}</strong>
-                </div>
-                <div class="item item-divider">Seleccione la fecha del encuentro:</div>
-                <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" date="" monday-first="" ng-model="dateValue">
-                    <i class="icon ion-ios-calendar-outline positive"></i>
-
-                    <strong class="ng-binding">{{dateValue| date: "yyyy-MM-dd"}}</strong>
-                </div>
-                <div class="item item-divider">Seleccione el torneo :</div>
+                
+                <div class="item item-divider">Seleccione el perfil :</div>
                 <label class="item item-input item-select">
                     <div class="input-label">
-                        <i class="icon ion-trophy positive match-icon"></i>
+                        <i class="ion-ios-personadd-outline positive match-icon"></i>
                     </div>
 
                     <select>
@@ -52,7 +42,7 @@
                         <option>torneo 3</option>
                     </select>
                 </label>
-                <div class="item item-divider">Seleccione de equipos :</div>
+                <div class="item item-divider">Digie el nombre del usuario :</div>
                 <label class="item item-input item-select">
                     <div class="input-label">
                         <i class="icon ion-ios-americanfootball-outline  match-icon"></i>
@@ -138,10 +128,10 @@
                         <option>juez 2</option>
                         <option>juez 3</option>
                     </select>
-                </label>                            
+                </label>
             </uib-tabset>
         </div>
-</ion-content>
+    </ion-content>
     <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
         <div class="button-profile" horizontal layout center center-justified>
             <button type="button" ng-click="showPopup()" class="btn btn-info">Programar</button>

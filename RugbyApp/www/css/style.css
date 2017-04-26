@@ -6,6 +6,15 @@
     width:30px;
 }
 
+.nav-item-feed {
+    width:100% !important;
+}
+
+.item-news {
+    font-size:14px !important;
+
+}
+
 .sign-pass-custome {
     font-size: 18px !important;
     line-height: 1.33333 !important;

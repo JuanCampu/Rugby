@@ -11,6 +11,14 @@ angular.module('starter')
          * if given group is the selected group, deselect it
          * else, select the given group
          */
+
+        /*******************************************************************
+        ********************************************************************
+
+        Accordion Section.
+
+        ********************************************************************
+        ********************************************************************/
         $scope.toggleGroup = function (group, type) {
           
             if (type == 1) {
@@ -35,6 +43,23 @@ angular.module('starter')
             else
                 return $scope.shownGroup2 === group;
         };
+
+        /*******************************************************************
+        ********************************************************************
+
+        End Acorrdion Section.
+
+        ********************************************************************
+        ********************************************************************/
+
+
+        /*******************************************************************
+        ********************************************************************
+
+        Date Section. // Obtiene la fecha - hora - minutos de ese momento
+
+        ********************************************************************
+        ********************************************************************/
        
         $scope.getDateValues = function () {
             $scope.date = new Date();
@@ -44,6 +69,40 @@ angular.module('starter')
             $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
             $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
         };
+
+        $scope.getDateValues();
+
+
+        /*******************************************************************
+        ********************************************************************
+
+        End Date Section.
+
+        ********************************************************************
+        ********************************************************************/
+
+        /*******************************************************************
+        ********************************************************************
+
+        Active Item Section. // Activa la acción según el evento que se seleccione (Try - GC - ETC) Activa el color azul en el item.
+
+        ********************************************************************
+        ********************************************************************/
+
+        $scope.menuItems = ['In (entrada)', 'Out (Salida)', 'El T (Try)', 'C (Conversion)', 'P (penal)', 'GC (gol de campo)'];
+        $scope.activeMenu1 = $scope.menuItems;
+        $scope.activeMenu2 = $scope.menuItems;
+
+        $scope.setActive2 = function (menuItem, team) {
+            $scope.activeMenu2 = menuItem;
+            $scope.checkMenuItems(menuItem, team);
+
+        }
+        $scope.setActive1 = function (menuItem, team) {
+            $scope.activeMenu1 = menuItem;
+            $scope.checkMenuItems(menuItem, team);
+
+        }
 
         $scope.checkMenuItems = function (menuItem,team) {
             switch (menuItem) {
@@ -65,97 +124,40 @@ angular.module('starter')
                 case $scope.menuItems[5]:
                     $scope.showEvent(team, 5);
                     break;
-                case 6:
-                    day = "Saturday";
             }
         };
 
-        $scope.items = [
-            {
-                avatar: './img/a1.jpg',
-                like: '1k',
-                comment: 376,
-                active: true,
-                name: 'Stove'
-            },
-            {
-                avatar: './img/a2.jpg',
-                img: './img/d1.jpg',
-                like: '284',
-                comment: 124,
-                active: false,
-                name: 'Thor'
-            },
-            {
-                avatar: './img/a3.jpg',
-                img: './img/d2.jpg',
-                like: '8k',
-                comment: 422,
-                active: false,
-                name: 'Ninja'
-            },
-            {
-                avatar: './img/a4.jpg',
-                like: '532',
-                comment: 142,
-                active: true,
-                name: 'Kid'
-            },
-            {
-                avatar: './img/a5.png',
-                img: './img/d3.jpg',
-                like: '190k',
-                comment: 5532,
-                active: true,
-                name: 'Zzz'
-            },
-            {
-                avatar: './img/a6.jpg',
-                like: '12k',
-                comment: 376,
-                active: false,
-                name: 'David Bone'
-            }
-        ];
+        /*******************************************************************
+        ********************************************************************
 
-        // go to Nav page
-        $scope.goBack = function () {
-            $state.go('nav')
-        };
+        End Active Item Section.
 
-        function timePickerCallback(val) {
-            if (typeof (val) === 'undefined') {
-                console.log('Time not selected');
-            } else {
+        ********************************************************************
+        ********************************************************************/
 
-            }
-        }
-        $scope.numberPickerObject = {
-            inputValue: 0, //Optional 
-            minValue: 0,
-            maxValue: 10,
-            precision: 3,  //Optional 
-            format: "WHOLE",  //Optional - "WHOLE" or "DECIMAL" 
-            unit: "PT",  //Optional - "m", "kg", "℃" or whatever you want 
-            titleLabel: 'Seleccione los puntos anotados',  //Optional 
-            setLabel: 'Guardar',  //Optional 
-            closeLabel: 'Cerrar',  //Optional 
-            setButtonType: 'button-positive',  //Optional 
-            closeButtonType: 'button-stable',  //Optional 
-            callback: function (val) {    //Mandatory 
-                timePickerCallback(val);
-            }
-        };
-       
+
+        /*******************************************************************
+        ********************************************************************
+
+        Fault -  Event
+
+        ********************************************************************
+        ********************************************************************/
+
+        var value = 0;
+        var selectedPlayer = 0;
+        var setNewEvent = [];
+        var currentFaults = [];
+        var faultDescpList = [];
+        var faultDescpList1 = [];
+        var faultDescpList2 = [];
+        var tp = "";
+        var tituloPop = "";
+        var description = "";
+
         $scope.showEventTJ = function (team,tipo) {
             $scope.data = {}
-            var selectedPlayer = 0;
-            var description = "";
-            var setNewEvent = [];
-            var currentFaults = [];
-            var tp = "";
-            var tituloPop = "";
-            var value = 0;
+           
             switch (tipo) {
                 case 1:
                     tp = "TR";
@@ -221,38 +223,55 @@ angular.module('starter')
                 console.log('Tapped!', res);
             });
         };
+        
+        
+        function setFaultList( team , idTeam) {
+            for (var key in team) {
+                faultDescpList[key] = {
+                    "TR": "",
+                    "TA": "",
+                    "TT": "",
+                }
+            };
+            if (idTeam == 1)
+                faultDescpList1 = faultDescpList;
+            else
+                faultDescpList2 = faultDescpList;
 
- 
-        var faultDescpList1 = [
-        {
-            "TR": "",
-            "TA": "",
-            "TT": "",
-        },
-        {
-            "TR": "",
-            "TA": "",
-            "TT": "",
-        }];
-        var faultDescpList2 = [
-            {
-                "TR": "",
-                "TA": "",
-                "TT": "",
-            },
-            {
-                "TR": "",
-                "TA": "",
-                "TT": "",
-            }];
+            faultDescpList = [];
+            console.log(faultDescpList1);
+        }
+
+
+        
+
+
+        /*******************************************************************
+        ********************************************************************
+
+        End Fault -  Event
+
+        ********************************************************************
+        ********************************************************************/
+
+         /*******************************************************************
+        ********************************************************************
+
+        Set localStorae - Array  // Metodos para la creación de arrays locales (Lista de faltas actuales - eventos actuales - etc)
+
+        ********************************************************************
+        ********************************************************************/
+
         function setLocalStoraCurrentFaults(arrayTeam, team, faultList) {
-         
+
             var arrayLocalFault = [];
             for (var key in arrayTeam) {
-                arrayLocalFault += arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TR|" + arrayTeam[key]["TR"] + "|" + faultList[key]["TR"] + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TA|" + arrayTeam[key]["TA"] + "|" + faultList[key]["TA"] + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TT|" + arrayTeam[key]["TT"] + "|" + faultList[key]["TT"]  + ";";
+                arrayLocalFault += arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TR|" + arrayTeam[key]["TR"] + "|" + faultList[key]["TR"] + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TA|" + arrayTeam[key]["TA"] + "|" + faultList[key]["TA"] + ";" + arrayTeam[key]["NC"] + "|" + team[key]["jugadorId"] + "|" + "TT|" + arrayTeam[key]["TT"] + "|" + faultList[key]["TT"] + ";";
             }
             return arrayLocalFault;
         }
+
+
         function setLocalStoraEventosClubByTeam(arrayTeam) {
             var arrayLocalClub = [];
             for (var key in arrayTeam) {
@@ -288,16 +307,36 @@ angular.module('starter')
             };
             return arrayLocalClub;
         }
-        $scope.showEvent = function (team, evento) {
+
+         /*******************************************************************
+        ********************************************************************
+
+        End Set localStorae - Array  
+
+        ********************************************************************
+        ********************************************************************/
+
+
+         /*******************************************************************
+        ********************************************************************
+
+        Function Show Event // Trae toda la inforamción que se muestra en el popup al realizar un evento de juego.
+
+        ********************************************************************
+        ********************************************************************/
+        var currentTeam = [];
+        var selectedPlayer = 0;
+        var setNewEvent = [];
+        var tituloPop = "";
+        var textoPop = "";
+        var value = 0;
+
+
+        $scope.showEvent = function (team, EV) {
+
             $scope.data = {}
-            var currentTeam = [];
-            var selectedPlayer = 0;
-            var setNewEvent = [];
-            var EV = evento;
-            var tituloPop = "";
-            var textoPop = "";
-            var value = 0;
-            switch (evento) {
+            
+            switch (EV) {
                 case  0:
                     var tituloPop = "IN (Entrada)";
                     var textoPop = "entra";
@@ -369,50 +408,47 @@ angular.module('starter')
         };
        
 
-        $scope.ChangeColor = function () {
-            var cols = document.getElementsByClassName('background-label-left');
-            for (i = 0; i < cols.length; i++) {
-                cols[i].style.backgroundColor = 'blue';
-            }
-            $(this).css("background-color", "yellow");
-        };
 
+        /*******************************************************************
+        ********************************************************************
+
+        End Function Show Event 
+
+        ********************************************************************
+        ********************************************************************/
+
+
+        /*******************************************************************
+        ********************************************************************
+
+        Timer Section.
+
+        ********************************************************************
+        ********************************************************************/
+        var setClock = 0;
+
+        $scope.timerRunning = true;
+        $scope.timerClass = "btn btn-primary";
+        $scope.timerText = "Iniciar";
         
-        var timerState = "Iniciar";
-        var setClock = 0 ;
-        
-        $scope.checkMethod = function () {
+        $scope.changeMethod = function () {
          
-            if (timerState == "Iniciar" ) {
+            if ($scope.timerClass === "btn btn-primary") {
+                $scope.timerClass = "btn btn-danger";
+                $scope.timerText = "Detener";
                 $scope.startTimer();
                 timerState = "Detener";
             } else {
-                
+                $scope.timerClass = "btn btn-primary";
+                $scope.timerText = "Iniciar";
                 $scope.stopTimer();
                 timerState = "Iniciar";
             }
         }
 
-        $scope.timerClass = "btn btn-primary";
-        $scope.timerText = "Iniciar";
-
-        $scope.changeTimerFunction = function () {
-            if ($scope.timerClass === "btn btn-primary") {
-                $scope.timerClass = "btn btn-danger";
-                $scope.timerText = "Detener";
-            }
-            else {
-                $scope.timerClass = "btn btn-primary";
-                $scope.timerText = "Iniciar";
-               
-            }
-        };
-
-        $scope.timerRunning = true;
-
         $scope.startTimer = function () {
             $scope.$broadcast('timer-start');
-            $scope.changeTimerFunction();
+            //$scope.changeTimerFunction();
             $scope.timerRunning = true;
             if (setClock == 0) {
                 $scope.getDateValues();
@@ -423,28 +459,30 @@ angular.module('starter')
         $scope.stopTimer = function () {
             $scope.$broadcast('timer-stop');
             $scope.timerRunning = false;
-            $scope.changeTimerFunction();
+            //$scope.changeTimerFunction();
+            $scope.changeMethod;
         };
 
         $scope.$on('timer-stopped', function (event, args) {
             console.log('timer-stopped args = ', args);
         });
 
-        $scope.menuItems = ['In (entrada)', 'Out (Salida)', 'El T (Try)', 'C (Conversion)', 'P (penal)', 'GC (gol de campo)'];
-        $scope.activeMenu1 = $scope.menuItems;
-        $scope.activeMenu2 = $scope.menuItems;
-        $scope.setActive2 = function (menuItem,team) {
-            $scope.activeMenu2 = menuItem;
-            $scope.checkMenuItems(menuItem,team);
-           
-        }
-        $scope.setActive1 = function (menuItem,team) {
-            $scope.activeMenu1 = menuItem;
-            $scope.checkMenuItems(menuItem,team);
-            
-        }
+        /*******************************************************************
+        ********************************************************************
 
-        $scope.getDateValues();
+        End Timer Section.
+
+        ********************************************************************
+        ********************************************************************/
+
+        /*******************************************************************
+        ********************************************************************
+
+        Function  Obtener inforamción del partido
+
+        ********************************************************************
+        ********************************************************************/
+        
 
         function Create2DArray(rows) {
             var arr = [];
@@ -474,6 +512,9 @@ angular.module('starter')
         var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/" + $state.params.partidoId;
         var numeroCamiseta = 0;
         var pastFaults = [];
+
+
+
         $http.get(url,{
             cache: false
         }).then(function (response) {
@@ -492,6 +533,8 @@ angular.module('starter')
           
         setTeam($scope.team1, localStorage.eventosClub1, 1, 0, 0);
         setTeam($scope.team2, localStorage.eventosClub2, 2, 0, 0);
+        setFaultList($scope.team1, 1);
+        setFaultList($scope.team2, 2);
         function setTeam(team, locStorage, teamId, jugadorIden, eventIden) {
             setTeamVariables(team, locStorage);
             arrayEvents = getArrayEvents(eventList, teamId, jugadorIden, eventIden);
@@ -576,7 +619,27 @@ angular.module('starter')
 
         }
            
-        });
+            });
+
+
+
+        /*******************************************************************
+        ********************************************************************
+
+       End Function  Obtener inforamción del partido
+
+        ********************************************************************
+        ********************************************************************/
+
+
+
+        /*******************************************************************
+        ********************************************************************
+
+       Function - Finalizar partido
+
+        ********************************************************************
+        ********************************************************************/
         $scope.Finalizar = function () {
             var data = {
                 "partidoId": $state.params.partidoId,
@@ -604,3 +667,12 @@ angular.module('starter')
         };
        
     });
+
+
+        /*******************************************************************
+        ********************************************************************
+
+       End - Function Finalizar partdio
+|
+        ********************************************************************
+        ********************************************************************/
