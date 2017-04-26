@@ -59,17 +59,11 @@ angular.module('starter')
                 name: 'David Bone'
             }
         ];
-        $scope.currentDate = new Date();
-        $scope.minDate = new Date(2017, 4, 24);
-        $scope.maxDate = new Date(2017, 4, 27);
 
-        $scope.datePickerCallback = function (val) {
-            if (!val) {
-                console.log('Date not selected');
-            } else {
-                console.log('Selected date is : ', val);
-            }
-        };
+
+    
+
+
         $scope.showPopup = function () {
             $scope.data = {}
 

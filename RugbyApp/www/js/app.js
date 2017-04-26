@@ -1,4 +1,4 @@
-// Ionic Starter App
+﻿// Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -6,7 +6,17 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ionic-numberpicker', 'ionic-numberpicker.templates', 'timer'])
 
-  .run(function ($ionicPlatform, $rootScope, $state) {
+    .run(function ($ionicPlatform, $rootScope, $state, $ionicPickerI18n) {
+
+        // Universal values for Date Time Picker
+        $ionicPickerI18n.weekdays = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sá"];
+        $ionicPickerI18n.months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "octubre", "Noviembre", "Diciembre"];
+        $ionicPickerI18n.ok = "Aceptar";
+        $ionicPickerI18n.cancel = "Cancelar";
+        $ionicPickerI18n.okClass = "button-positive";
+        $ionicPickerI18n.cancelClass = "button-stable";
+        $ionicPickerI18n.arrowButtonClass = "button-positive";
+
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)

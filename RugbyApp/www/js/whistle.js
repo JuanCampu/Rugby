@@ -89,7 +89,7 @@ angular.module('starter')
         ********************************************************************
         ********************************************************************/
 
-        $scope.menuItems = ['In (entrada)', 'Out (Salida)', 'El T (Try)', 'C (Conversion)', 'P (penal)', 'GC (gol de campo)'];
+        $scope.menuItems = ['In (entrada)', 'Out (Salida)', 'T (Try)', 'C (Conversion)', 'P (penal)', 'GC (gol de campo)'];
         $scope.activeMenu1 = $scope.menuItems;
         $scope.activeMenu2 = $scope.menuItems;
 
@@ -330,6 +330,14 @@ angular.module('starter')
         var tituloPop = "";
         var textoPop = "";
         var value = 0;
+        var tTry = 5;
+        var goalC = 3;
+        var conversion = 2;
+        var penal = 3;
+        var generalScore = 0;
+
+        $scope.scoreTeam1 = 0;
+        $scope.scoreTeam2 = 0;
 
 
         $scope.showEvent = function (team, EV) {
@@ -348,25 +356,28 @@ angular.module('starter')
                 case  2:
                     var tituloPop = "(Try)";
                     var textoPop = "realizo el try";
+                    generalScore = tTry;
                     break;
                 case  3:
                     var tituloPop = "C (Conversion)";
                     var textoPop = "realizo la conversion";
+                    generalScore = conversion ;
                     break;
                 case  4:
                     var tituloPop = "P (Penal)";
                     var textoPop = "realizo el penal";
+                    generalScore = penal;
                     break;
                 case  5:
                     var tituloPop = "GC (Gol de Campo)";
                     var textoPop = "realizo el gol de campo";
+                    generalScore = goalC;
                     break;
                 case 6:
                     day = "Saturday";
             }
             if (team == 1) {
                 currentTeam = $scope.arrayTest ;
-                htmlJugadores = htmlJugadores1;
             } else {
                 currentTeam = $scope.arrayTest2 ;
                 htmlJugadores = htmlJugadores2;
@@ -391,11 +402,15 @@ angular.module('starter')
                             value = parseInt(value)  + 1;
                             currentTeam[selectedPlayer][EV]["value"] = String(value);
                            
-                            if(team == 1)
+                            if (team == 1) {
                                 localStorage.eventosClub1 = setLocalStoraEventosClub(currentTeam);
-                            else
-                                localStorage.eventosClub2 = setLocalStoraEventosClub(currentTeam) ;
-                           
+                                $scope.scoreTeam1 += generalScore;
+                            }
+                               
+                            else {
+                                localStorage.eventosClub2 = setLocalStoraEventosClub(currentTeam);
+                                $scope.scoreTeam2 += generalScore;
+                            }
                             myPopup.close();
                         }
                     }
@@ -494,6 +509,7 @@ angular.module('starter')
 
         $scope.team1 = [];
         $scope.team2 = [];
+       
         var clubId2;
         var clubId1;
         var torneoId;
