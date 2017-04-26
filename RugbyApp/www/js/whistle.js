@@ -12,6 +12,33 @@ angular.module('starter')
          * else, select the given group
          */
 
+
+         /*******************************************************************
+        ********************************************************************
+
+       Check Start - Valida que el partido haya iniciado
+
+        ********************************************************************
+        ********************************************************************/
+
+
+        function checkMatchStart() {
+            if ($scope.timerClass === "btn btn-primary") {
+                alert("Inicie el partido para poder ejecutar esta acción.");
+                return true;;
+            } else {
+                return false;
+            }
+        }
+
+        /*******************************************************************
+        ********************************************************************
+
+        End Check Start - Valida que el partido haya iniciado
+
+        ********************************************************************
+        ********************************************************************/
+
         /*******************************************************************
         ********************************************************************
 
@@ -20,6 +47,9 @@ angular.module('starter')
         ********************************************************************
         ********************************************************************/
         $scope.toggleGroup = function (group, type) {
+
+            if ((checkMatchStart()) == true)
+                return;
           
             if (type == 1) {
                 if ($scope.isGroupShown(group,type)) {
@@ -89,16 +119,20 @@ angular.module('starter')
         ********************************************************************
         ********************************************************************/
 
-        $scope.menuItems = ['In (entrada)', 'Out (Salida)', 'T (Try)', 'C (Conversion)', 'P (penal)', 'GC (gol de campo)'];
+        $scope.menuItems = ['In (entrada)', 'Out (Salida)', 'El T (Try)', 'C (Conversion)', 'P (penal)', 'GC (gol de campo)'];
         $scope.activeMenu1 = $scope.menuItems;
         $scope.activeMenu2 = $scope.menuItems;
 
         $scope.setActive2 = function (menuItem, team) {
+            if ((checkMatchStart()) == true)
+                return;
             $scope.activeMenu2 = menuItem;
             $scope.checkMenuItems(menuItem, team);
 
         }
         $scope.setActive1 = function (menuItem, team) {
+            if ((checkMatchStart()) == true)
+                return;
             $scope.activeMenu1 = menuItem;
             $scope.checkMenuItems(menuItem, team);
 
@@ -155,7 +189,11 @@ angular.module('starter')
         var tituloPop = "";
         var description = "";
 
-        $scope.showEventTJ = function (team,tipo) {
+        $scope.showEventTJ = function (team, tipo) {
+
+            if ((checkMatchStart()) == true)
+                return;
+
             $scope.data = {}
            
             switch (tipo) {
@@ -316,7 +354,6 @@ angular.module('starter')
         ********************************************************************
         ********************************************************************/
 
-
          /*******************************************************************
         ********************************************************************
 
@@ -348,10 +385,12 @@ angular.module('starter')
                 case  0:
                     var tituloPop = "IN (Entrada)";
                     var textoPop = "entra";
+                    generalScore = 0;
                     break;
                 case 1:
                     var tituloPop = "OUT (Salida)";
                     var textoPop = "sale";
+                    generalScore = 0;
                     break;
                 case  2:
                     var tituloPop = "(Try)";
@@ -377,7 +416,8 @@ angular.module('starter')
                     day = "Saturday";
             }
             if (team == 1) {
-                currentTeam = $scope.arrayTest ;
+                currentTeam = $scope.arrayTest;
+                htmlJugadores = htmlJugadores1;
             } else {
                 currentTeam = $scope.arrayTest2 ;
                 htmlJugadores = htmlJugadores2;
@@ -657,6 +697,8 @@ angular.module('starter')
         ********************************************************************
         ********************************************************************/
         $scope.Finalizar = function () {
+            if ((checkMatchStart()) == true)
+                return;
             var data = {
                 "partidoId": $state.params.partidoId,
                 "marcadorClub1": 0,
