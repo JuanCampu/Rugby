@@ -8,6 +8,25 @@ angular.module('starter')
 
     .controller('AddUseCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
 
+            var data = {
+                "userName": "Juan loca",
+                "password": "Le gusta mucho",
+                "nombres": "JP",
+                "apellidos": "cul",
+                "rol": 1,
+                "email": "sasdasd@asdasda.com"
+            };
+            var urlPost = $rootScope.APIurl + "api/Usuario/CrearUsuario";
+            $http({
+                method: 'POST',
+                url: urlPost,
+                data: JSON.stringify(data),
+                cache: false,
+            }).then(function (success) {
+                window.alert("Aceptado");
+            }, function (error) {
+                window.alert(error);
+            });
      
 
         $scope.dateValue = "00-00-0000";
