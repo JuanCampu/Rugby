@@ -7,126 +7,133 @@
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
     </ion-nav-buttons>
-    <ion-content class="bg-app light" scroll="false" vertical layout>
-        <div class="header-draft" horizontal layout center>
-            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
-                2016/05/23
+    <form name="signinForm" novalidate="" ng-submit="signIn(signinForm)">
+        <ion-content class="bg-app light" scroll="false" vertical layout>
+            <div class="header-draft" horizontal layout center>
+                <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                    2016/05/23
+                </div>
+                <div>|</div>
+                <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                    07:32
+                </div>
             </div>
-            <div>|</div>
-            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
-                07:32
+            <!--
+            <div horizontal layout center style="padding: 10px 0">
+                <div>
+                    Nuevo Partido
+                </div>
             </div>
-        </div>
-        <!--
-        <div horizontal layout center style="padding: 10px 0">
-            <div>
-                Nuevo Partido
-            </div>
-        </div>
-        -->
-        <div flex class="light-bg" style="color: #444; overflow-y: scroll">
-            <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
-               <div class="item item-divider">Seleccione el perfil :</div>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="ion-ios-personadd-outline positive match-icon"></i>
-                    </div>
+            -->
+            <div flex class="light-bg" style="color: #444; overflow-y: scroll">
+                <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
+                    <div class="item item-divider">Seleccione el perfil :</div>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.rol.$invalid}">
+                        <div class="input-label">
+                            <i class="ion-ios-personadd-outline positive match-icon"></i>
+                        </div>
 
-                    <select ng-change="setRolInformation()" id="rolSelected" ng-model="user.rol" >
-                        <option selected>Administrador</option>
-                        <option >Juez</option>
-                    </select>
-                </label>
-                <div class="item item-divider">Nombres :</div>
-                <label class="item item-input ">
-                    <div class="input-label">
-                        <i class="ion-ios-person positive match-icon"></i>
-                    </div>
-                    <input type="text" placeholder="Nombre" ng-model="user.nombres">
-                </label>
-                <div class="item item-divider">Apellidos:</div>
-                <label class="item item-input ">
-                    <div class="input-label">
-                        <i class="ion-ios-person-outline positive match-icon"></i>
-                    </div> 
-                    <input type="text"  ng-model="user.apellidos" placeholder="Apellidos">
-                </label>
-                <form name='form'>
+                        <select ng-change="setRolInformation()" id="rolSelected" ng-model="user.rol" name="rol"  required>
+                            <option value="1" selected>Administrador</option>
+                            <option value="0">Juez</option>
+                        </select>
+                    </label>
+                    <div class="item item-divider">Nombre de Usuario :</div>
+                    <label class="item item-input " ng-class="{ 'has-error' : signinForm.username.$invalid}">
+                        <div class="input-label">
+                            <i class="ion-ios-person positive match-icon"></i>
+                        </div>
+                        <input type="text" placeholder="Nombre de usuario" ng-model="user.userName"   name="username"  required>
+                    </label>
+                   
+                    <div class="item item-divider">Nombres :</div>
+                    <label class="item item-input " ng-class="{ 'has-error' : signinForm.nombres.$invalid}">
+                        <div class="input-label" >
+                            <i class="ion-ios-person positive match-icon"></i>
+                        </div>
+                        <input type="text" placeholder="Nombre" ng-model="user.nombres" name="nombres"  required>
+                    </label>
+                    <div class="item item-divider">Apellidos:</div>
+                    <label class="item item-input " ng-class="{ 'has-error' : signinForm.apellidos.$invalid}">
+                        <div class="input-label">
+                            <i class="ion-ios-person-outline positive match-icon"></i>
+                        </div>
+                        <input type="text" ng-model="user.apellidos" placeholder="Apellidos"  name="apellidos"  required>
+                    </label>
+
                     <div class="item item-divider">Password:</div>
-                    <label class="item item-input ">
+                    <label class="item item-input " ng-class="{ 'has-error' : signinForm.password.$invalid}">
                         <input data-ng-model='user.password' type="password" name='password' placeholder='' required>
-                        
+
                     </label>
                     <div class="item item-divider">Confirmación password:</div>
-                    <label class="item item-input ">
+                    <label class="item item-input" ng-class="{ 'has-error' : signinForm.confirm_password.$invalid}">
                         <input ng-model='user.password_verify' type="password" name='confirm_password' placeholder='' required data-password-verify="user.password">
 
                     </label>
-                    <label class="item item-input ">
-                        <div ng-show="form.confirm_password.$error.passwordVerify" class="password-match">
-                          Las contraseñas no coinciden!
-                        </div>
-                    </label>
-                    
-                </form>
-                <div class="item item-divider">Correo Electronico:</div>
-                <label class="item item-input ">
-                    <div class="input-label">
-                        <i class="ion-at positive match-icon"></i>
-                    </div>
-                    <input type="text" placeholder="Correo">
-                </label>
-                <div id="infoJuez">
-                    <div class="item item-divider">Identificacion:</div>
-                    <label class="item item-input ">
-                        <div class="input-label">
-                            <i class="ion-card positive match-icon"></i>
-                        </div>
-                        <input type="text" placeholder="Identificacion" ng-model="user.identificacion">
-                    </label>
-                    <div class="item item-divider">Fecha de Nacimiento:</div>
-                    <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" date="" monday-first="" ng-model="dateValue">
-                        <i class="icon ion-ios-calendar-outline positive"></i>
 
-                        <strong class="ng-binding">{{dateValue| date: "yyyy-MM-dd"}}</strong>
+                    <div ng-show="signinForm.confirm_password.$error.passwordVerify">
+                       Las contraseñas no coinciden!
                     </div>
-                    <div class="item item-divider">Celular:</div>
-                    <label class="item item-input ">
-                        <div class="input-label">
-                            <i class=" ion-android-phone-portrait positive match-icon"></i>
-                        </div>
-                        <input type="number" placeholder="Celular" ng-model="user.numCelular">
-                    </label>
-                    <div class="item item-divider">Años de experiencia:</div>
-                    <label class="item item-input ">
-                        <div class="input-label">
-                            <i class="ion-ribbon-b positive match-icon"></i>
-                        </div>
-                        <input type="number" placeholder="Años de experiencia" ng-model="user.añosDeExperiencia">
-                    </label>
-                    <div class="item item-divider">Barrio:</div>
-                    <label class="item item-input ">
-                        <div class="input-label">
-                            <i class="ion-ios-home positive match-icon"></i>
-                        </div>
-                        <input type="text" placeholder="Barrio" ng-model="user.barrio">
-                    </label>
-                    <div class="item item-divider">Direccion:</div>
-                    <label class="item item-input ">
-                        <div class="input-label">
-                            <i class="ion-ios-home-outline positive match-icon"></i>
-                        </div>
-                        <input type="text" placeholder="Direccion" ng-model="user.direccion">
-                    </label>
 
-                </div>
-               
-            </uib-tabset>
-        </div>
-    </ion-content>
-    <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
-        <div class="button-profile" horizontal layout center center-justified>
-            <button type="button" ng-click="showPopup()" class="btn btn-info">Crear Usuario</button>
-        </div>
-    </ion-footer-bar>
+                    <div class="item item-divider">Correo:</div>
+                    <label class="item item-input ">
+                        <div class="input-label">
+                            <i class="ion-at positive match-icon"></i>
+                        </div>
+                        <input type="text" ng-model="user.correo" placeholder="Correo">
+                    </label>
+                   
+                    <div id="infoJuez">
+                        <div class="item item-divider">Identificacion:</div>
+                        <label class="item item-input ">
+                            <div class="input-label">
+                                <i class="ion-card positive match-icon"></i>
+                            </div>
+                            <input type="text" placeholder="Identificacion" ng-model="user.identificacion">
+                        </label>
+                        <div class="item item-divider">Fecha de Nacimiento:</div>
+                        <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" date="" monday-first="" ng-model="user.fechaDeNacimiento">
+                            <i class="icon ion-ios-calendar-outline positive"></i>
+
+                            <strong class="ng-binding">{{user.fechaDeNacimiento| date: "yyyy-MM-dd"}}</strong>
+                        </div>
+                        <div class="item item-divider">Celular:</div>
+                        <label class="item item-input ">
+                            <div class="input-label">
+                                <i class=" ion-android-phone-portrait positive match-icon"></i>
+                            </div>
+                            <input type="number" placeholder="Celular" ng-model="user.numCelular">
+                        </label>
+                      
+                        <div class="item item-divider">Barrio:</div>
+                        <label class="item item-input ">
+                            <div class="input-label">
+                                <i class="ion-ios-home positive match-icon"></i>
+                            </div>
+                            <input type="text" placeholder="Barrio" ng-model="user.barrio">
+                        </label>
+                        <div class="item item-divider">Direccion:</div>
+                        <label class="item item-input ">
+                            <div class="input-label">
+                                <i class="ion-ios-home-outline positive match-icon"></i>
+                            </div>
+                            <input type="text" placeholder="Direccion" ng-model="user.direccion">
+                        </label>
+
+                    </div>
+
+                </uib-tabset>
+            </div>
+        </ion-content>
+       
+    </form>
+        <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
+            <div class="button-profile" horizontal layout center center-justified>
+              
+                <button type="button" ng-click="showPopup()" class="btn btn-info">Crear Usuario</button>
+            </div>
+        </ion-footer-bar>
+
+   
 </ion-view>

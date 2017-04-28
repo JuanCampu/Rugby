@@ -15,19 +15,20 @@ angular.module('starter')
             email: "",
             numCelular: 0,
             identificacion: 0, 
-            fechaDeNacimiento: "",
+            fechaDeNacimiento: "00-00-0000",
             barrio: "",
             direccion: "",
             añosDeExperiencia: "",
-            rol: "",
+            rol: 0,
             password: "",
-            password_verify:"",
+            password_verify: "",
+            userName:"",
         }
 
 
         $scope.setRolInformation = function () {
             $scope.data = {}
-            if ($scope.user.rol == "Juez") {
+            if ($scope.user.rol == "0") {
                 $("#infoJuez").show();
             } else {
                 $("#infoJuez").hide();
@@ -36,41 +37,42 @@ angular.module('starter')
           
         };
 
-       
-            var data = {
-                "userName": "sssss asdf",
-                "añosDeExperiencia": 2,
-                "password": "Le gusta mucho",
-                "barrio": "Le gusta mucho",
-                "direccion": "Le gusta mucho",
-                "fechaDeNacimiento": "02/05/2016",
-                "nombres": "JP",
-                "apellidos": "cul",
-                "rol": 0,
-                "identificacion": 12345,
-                "numCelular": 3002128732,
-                "email": "sasdasd@asdasda.com"
-            };
+        $scope.dateValue = "00-00-0000"; 
+
+        $scope.showPopup = function () {
+            if (!($scope.signinForm.$valid)) {
+                alert("Favor llene todos los campos requeridos");
+                return;
+            } 
+            $scope.data = {}
             var urlPost = $rootScope.APIurl + "api/Usuario/CrearUsuario";
             $http({
                 method: 'POST',
                 url: urlPost,
-                data: JSON.stringify(data),
+                data: JSON.stringify($scope.user),
                 cache: false,
             }).then(function (success) {
                 window.alert("Aceptado");
+                $scope.user = {
+                    nombres: "",
+                    apellidos: "",
+                    password: "",
+                    email: "",
+                    numCelular: 0,
+                    identificacion: 0,
+                    fechaDeNacimiento: "",
+                    barrio: "",
+                    direccion: "",
+                    añosDeExperiencia: "",
+                    rol: 1,
+                    password: "",
+                    password_verify: "",
+                    userName: "",
+                }
+                $("#infoJuez").hide();
             }, function (error) {
                 window.alert(error);
             });
-     
-
-        $scope.dateValue = "00-00-0000";
-      
-
-
-        $scope.showPopup = function () {
-            $scope.data = {}
-
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
@@ -93,11 +95,13 @@ angular.module('starter')
 
         // go to Nav page
         $scope.goBack = function () {
+            
             $state.go('nav')
         }
 
         // go to Nextv page
         $scope.goNext = function () {
+          
             $state.go('app.score')
         }
     });

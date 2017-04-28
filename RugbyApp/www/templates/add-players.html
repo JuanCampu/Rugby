@@ -33,7 +33,8 @@
                         <i class="ion-home positive match-icon"></i>
                     </div>
 
-                    <select>
+                    <select placeholder="Nombre"  ng-model="player.club">
+                        <option value="">Seleccione un opción</option>
                         <option>Club1</option>
                         <option selected>Club2</option>
                     </select>
@@ -44,7 +45,8 @@
                         <i class="ion-tshirt positive match-icon"></i>
                     </div>
 
-                    <select>
+                    <select placeholder="Nombre"  ng-model="player.equipo">
+                        <option value="">Seleccione un opción</option>
                         <option>equipo1</option>
                         <option selected>equipo2</option>
                     </select>
@@ -54,14 +56,14 @@
                     <div class="input-label">
                         <i class="ion-ios-person positive match-icon"></i>
                     </div>
-                    <input type="text" placeholder="Nombre">
+                    <input type="text"  placeholder="Nombre" ng-model="player.nombres">
                 </label>
                 <div class="item item-divider">Apellidos:</div>
                 <label class="item item-input ">
                     <div class="input-label">
                         <i class="ion-ios-person-outline positive match-icon"></i>
                     </div>
-                    <input type="text" placeholder="Apellidos">
+                    <input type="text" placeholder="Apellidos" ng-model="player.apellidos">
                 </label>
               
                 <div class="item item-divider">Identificacion:</div>
@@ -69,14 +71,14 @@
                     <div class="input-label">
                         <i class="ion-card positive match-icon"></i>
                     </div>
-                    <input type="number" placeholder="Identificacion">
+                    <input type="number" placeholder="Identificacion" ng-model="player.identificacion">
                 </label>
                 <div class="item item-divider">Número de camiseta:</div>
                 <label class="item item-input ">
                     <div class="input-label">
                         <i class="ion-tshirt-outline positive match-icon"></i>
                     </div>
-                    <input type="number" placeholder="Número de camiseta">
+                    <input type="number" placeholder="Número de camiseta" ng-model="player.numerocamiseta">
                 </label>
             </uib-tabset>
         </div>

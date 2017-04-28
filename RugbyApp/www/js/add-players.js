@@ -12,11 +12,17 @@ angular.module('starter')
 
         $scope.dateValue = "00-00-0000";
       
-
+        $scope.player = {
+            nombres: "",
+            apellidos: "",
+            identificacion: "",
+            numerocamiseta: "",
+            equipo: "",
+            club:"",
+        };
 
         $scope.showPopup = function () {
             $scope.data = {}
-
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
