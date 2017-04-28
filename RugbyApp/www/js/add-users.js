@@ -8,12 +8,47 @@ angular.module('starter')
 
     .controller('AddUseCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
 
+        $scope.user = {
+            nombres: "",
+            apellidos: "",
+            password: "",
+            email: "",
+            numCelular: 0,
+            identificacion: 0, 
+            fechaDeNacimiento: "",
+            barrio: "",
+            direccion: "",
+            añosDeExperiencia: "",
+            rol: "",
+            password: "",
+            password_verify:"",
+        }
+
+
+        $scope.setRolInformation = function () {
+            $scope.data = {}
+            if ($scope.user.rol == "Juez") {
+                $("#infoJuez").show();
+            } else {
+                $("#infoJuez").hide();
+            }
+
+          
+        };
+
+       
             var data = {
-                "userName": "Juan loca",
+                "userName": "sssss asdf",
+                "añosDeExperiencia": 2,
                 "password": "Le gusta mucho",
+                "barrio": "Le gusta mucho",
+                "direccion": "Le gusta mucho",
+                "fechaDeNacimiento": "02/05/2016",
                 "nombres": "JP",
                 "apellidos": "cul",
-                "rol": 1,
+                "rol": 0,
+                "identificacion": 12345,
+                "numCelular": 3002128732,
                 "email": "sasdasd@asdasda.com"
             };
             var urlPost = $rootScope.APIurl + "api/Usuario/CrearUsuario";

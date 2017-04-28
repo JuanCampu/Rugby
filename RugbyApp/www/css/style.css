@@ -10,9 +10,18 @@
     width:100% !important;
 }
 
-.item-news {
-    font-size:14px !important;
 
+#infoJuez {
+    display:none;
+}
+
+.password-match {
+    font-size: 14px;
+     color: #ff0808;
+}
+
+.item-news {
+    font-size: 14px !important;
 }
 
 .item-edit-texbox {
