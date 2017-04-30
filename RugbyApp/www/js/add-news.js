@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
    
-    .controller('AddNewCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+    .controller('AddNewCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope, $ionicLoading) {
         function readURL(input, idElement) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -93,7 +93,9 @@ angular.module('starter')
             }
         ];
         $scope.showPopup = function () {
-            console.log($scope.noticia);
+            $ionicLoading.show({
+                template: '<p>Creando...</p><ion-spinner></ion-spinner>'
+            });
             var urlPost = $rootScope.APIurl + "api/Noticia/CrearNoticia/";
             $http({
                 method: 'POST',
@@ -101,35 +103,46 @@ angular.module('starter')
                 data: JSON.stringify($scope.noticia),
                 cache: false,
             }).then(function (success) {
-                window.alert("Aceptado");
-                $scope.solicitud = {
+                $scope.noticia = {
                     titulo: "",
                     copete: "",
                     foto: "",
                     descripcion: "",
                 }
+                $("#imagenSeleccionada").attr('ng-src', './img/photo.png');
+                $("#imagenSeleccionada").attr('src', './img/photo.png');
+                $ionicLoading.hide();
+                $ionicPopup.show({
+                    template: '<input type = "text" ng-model = "data.model">',
+                    title: 'Creador de Noticias',
+                    template: 'Se ha creado la noticia',
+                    scope: $scope,
+
+                    buttons: [
+                        {
+                            text: '<b>Cerrar</b>',
+                            type: 'button-positive'
+                        }
+                    ]
+                });
             }, function (error) {
-                window.alert(error);
-            });
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'Estado del mensaje',
-                template: '!El partido ha sido prograamado de manera exitosa',
-                scope: $scope,
+                $ionicPopup.show({
+                    template: '<input type = "text" ng-model = "data.model">',
+                    title: 'Estado del mensaje',
+                    template: 'Intente más tarde',
+                    scope: $scope,
 
-                buttons: [
-                    {
-                        text: '<b>Cerrar</b>',
-                        type: 'button-positive'
-                    }
-                ]
+                    buttons: [
+                        {
+                            text: '<b>Cerrar</b>',
+                            type: 'button-positive'
+                        }
+                    ]
+                });
+                $ionicLoading.hide();
             });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
+            
         };
-
 
         // go to Nav page
         $scope.goBack = function () {

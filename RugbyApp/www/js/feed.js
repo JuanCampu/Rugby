@@ -1,4 +1,4 @@
-// Ionic Starter App
+﻿// Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -6,55 +6,33 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-  .controller('FeedCtrl', function($scope) {
+    .controller('FeedCtrl', function ($scope, $state, $rootScope, $http, $ionicLoading) {
+        $ionicLoading.show({
+            template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+        });
+        $scope.noticias = [];
 
-    $scope.items = [
-      {
-        avatar: './img/a1.jpg',
-        like: '1k',
-        comment: 376,
-        active: true,
-        name: 'Stove'
-      },
-      {
-        avatar: './img/a2.jpg',
-        img: './img/d1.jpg',
-        like: '284',
-        comment: 124,
-        active: false,
-        name: 'Thor'
-      },
-      {
-        avatar: './img/a3.jpg',
-        img: './img/d2.jpg',
-        like: '8k',
-        comment: 422,
-        active: false,
-        name: 'Ninja'
-      },
-      {
-        avatar: './img/a4.jpg',
-        like: '532',
-        comment: 142,
-        active: true,
-        name: 'Kid'
-      },
-      {
-        avatar: './img/a5.png',
-        img: './img/d3.jpg',
-        like: '190k',
-        comment: 5532,
-        active: true,
-        name: 'Zzz'
-      },
-      {
-        avatar: './img/a6.jpg',
-        like: '12k',
-        comment: 376,
-        active: false,
-        name: 'David Bone'
-      }
-    ]
-
+        var cantidad = 0;
+        var url = $rootScope.APIurl + "api/Noticia/ObtenerNoticias?start=" + cantidad;
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.noticias = response.data;
+            $ionicLoading.hide();
+        });
+        $scope.refresh = function() {
+            $ionicLoading.show({
+                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+            });
+            cantidad += 3;
+            var url = $rootScope.APIurl + "api/Noticia/ObtenerNoticias?start=" + cantidad;
+            $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+                for (var i = 0; i < response.data.length; i++) {
+                    $scope.noticias.push(response.data[i]);
+                }
+                $ionicLoading.hide();
+            });
+        }
+        $scope.goToAdd = function () {
+            $state.go('app.add-news');
+        }
   });
 
