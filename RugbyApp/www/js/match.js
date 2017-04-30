@@ -12,8 +12,8 @@ angular.module('starter')
         $scope.dateValue = "00-00-0000";
 
         $scope.match = {
-            equipoId1: "",
-            equipoId2: "",
+            equipoId1: "0",
+            equipoId2: "1",
             juezPlanillaId: "",
             juezCentralId: "",
             juezInGoalId1: "",
@@ -21,6 +21,52 @@ angular.module('starter')
             torneoId: "",
             tiempoProgramado:""
         }
+
+
+        $scope.isSelectedTeam1 = function (idTeam2) {
+            if ($scope.match.equipoId1 == idTeam2) {
+                return true;
+            }
+
+            return false;
+        };
+
+        $scope.isSelectedTeam2 = function (idTeam1) {
+            if ($scope.match.equipoId2 == idTeam1) {
+                return true;
+            }
+
+            return false;
+        };
+
+        var url = $rootScope.APIurl + "api/Torneo/ObtenerTorneos/";
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.torneos = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta");
+        });
+
+        var urlJueces = $rootScope.APIurl + "api/Juez/ObtenerAllJueces/";
+        $http.get(urlJueces, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.jueces = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta");
+        });
+        $scope.obtenerEquiposPorIdTorneo = function () {
+            var url = $rootScope.APIurl + "api/Equipo/ObtenerEquipoPorTorneo?torneoId=" + $scope.match.torneoId;
+
+            $http({
+                method: 'GET',
+                url: url,
+                cache: false,
+            }).then(function (success) {
+                $scope.equipos = success.data;
+                window.alert("Aceptado");
+            }, function (error) {
+                window.alert(error);
+            });
+
+        };
 
         $scope.showPopup = function () {
 

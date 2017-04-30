@@ -50,17 +50,17 @@ angular.module('starter')
             }).then(function (success) {
                 window.alert("Aceptado");
                 $scope.user = {
-                    nombres: "",
-                    apellidos: "",
-                    email: "",
-                    identificacion: 0,
-                    fechaDeNacimiento: "00-00-0000",
-                    direccion: "",
-                    rol: 0,
-                    password: "",
-                    password_verify: "",
-                    userName: "",
-                }
+            nombres: "",
+            apellidos: "",
+            email: "",
+            identificacion: 0, 
+            fechaDeNacimiento: "00-00-0000",
+            direccion: "",
+            rol: 0,
+            password: "",
+            password_verify: "",
+            userName:"",
+        }
                 $("#infoJuez").hide();
             }, function (error) {
                 window.alert(error);
