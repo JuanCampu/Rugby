@@ -7,144 +7,152 @@
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
     </ion-nav-buttons>
-    <ion-content class="bg-app light" scroll="false" vertical layout>
-        <div class="header-draft" horizontal layout center>
-            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
-                2016/05/23
-            </div>
-            <div>|</div>
-            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
-                07:32
-            </div>
-        </div>
-        <!--
-        <div horizontal layout center style="padding: 10px 0">
-            <div>
-                Nuevo Partido
-            </div>
-        </div>    
-        -->
-        <div flex class="light-bg" style="color: #444; overflow-y: scroll">
-            <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
-                <div class="item item-divider">Seleccione la hora del encuentro:</div>
-                <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" min="minDate" time="" am-pm="" ng-model="timeValue">
-                    <i class="icon ion-ios-clock-outline positive"></i>
-                    <strong class="ng-binding">{{timeValue| date: "H:mm"}}</strong>
+    <form name="signinForm" novalidate="" ng-submit="signIn(signinForm)">
+        <ion-content class="bg-app light" scroll="false" vertical layout>
+            <div class="header-draft" horizontal layout center>
+                <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                    2016/05/23
                 </div>
-               
-                <div class="item item-divider">Seleccione la fecha del encuentro:</div>
-                <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" date="" monday-first="" ng-model="dateValue" only-valid="{'after': 'today', 'inclusive': true}">
-                    <i class="icon ion-ios-calendar-outline positive"></i>
-
-                    <strong class="ng-binding">{{dateValue| date: "yyyy-MM-dd"}}</strong>
+                <div>|</div>
+                <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                    07:32
                 </div>
-                <div class="item item-divider">Seleccione el torneo :</div>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="icon ion-trophy positive match-icon"></i>
+            </div>
+            <!--
+            <div horizontal layout center style="padding: 10px 0">
+                <div>
+                    Nuevo Partido
+                </div>
+            </div>
+            -->
+
+
+            <div flex class="light-bg" style="color: #444; overflow-y: scroll">
+                <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
+
+
+
+                    <div class="item item-divider">Seleccione la hora del encuentro:</div>
+                    <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" min="minDate" time="" am-pm="" ng-model="timeValue" >
+                        <i class="icon ion-ios-clock-outline positive"></i>
+                        <strong id="horaPartido" class="ng-binding">{{timeValue| date: "H:mm"}}</strong>
                     </div>
 
-                    <select ng-model='match.torneo'>
-                        <option selected>torneo 1</option>
-                        <option>torneo 2</option>
-                        <option>torneo 3</option>
-                        <option>torneo 1</option>
-                        <option>torneo 2</option>
-                        <option>torneo 3</option>
-                    </select>
-                </label>
-                <div class="item item-divider">Seleccione de equipos :</div>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="icon ion-ios-americanfootball-outline  match-icon"></i>
-                    </div>
+                    <div class="item item-divider">Seleccione la fecha del encuentro:</div>
+                    <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" date="" monday-first="" ng-model="dateValue" only-valid="{'after': 'today', 'inclusive': true}">
+                        <i class="icon ion-ios-calendar-outline positive"></i>
 
-                    <select ng-model='match.equipoUno'>
-                        <option>equipo 2</option>
-                        <option>equipo 3</option>
-                        <option>equipo 1</option>
-                        <option>equipo 2</option>
-                        <option>equipo 3</option>
-                    </select>
-                </label>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="icon ion-ios-americanfootball positive match-icon"></i>
+                        <strong  id="fechaPartido"  class="ng-binding">{{dateValue| date: "yyyy-MM-dd"}}</strong>
                     </div>
-                    <select ng-model='match.equipoDos'>
-                        <option selected>equipo 1</option>
-                        <option>equipo 2</option>
-                        <option>equipo 3</option>
-                        <option>equipo 1</option>
-                        <option>equipo 2</option>
-                        <option>equipo 3</option>
-                    </select>
-                </label>
-                <div class="item item-divider">Seleccione el juez de planilla :</div>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
-                    </div>
+                    <div class="item item-divider">Seleccione el torneo :</div>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.torneo.$invalid}">
+                        <div class="input-label">
+                            <i class="icon ion-trophy positive match-icon"></i>
+                        </div>
 
-                    <select  ng-model='match.juez1'>
-                        <option selected>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                        <option>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                    </select>
-                </label>
-                <div class="item item-divider">Seleccione el juez central:</div>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
-                    </div>
+                        <select ng-model='match.torneoId' name="torneo" required>
+                            <option selected>torneo 1</option>
+                            <option>torneo 2</option>
+                            <option>torneo 3</option>
+                            <option>torneo 1</option>
+                            <option>torneo 2</option>
+                            <option>torneo 3</option>
+                        </select>
+                    </label>
+                    <div class="item item-divider">Seleccione de equipos :</div>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.equipo1.$invalid}">
+                        <div class="input-label">
+                            <i class="icon ion-ios-americanfootball-outline  match-icon"></i>
+                        </div>
 
-                    <select  ng-model='match.juez2'>
-                        <option selected>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                        <option>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                    </select>
-                </label>
-                <div class="item item-divider">Seleccione los jueces de Ingoal:</div>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
-                    </div>
+                        <select ng-model='match.equipoId1' name="equipo1" required>
+                            <option>equipo 2</option>
+                            <option>equipo 3</option>
+                            <option>equipo 1</option>
+                            <option>equipo 2</option>
+                            <option>equipo 3</option>
+                        </select>
+                    </label>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.equipo2.$invalid}">
+                        <div class="input-label">
+                            <i class="icon ion-ios-americanfootball positive match-icon"></i>
+                        </div>
+                        <select ng-model='match.equipoId2' name="equipo2" required>
+                            <option selected>equipo 1</option>
+                            <option>equipo 2</option>
+                            <option>equipo 3</option>
+                            <option>equipo 1</option>
+                            <option>equipo 2</option>
+                            <option>equipo 3</option>
+                        </select>
+                    </label>
+                    <div class="item item-divider">Seleccione el juez de planilla :</div>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.juez1.$invalid}">
+                        <div class="input-label">
+                            <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
+                        </div>
 
-                    <select  ng-model='match.juez3'>
-                        <option selected>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                        <option>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                    </select>
-                </label>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
-                    </div>
+                        <select ng-model='match.juezPlanillaId' name="juez1" required>
+                            <option selected>juez 1</option>
+                            <option>juez 2</option>
+                            <option>juez 3</option>
+                            <option>juez 1</option>
+                            <option>juez 2</option>
+                            <option>juez 3</option>
+                        </select>
+                    </label>
+                    <div class="item item-divider">Seleccione el juez central:</div>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.juez2.$invalid}">
+                        <div class="input-label">
+                            <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
+                        </div>
 
-                    <select  ng-model='match.juez4'>
-                        <option selected>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                        <option>juez 1</option>
-                        <option>juez 2</option>
-                        <option>juez 3</option>
-                    </select>
-                </label>                            
-            </uib-tabset>
-        </div>
-</ion-content>
-    <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
-        <div class="button-profile" horizontal layout center center-justified>
-            <button type="button" ng-click="showPopup()" class="btn btn-info">Programar</button>
-        </div>
-    </ion-footer-bar>
+                        <select ng-model='match.juezCentralId' name="juez2" required>
+                            <option selected>juez 1</option>
+                            <option>juez 2</option>
+                            <option>juez 3</option>
+                            <option>juez 1</option>
+                            <option>juez 2</option>
+                            <option>juez 3</option>
+                        </select>
+                    </label>
+                    <div class="item item-divider">Seleccione los jueces de Ingoal:</div>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.juez3.$invalid}">
+                        <div class="input-label">
+                            <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
+                        </div>
+
+                        <select ng-model='match.juezInGoalId1' name="juez3" required>
+                            <option selected>juez 1</option>
+                            <option>juez 2</option>
+                            <option>juez 3</option>
+                            <option>juez 1</option>
+                            <option>juez 2</option>
+                            <option>juez 3</option>
+                        </select>
+                    </label>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.juez4.$invalid}">
+                        <div class="input-label">
+                            <i class="fa fa-gavel positive match-icon" aria-hidden="true"></i>
+                        </div>
+
+                        <select ng-model='match.juezInGoalId2' name="juez4" required>
+                            <option selected>juez 1</option>
+                            <option>juez 2</option>
+                            <option>juez 3</option>
+                            <option>juez 1</option>
+                            <option>juez 2</option>
+                            <option>juez 3</option>
+                        </select>
+                    </label>
+                </uib-tabset>
+            </div>
+
+        </ion-content>
+    </form>
+        <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
+            <div class="button-profile" horizontal layout center center-justified>
+                <button type="button" ng-click="showPopup()" class="btn btn-info">Programar</button>
+            </div>
+        </ion-footer-bar>
 </ion-view>

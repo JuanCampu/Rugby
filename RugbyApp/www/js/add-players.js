@@ -8,20 +8,26 @@ angular.module('starter')
 
     .controller('AddPlaCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
 
-     
+        
 
         $scope.dateValue = "00-00-0000";
       
         $scope.player = {
             nombres: "",
             apellidos: "",
-            identificacion: "",
-            numerocamiseta: "",
-            equipo: "",
-            club:"",
+            identificacion: 0,
+            numCamiseta: 0,
+            equipoId: "",
+            genero: "",
+            clubId: ""
         };
 
         $scope.showPopup = function () {
+            if (!($scope.signinForm.$valid)) {
+                alert("Favor llene todos los campos requeridos");
+                return;
+            }
+
             $scope.data = {}
             // Custom popup
             var myPopup = $ionicPopup.show({

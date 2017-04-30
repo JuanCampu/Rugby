@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-  .controller('FeedCtrl', function($scope) {
+  .controller('FeedCtrl', function($scope, $state) {
 
     $scope.items = [
       {
@@ -55,6 +55,10 @@ angular.module('starter')
         name: 'David Bone'
       }
     ]
+    $scope.addNews = function () {
+        $state.go('app.add-news')
+    }
+
 
   });
 

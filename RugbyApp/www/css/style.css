@@ -25,6 +25,10 @@ label.item.valid-lr {
     margin: 5px 0
 }
 
+.genero-width {
+    width:50% !important;
+}
+
 .form-error {
     padding: 2px 0 2px 16px;
     color: red;

@@ -6,22 +6,31 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('MatchCtrl', function ($scope, $state, $ionicPopup) {
+    .controller('MatchCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
         $scope.timeValue = "00:00";
 
         $scope.dateValue = "00-00-0000";
 
         $scope.match = {
-            torneo: "",
-            equipoUno: "",
-            equipoDos: "",
-            juez1: "",
-            juez3: "",
-            juez2: "",
-            juez4: "",
+            equipoId1: "",
+            equipoId2: "",
+            juezPlanillaId: "",
+            juezCentralId: "",
+            juezInGoalId1: "",
+            juezInGoalId2: "",
+            torneoId: "",
+            tiempoProgramado:""
         }
 
         $scope.showPopup = function () {
+
+            if (!($scope.signinForm.$valid)) {
+                alert("Favor llene todos los campos requeridos");
+                return;
+            } else if (($("#horaPartido").text()) == "00:00" || ($("#fechaPartido").text()) == "00-00-0000") {  
+                alert("Revise los campos hora y fecha");
+                return;
+            } 
             $scope.data = {}
             // Custom popup
             var myPopup = $ionicPopup.show({
