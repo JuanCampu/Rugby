@@ -11,7 +11,6 @@ angular.module('starter')
             template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
         });
         $scope.noticias = [];
-
         var cantidad = 0;
         var url = $rootScope.APIurl + "api/Noticia/ObtenerNoticias?start=" + cantidad;
         $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {

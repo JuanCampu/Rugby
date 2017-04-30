@@ -8,21 +8,55 @@ angular.module('starter')
 
     .controller('AddPlaCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
 
-     
+        var url = $rootScope.APIurl + "api/Club/ObtenerClubs";
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.clubes = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta de clubes");
+        });
+
+       
+
+        $scope.obtenerEquipos = function () {
+            var urlEquipos = $rootScope.APIurl + "api/Equipo/ObtenerEquipoPorClub/" + $scope.player.clubId;
+           
+          
+            $http.get(urlEquipos, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+                $scope.equipos = response.data;
+           
+            }, function () {
+                window.alert("No se pudo realizar la consulta de clubes");
+            });
+        }
 
         $scope.dateValue = "00-00-0000";
       
         $scope.player = {
             nombres: "",
             apellidos: "",
-            identificacion: "",
-            numerocamiseta: "",
-            equipo: "",
-            club:"",
+            identificacion: 0,
+            numCamiseta: 0,
+            equipoId: "",
+            genero: 0
         };
 
         $scope.showPopup = function () {
-            $scope.data = {}
+            if (!($scope.signinForm.$valid)) {
+                alert("Favor llene todos los campos requeridos");
+                return;
+            }
+            var urlPost = $rootScope.APIurl + "api/Usuario/AdicionarJugador";
+            $http({
+                method: 'POST',
+                url: urlPost,
+                data: JSON.stringify($scope.player),
+                cache: false,
+            }).then(function (success) {
+                window.alert("Aceptado");
+            }, function (error) {
+                window.alert(error);
+            });
+
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',

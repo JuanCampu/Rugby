@@ -6,22 +6,99 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('MatchCtrl', function ($scope, $state, $ionicPopup) {
+    .controller('MatchCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
         $scope.timeValue = "00:00";
 
         $scope.dateValue = "00-00-0000";
 
         $scope.match = {
-            torneo: "",
-            equipoUno: "",
-            equipoDos: "",
-            juez1: "",
-            juez3: "",
-            juez2: "",
-            juez4: "",
+            equipoId1: "",
+            equipoId2: "",
+            juezPlanillaId: "",
+            juezCentralId: "",
+            juezInGoalId1: "",
+            juezInGoalId2: "",
+            torneoId: "",
+            tiempoProgramado:""
         }
 
+
+        $scope.isSelectedTeam = function (idTeam,numteam) {
+
+            if (numteam == 1 && idTeam == $scope.match.equipoId1) {
+                return true;
+            } else if (numteam == 2 && idTeam == $scope.match.equipoId2) {
+                return true;
+            } 
+            return false;
+        };
+
+
+        $scope.isSelectedJuez = function (idJuez, numJuez) {
+            if (numJuez == 1 && idJuez == $scope.match.juezPlanillaId) {
+                return true;
+            } else if (numJuez == 2 && idJuez == $scope.match.juezCentralId) {
+                return true;
+            } else if (numJuez == 3 && idJuez == $scope.match.juezInGoalId1) {
+                return true;
+            } else if (numJuez == 4 && idJuez == $scope.match.juezInGoalId2) {
+                return true;
+            }
+            return false;
+        };
+
+
+
+      
+        $("#equipo1").click(function () {
+            alert(1);
+        });
+
+        $scope.checkTorneo = function () {
+            alert(1);
+            if ($scope.torneoId == "") {
+                alert(" Seleccione primero un torneo");
+                return;
+            }
+        };
+
+        var url = $rootScope.APIurl + "api/Torneo/ObtenerTorneos/";
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.torneos = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta");
+        });
+
+        var urlJueces = $rootScope.APIurl + "api/Juez/ObtenerAllJueces/";
+        $http.get(urlJueces, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.jueces = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta");
+        });
+        $scope.obtenerEquiposPorIdTorneo = function () {
+            var url = $rootScope.APIurl + "api/Equipo/ObtenerEquipoPorTorneo?torneoId=" + $scope.match.torneoId;
+
+            $http({
+                method: 'GET',
+                url: url,
+                cache: false,
+            }).then(function (success) {
+                $scope.equipos = success.data;
+            }, function (error) {
+                window.alert(error);
+            });
+
+        };
+
         $scope.showPopup = function () {
+
+            if (!($scope.signinForm.$valid)) {
+                alert("Favor llene todos los campos requeridos");
+                return;
+            } else if (($("#horaPartido").text()) == "00:00" || ($("#fechaPartido").text()) == "00-00-0000") {  
+                alert("Revise los campos hora y fecha");
+                return;
+            } 
             $scope.data = {}
             // Custom popup
             var myPopup = $ionicPopup.show({
