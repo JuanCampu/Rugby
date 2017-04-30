@@ -12,8 +12,8 @@ angular.module('starter')
         $scope.dateValue = "00-00-0000";
 
         $scope.match = {
-            equipoId1: "0",
-            equipoId2: "1",
+            equipoId1: "",
+            equipoId2: "",
             juezPlanillaId: "",
             juezCentralId: "",
             juezInGoalId1: "",
@@ -23,20 +23,43 @@ angular.module('starter')
         }
 
 
-        $scope.isSelectedTeam1 = function (idTeam2) {
-            if ($scope.match.equipoId1 == idTeam2) {
-                return true;
-            }
+        $scope.isSelectedTeam = function (idTeam,numteam) {
 
+            if (numteam == 1 && idTeam == $scope.match.equipoId1) {
+                return true;
+            } else if (numteam == 2 && idTeam == $scope.match.equipoId2) {
+                return true;
+            } 
             return false;
         };
 
-        $scope.isSelectedTeam2 = function (idTeam1) {
-            if ($scope.match.equipoId2 == idTeam1) {
+
+        $scope.isSelectedJuez = function (idJuez, numJuez) {
+            if (numJuez == 1 && idJuez == $scope.match.juezPlanillaId) {
+                return true;
+            } else if (numJuez == 2 && idJuez == $scope.match.juezCentralId) {
+                return true;
+            } else if (numJuez == 3 && idJuez == $scope.match.juezInGoalId1) {
+                return true;
+            } else if (numJuez == 4 && idJuez == $scope.match.juezInGoalId2) {
                 return true;
             }
-
             return false;
+        };
+
+
+
+      
+        $("#equipo1").click(function () {
+            alert(1);
+        });
+
+        $scope.checkTorneo = function () {
+            alert(1);
+            if ($scope.torneoId == "") {
+                alert(" Seleccione primero un torneo");
+                return;
+            }
         };
 
         var url = $rootScope.APIurl + "api/Torneo/ObtenerTorneos/";
@@ -61,7 +84,6 @@ angular.module('starter')
                 cache: false,
             }).then(function (success) {
                 $scope.equipos = success.data;
-                window.alert("Aceptado");
             }, function (error) {
                 window.alert(error);
             });

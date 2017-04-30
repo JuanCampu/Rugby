@@ -54,22 +54,22 @@
                             <option ng-repeat="torneo in torneos" value="{{torneo.GuidTorneo}}">{{torneo.NombreTorneo}}</option>
                         </select>
                     </label>
-                    <div class="item item-divider">Seleccione de equipos :</div>
+                    <div  class="item item-divider">Seleccione de equipos :</div>
                     <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.equipo1.$invalid}">
                         <div class="input-label">
                             <i class="icon ion-ios-americanfootball-outline  match-icon"></i>
                         </div>
 
-                        <select ng-model='match.equipoId1' name="equipo1" required>
-                            <option  ng-class="{'team-repeated': isSelectedTeam1(equipo.IdEquipo) , 'team-repeated': isSelectedTeam2(equipo.IdEquipo) }" ng-repeat="equipo in equipos" value="{{equipo.IdEquipo}}">{{equipo.NombreEquipo}}</option>
+                        <select id="equipo1" ng-model='match.equipoId1' name="equipo1" required>
+                            <option   ng-class="{'team-repeated': (isSelectedTeam(equipo.IdEquipo,1) || isSelectedTeam(equipo.IdEquipo,2)) &&  (match.equipoId1!='' || match.equipoId2!='' )  }" ng-repeat="equipo in equipos" value="{{equipo.IdEquipo}}">{{equipo.NombreEquipo}}</option>
                         </select>
                     </label>
                     <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.equipo2.$invalid}">
                         <div class="input-label">
                             <i class="icon ion-ios-americanfootball positive match-icon"></i>
                         </div>
-                        <select ng-model='match.equipoId2' name="equipo2" required>
-                            <option ng-class="{'team-repeated': isSelectedTeam1(equipo.IdEquipo) , 'team-repeated': isSelectedTeam2(equipo.IdEquipo) }"  ng-repeat="equipo in equipos" value="{{equipo.IdEquipo}}">{{equipo.NombreEquipo}}</option>
+                        <select ng-click="checkTorneo()" ng-model='match.equipoId2' name="equipo2" required>
+                            <option   ng-class="{'team-repeated': (isSelectedTeam(equipo.IdEquipo,1) || isSelectedTeam(equipo.IdEquipo,2)) && (match.equipoId1!='' || match.equipoId2!='' )  }"  ng-repeat="equipo in equipos" value="{{equipo.IdEquipo}}">{{equipo.NombreEquipo}}</option>
                         </select>
                     </label>
                     <div class="item item-divider">Seleccione el juez de planilla :</div>
@@ -79,7 +79,7 @@
                         </div>
 
                         <select ng-model='match.juezPlanillaId' name="juez1" required>
-                            <option ng-repeat="juez in jueces" value="{{juez.Id}}">{{juez.nombres}} {{juez.apellidos}}</option>
+                            <option  ng-class="{'team-repeated': isSelectedJuez(juez.Id,1)  || isSelectedJuez(juez.Id,2)  || isSelectedJuez(juez.Id,3) || isSelectedJuez(juez.Id,4)  &&  (match.juezPlanillaId!='' || match.juezCentralId!=''|| match.juezInGoalId1!='' || match.juezInGoalId2!=''  ) }"  ng-repeat="juez in jueces" value="{{juez.Id}}">{{juez.nombres}} {{juez.apellidos}}</option>
                         </select>
                     </label>
                     <div class="item item-divider">Seleccione el juez central:</div>
@@ -89,7 +89,7 @@
                         </div>
 
                         <select ng-model='match.juezCentralId' name="juez2" required>
-                            <option ng-repeat="juez in jueces" value="{{juez.Id}}">{{juez.nombres}} {{juez.apellidos}}</option>
+                            <option ng-class="{'team-repeated': isSelectedJuez(juez.Id,1)  || isSelectedJuez(juez.Id,2)  || isSelectedJuez(juez.Id,3) || isSelectedJuez(juez.Id,4)  &&  (match.juezPlanillaId!='' || match.juezCentralId!=''|| match.juezInGoalId1!='' || match.juezInGoalId2!=''  ) }" ng-repeat="juez in jueces" value="{{juez.Id}}">{{juez.nombres}} {{juez.apellidos}}</option>
                         </select>
                     </label>
                     <div class="item item-divider">Seleccione los jueces de Ingoal:</div>
@@ -99,7 +99,7 @@
                         </div>
 
                         <select ng-model='match.juezInGoalId1' name="juez3" required>
-                            <option ng-repeat="juez in jueces" value="{{juez.Id}}">{{juez.nombres}} {{juez.apellidos}}</option>
+                            <option ng-class="{'team-repeated': isSelectedJuez(juez.Id,1)  || isSelectedJuez(juez.Id,2)  || isSelectedJuez(juez.Id,3) || isSelectedJuez(juez.Id,4)  &&  (match.juezPlanillaId!='' || match.juezCentralId!=''|| match.juezInGoalId1!='' || match.juezInGoalId2!=''  ) }"   ng-repeat="juez in jueces" value="{{juez.Id}}">{{juez.nombres}} {{juez.apellidos}}</option>
                         </select>
                     </label>
                     <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.juez4.$invalid}">
@@ -108,7 +108,7 @@
                         </div>
 
                         <select ng-model='match.juezInGoalId2' name="juez4" required>
-                            <option ng-repeat="juez in jueces" value="{{juez.Id}}">{{juez.nombres}} {{juez.apellidos}}</option>
+                            <option ng-class="{'team-repeated': isSelectedJuez(juez.Id,1)  || isSelectedJuez(juez.Id,2)  || isSelectedJuez(juez.Id,3) || isSelectedJuez(juez.Id,4)  &&  (match.juezPlanillaId!='' || match.juezCentralId!=''|| match.juezInGoalId1!='' || match.juezInGoalId2!=''  ) }"   ng-repeat="juez in jueces" value="{{juez.Id}}">{{juez.nombres}} {{juez.apellidos}}</option>
                         </select>
                     </label>
                 </uib-tabset>
