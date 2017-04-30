@@ -12,6 +12,7 @@ angular.module('starter')
         $scope.dateValue = "00-00-0000";
 
         $scope.match = {
+            NombrePartido: "aaaa",
             equipoId1: "",
             equipoId2: "",
             juezPlanillaId: "",
@@ -19,7 +20,9 @@ angular.module('starter')
             juezInGoalId1: "",
             juezInGoalId2: "",
             torneoId: "",
-            tiempoProgramado:""
+            tiempoProgramado: new Date(),
+            tiempoTotal: new Date(),
+            IdPartido: "da70814e-793a-41d6-84bd-35e1539dd82c"
         }
 
 
@@ -45,21 +48,6 @@ angular.module('starter')
                 return true;
             }
             return false;
-        };
-
-
-
-      
-        $("#equipo1").click(function () {
-            alert(1);
-        });
-
-        $scope.checkTorneo = function () {
-            alert(1);
-            if ($scope.torneoId == "") {
-                alert(" Seleccione primero un torneo");
-                return;
-            }
         };
 
         var url = $rootScope.APIurl + "api/Torneo/ObtenerTorneos/";
@@ -99,7 +87,18 @@ angular.module('starter')
                 alert("Revise los campos hora y fecha");
                 return;
             } 
-            $scope.data = {}
+            var urlPost = $rootScope.APIurl + "api/Partido/AdicionarPartido/";
+            $http({
+                method: 'POST',
+                url: urlPost,
+                data: JSON.stringify($scope.match),
+                cache: false,
+                crossDomain: true,
+            }).then(function (success) {
+                window.alert("Aceptado");
+            }, function (error) {
+                window.alert(error);
+            });
             // Custom popup
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
