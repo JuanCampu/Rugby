@@ -34,10 +34,8 @@
                             <i class="ion-home positive match-icon"></i>
                         </div>
 
-                        <select  ng-model="player.clubId" name="club" required>
-                            <option value="">Seleccione un opción</option>
-                            <option>Club1</option>
-                            <option selected>Club2</option>
+                        <select  ng-model="player.clubId" ng-change="obtenerEquipos()" name="club" required>
+                            <option ng-repeat="club in clubes" value="{{club.IdClub}}">{{club.NombreClub}}</option>
                         </select>
                     </label>
                     <div class="item item-divider">Seleccione el equipo :</div>
@@ -47,9 +45,7 @@
                         </div>
 
                         <select ng-model="player.equipoId" name="equipo" required>
-                            <option value="">Seleccione un opción</option>
-                            <option>equipo1</option>
-                            <option selected>equipo2</option>
+                            <option ng-repeat="equipo in equipos" value="{{equipo.IdEquipo}}">{{equipo.NombreEquipo}}</option>
                         </select>
                     </label>
                     <div class="item item-divider">Nombres :</div>
@@ -79,7 +75,7 @@
                         <div class="input-label">
                             <i class="ion-tshirt-outline positive match-icon"></i>
                         </div>
-                        <input type="number" placeholder="Número de camiseta" ng-model="player.numerocamiseta"  name="numcamiseta" required>
+                        <input type="number" placeholder="Número de camiseta" ng-model="player.numCamiseta"  name="numcamiseta" required>
                     </label>
                     <div class="item item-divider">Genero:</div>
                     <ul class="list">
