@@ -7,7 +7,7 @@
 angular.module('starter')
 
     .controller('JoinCtrl', function ($scope, $state, $ionicPopup) {
-
+       
         $scope.items = [
             {
                 avatar: './img/a1.jpg',

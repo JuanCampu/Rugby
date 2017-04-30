@@ -5,10 +5,29 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
-
+   
     .controller('AddNewCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+        function readURL(input, idElement) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#" + idElement).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#archivoImagen").change(function () {
+            readURL(this, "imagenSeleccionada");
+        });
+
+        $("#imagenSeleccionada").click(function () {
+            $("#archivoImagen").click();
+        });
+
 
         $scope.timeValue = "00:00";
+
 
         $scope.dateValue = "0000-00-00";
         $scope.date = new Date();
@@ -17,6 +36,14 @@ angular.module('starter')
         $scope.timeString = "" + (($scope.hours > 12) ? $scope.hours - 12 : $scope.hours);
         $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
         $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
+
+       
+        $scope.noticia = {
+            titulo: "",
+            copete: "",
+            foto: "",
+            descripcion: "",
+        }
 
         $scope.items = [
             {
@@ -65,13 +92,25 @@ angular.module('starter')
                 name: 'David Bone'
             }
         ];
-
-
-
         $scope.showPopup = function () {
-            $scope.data = {}
-
-            // Custom popup
+            console.log($scope.noticia);
+            var urlPost = $rootScope.APIurl + "api/Noticia/CrearNoticia/";
+            $http({
+                method: 'POST',
+                url: urlPost,
+                data: JSON.stringify($scope.noticia),
+                cache: false,
+            }).then(function (success) {
+                window.alert("Aceptado");
+                $scope.solicitud = {
+                    titulo: "",
+                    copete: "",
+                    foto: "",
+                    descripcion: "",
+                }
+            }, function (error) {
+                window.alert(error);
+            });
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Estado del mensaje',
@@ -90,6 +129,7 @@ angular.module('starter')
                 console.log('Tapped!', res);
             });
         };
+
 
         // go to Nav page
         $scope.goBack = function () {
