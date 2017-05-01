@@ -33,16 +33,16 @@
 
 
                     <div class="item item-divider">Seleccione la hora del encuentro:</div>
-                    <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" min="minDate" time="" am-pm="" ng-model="timeValue" >
+                    <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" min="minDate" time="" am-pm="" ng-model="match.timeValue" >
                         <i class="icon ion-ios-clock-outline positive"></i>
-                        <strong id="horaPartido" class="ng-binding">{{timeValue| date: "H:mm"}}</strong>
+                        <strong id="horaPartido" class="ng-binding">{{match.timeValue| date: "H:mm"}}</strong>
                     </div>
 
                     <div class="item item-divider">Seleccione la fecha del encuentro:</div>
-                    <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" date="" monday-first="" ng-model="dateValue" only-valid="{'after': 'today', 'inclusive': true}">
+                    <div class="item item-icon-left ng-pristine ng-untouched ng-valid" ion-datetime-picker="" date="" monday-first="" ng-model="match.dateValue" only-valid="{'after': 'today', 'inclusive': true}">
                         <i class="icon ion-ios-calendar-outline positive"></i>
 
-                        <strong  id="fechaPartido"  class="ng-binding">{{dateValue| date: "yyyy-MM-dd"}}</strong>
+                        <strong  id="fechaPartido"  class="ng-binding">{{match.dateValue| date: "yyyy-MM-dd"}}</strong>
                     </div>
                     <div class="item item-divider">Seleccione el torneo :</div>
                     <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.torneo.$invalid}">

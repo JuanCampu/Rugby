@@ -29,6 +29,7 @@ angular.module('starter')
             window.alert("No se pudo realizar la consulta");
         });
 
+   
         $scope.obtenerPartidosPorIdTorneo = function () {
             var url = $rootScope.APIurl + "api/Partido/ObtenerPartidosPorTorneo?torneoId=" + $scope.match.torneoId;
             $http({
@@ -44,7 +45,10 @@ angular.module('starter')
         };
 
         $scope.showPopup = function () {
-
+            if (!($scope.signinForm.$valid)) {
+                alert("Favor llene todos los campos requeridos");
+                return;
+            } 
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Estado del mensaje',
@@ -77,6 +81,10 @@ angular.module('starter')
 
         // go to Nextv page
         $scope.goNext = function () {
+            if (!($scope.signinForm.$valid)) {
+                alert("Favor llene todos los campos requeridos");
+                return;
+            } 
             $state.go('app.edit-match', { 'partidoId': $("#partidoSelect").children(":selected").attr("value")});
         }
     });

@@ -7,50 +7,52 @@
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
     </ion-nav-buttons>
-    <ion-content class="bg-app light" scroll="false" vertical layout>
-        <div class="header-draft" horizontal layout center>
-            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
-                {{date | date:'yyyy-MM-dd'}}
+    <form name="signinForm" novalidate="" ng-submit="signIn(signinForm)">
+        <ion-content class="bg-app light" scroll="false" vertical layout>
+            <div class="header-draft" horizontal layout center>
+                <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                    {{date | date:'yyyy-MM-dd'}}
+                </div>
+                <div>|</div>
+                <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
+                    {{timeString}}
+                </div>
             </div>
-            <div>|</div>
-            <div flex horizontal layout center center-justified class="padding bold" style="font-size: 20px">
-              {{timeString}}
+            <!--
+            <div horizontal layout center style="padding: 10px 0">
+                <div>
+                    Nuevo Partido
+                </div>
             </div>
-        </div>
-        <!--
-        <div horizontal layout center style="padding: 10px 0">
-            <div>
-                Nuevo Partido
+            -->
+            <div flex class="light-bg" style="color: #444; overflow-y: scroll">
+                <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
+                    <div class="item item-divider">Seleccione un torneo :</div>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.torneo.$invalid}">
+                        <div class="input-label">
+                            <i class="ion-trophy positive  match-icon"></i>
+                        </div>
+                        <select ng-model='match.torneoId' id="partidoSelect" ng-change="obtenerPartidosPorIdTorneo()" name="torneo" required>
+                            <option ng-repeat="torneo in torneos" value="{{torneo.GuidTorneo}}">{{torneo.NombreTorneo}}</option>
+                        </select>
+                    </label>
+                    <div class="item item-divider">Seleccione el partido :</div>
+                    <label class="item item-input item-select" ng-class="{ 'has-error' : signinForm.partido.$invalid}">
+                        <div class="input-label">
+                            <i class="icon ion-ios-americanfootball-outline positive match-icon"></i>
+                        </div>
+                        <select id="partidoSelect" ng-model='match.partidoId' name="partido" required>
+                            <option ng-repeat="partido in partidos" value="{{partido.Id}}">{{partido.nombre}}</option>
+                        </select>
+                    </label>
+
+                </uib-tabset>
             </div>
-        </div>    
-        -->
-        <div flex class="light-bg" style="color: #444; overflow-y: scroll">
-            <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
-                <div class="item item-divider">Seleccione un torneo :</div>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="ion-trophy positive  match-icon"></i>
-                    </div>
-                    <select ng-model='match.torneoId' id="partidoSelect" ng-change="obtenerPartidosPorIdTorneo()">
-                        <option ng-repeat="torneo in torneos" value="{{torneo.GuidTorneo}}">{{torneo.NombreTorneo}}</option>
-                    </select>
-                </label>
-                <div class="item item-divider">Seleccione el partido :</div>
-                <label class="item item-input item-select">
-                    <div class="input-label">
-                        <i class="icon ion-ios-americanfootball-outline positive match-icon"></i>
-                    </div>
-                    <select id="partidoSelect">
-                        <option ng-repeat="partido in partidos" value="{{partido.Id}}">{{partido.nombre}}</option>
-                    </select>
-                </label>
-                               
-            </uib-tabset>
-        </div>
-</ion-content>
-    <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
-        <div class="button-profile" horizontal layout center center-justified>
-            <button type="button" ng-click="goNext()" class="btn btn-info">Seleccionar</button>
-        </div>
-    </ion-footer-bar>
+        </ion-content>
+    </form>
+        <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
+            <div class="button-profile" horizontal layout center center-justified>
+                <button type="button" ng-click="goNext()" class="btn btn-info">Seleccionar</button>
+            </div>
+        </ion-footer-bar>
 </ion-view>

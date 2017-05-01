@@ -7,9 +7,7 @@
 angular.module('starter')
 
     .controller('MatchCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
-        $scope.timeValue = "00:00";
 
-        $scope.dateValue = "00-00-0000";
 
         $scope.match = {
             NombrePartido: "aaaa",
@@ -22,7 +20,9 @@ angular.module('starter')
             torneoId: "",
             tiempoProgramado: new Date(),
             tiempoTotal: new Date(),
-            IdPartido: "da70814e-793a-41d6-84bd-35e1539dd82c"
+            IdPartido: "da70814e-793a-41d6-84bd-35e1539dd82c",
+            timeValue: "00:00",
+            dateValue: "00-00-0000"
         }
 
 
@@ -79,7 +79,8 @@ angular.module('starter')
         };
 
         $scope.showPopup = function () {
-
+            console.log($scope.match.timeValue);
+           
             if (!($scope.signinForm.$valid)) {
                 alert("Favor llene todos los campos requeridos");
                 return;
