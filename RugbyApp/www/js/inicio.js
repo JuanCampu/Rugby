@@ -65,6 +65,11 @@ angular.module('starter')
       $state.go('sign')
     }
     $scope.goGuest = function () {
-        $state.go('favorite')
+        if (!(localStorage.clubFavorito)) {
+            $state.go('favorite')
+        } else {
+            $state.go('nav')
+        }
+        
     }
   });
