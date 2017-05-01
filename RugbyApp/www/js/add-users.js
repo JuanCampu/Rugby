@@ -48,7 +48,7 @@ angular.module('starter')
                 data: JSON.stringify($scope.user),
                 cache: false,
             }).then(function (success) {
-                window.alert("Aceptado");
+                //window.alert("Aceptado");
                 $scope.user = {
             nombres: "",
             apellidos: "",

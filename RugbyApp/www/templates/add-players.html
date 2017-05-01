@@ -75,8 +75,13 @@
                         <div class="input-label">
                             <i class="ion-tshirt-outline positive match-icon"></i>
                         </div>
-                        <input type="number" placeholder="Número de camiseta" ng-model="player.numCamiseta"  name="numcamiseta" required>
+                        <input type="number" ng-maxlength="5" placeholder="Número de camiseta" ng-model="player.numCamiseta"  name="numcamiseta" required>
+                       
                     </label>
+                    <div ng-messages="signinForm.numcamiseta.$error" style="color:maroon" role="alert">
+                        <div ng-message="maxlength">El número de camiseta es demasido largo</div>
+                    </div>
+
                     <div class="item item-divider">Genero:</div>
                     <ul class="list">
                         <li class="item item-checkbox genero-width">

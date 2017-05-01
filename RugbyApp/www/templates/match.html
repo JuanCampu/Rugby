@@ -68,7 +68,7 @@
                         <div class="input-label">
                             <i class="icon ion-ios-americanfootball positive match-icon"></i>
                         </div>
-                        <select ng-click="checkTorneo()" ng-model='match.equipoId2' name="equipo2" required>
+                        <select id="equipo2" ng-click="checkTorneo()" ng-model='match.equipoId2' name="equipo2" required>
                             <option   ng-class="{'team-repeated': (isSelectedTeam(equipo.IdEquipo,1) || isSelectedTeam(equipo.IdEquipo,2)) && (match.equipoId1!='' || match.equipoId2!='' )  }"  ng-repeat="equipo in equipos" value="{{equipo.IdEquipo}}">{{equipo.NombreEquipo}}</option>
                         </select>
                     </label>

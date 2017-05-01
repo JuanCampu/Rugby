@@ -52,7 +52,15 @@ angular.module('starter')
                 data: JSON.stringify($scope.player),
                 cache: false,
             }).then(function (success) {
-                window.alert("Aceptado");
+                //window.alert("Aceptado");
+                $scope.player = {
+                    nombres: "",
+                    apellidos: "",
+                    identificacion: 0,
+                    numCamiseta: 0,
+                    equipoId: "",
+                    genero: 0
+                }; 
             }, function (error) {
                 window.alert(error);
             });

@@ -10,7 +10,7 @@ angular.module('starter')
 
 
         $scope.match = {
-            NombrePartido: "aaaa",
+            NombrePartido: "",
             equipoId1: "",
             equipoId2: "",
             juezPlanillaId: "",
@@ -20,19 +20,19 @@ angular.module('starter')
             torneoId: "",
             tiempoProgramado: new Date(),
             tiempoTotal: new Date(),
-            IdPartido: "da70814e-793a-41d6-84bd-35e1539dd82c",
+            IdPartido: "",
             timeValue: "00:00",
             dateValue: "00-00-0000"
         }
 
 
-        $scope.isSelectedTeam = function (idTeam,numteam) {
+        $scope.isSelectedTeam = function (idTeam, numteam) {
 
             if (numteam == 1 && idTeam == $scope.match.equipoId1) {
                 return true;
             } else if (numteam == 2 && idTeam == $scope.match.equipoId2) {
                 return true;
-            } 
+            }
             return false;
         };
 
@@ -79,15 +79,14 @@ angular.module('starter')
         };
 
         $scope.showPopup = function () {
-            console.log($scope.match.timeValue);
-           
             if (!($scope.signinForm.$valid)) {
                 alert("Favor llene todos los campos requeridos");
                 return;
-            } else if (($("#horaPartido").text()) == "00:00" || ($("#fechaPartido").text()) == "00-00-0000") {  
+            } else if (($("#horaPartido").text()) == "00:00" || ($("#fechaPartido").text()) == "00-00-0000") {
                 alert("Revise los campos hora y fecha");
                 return;
-            } 
+            }
+            $scope.match.NombrePartido = ($("#equipo1").children(":selected").text() + " VS " + $("#equipo2").children(":selected").text());
             var urlPost = $rootScope.APIurl + "api/Partido/AdicionarPartido/";
             $http({
                 method: 'POST',
@@ -96,7 +95,22 @@ angular.module('starter')
                 cache: false,
                 crossDomain: true,
             }).then(function (success) {
-                window.alert("Aceptado");
+                //window.alert("Aceptado");
+                $scope.match = {
+                    NombrePartido: "",
+                    equipoId1: "",
+                    equipoId2: "",
+                    juezPlanillaId: "",
+                    juezCentralId: "",
+                    juezInGoalId1: "",
+                    juezInGoalId2: "",
+                    torneoId: "",
+                    tiempoProgramado: new Date(),
+                    tiempoTotal: new Date(),
+                    IdPartido: "",
+                    timeValue: "00:00",
+                    dateValue: "00-00-0000"
+                }
             }, function (error) {
                 window.alert(error);
             });
