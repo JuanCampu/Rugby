@@ -7,7 +7,19 @@
 angular.module('starter')
 
     .controller('JoinCtrl', function ($scope, $state, $ionicPopup) {
-       
+
+        $scope.solicitud = {
+            nombres: "",
+            apellidos: "",
+            clubId: "",
+            equipoId: "",
+            fechaDeNacimiento: "00:00:0000",
+            identificacion: 0,
+            genero: "",
+            direccion: "",
+            eps: "",
+            foto: ""
+        };
         $scope.items = [
             {
                 avatar: './img/a1.jpg',
