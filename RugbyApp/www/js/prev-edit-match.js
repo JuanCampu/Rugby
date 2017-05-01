@@ -85,6 +85,11 @@ angular.module('starter')
                 alert("Favor llene todos los campos requeridos");
                 return;
             } 
+            $scope.match = {
+
+                torneoId: "",
+                IdPartido: ""
+            }
             $state.go('app.edit-match', { 'partidoId': $("#partidoSelect").children(":selected").attr("value")});
         }
     });

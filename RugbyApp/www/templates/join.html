@@ -5,53 +5,63 @@
     <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" ng-click="stateNav()"></button>
     </ion-nav-buttons>
-    <ion-content class="bg-app-edit light" scroll="false" vertical layout>
-        <div flex>
-            <div class="panel-body">
-                <div class="text-center">
-                    <div style="font-size: 18px">Si quieres ser parte de tu club favorito! Registrate aquí!</div>
-                </div>
-                <div class="profile-img-edit-profile col-xs-5">
-                    <img id="fotoPerfil" ng-src="./img/photo.png" alt="" width="100" height="100" />
-                    <input name="archivoPerfil" id="archivoPerfil" type="file" accept="image/*" style="display:none" capture="filesystem" fileread="solicitud.foto">
-                </div>
-                <div class="form-group input-group col-xs-7 first-custome-edit">
-                    <span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" placeholder="Nombre">
-                </div>
-                <div class="form-group input-group col-xs-7">
-                    <span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" placeholder="Apellido">
-                </div>
-                <div class="form-group input-group col-xs-12">
-                    <span class="input-group-addon"><i class="fa fa-id-card-o" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" placeholder="Cédula">
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="ion ion-ios-americanfootball"></i></span>
-                    <input type="text" class="form-control" placeholder="Club">
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" placeholder="Fecha de Nacimiento">
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="fa fa-home" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" placeholder="Dirección / Barrio ">
-                </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="fa fa-hospital-o" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" placeholder="EPS ">
-                </div>
-                <div class="button-profile" horizontal layout center center-justified>
-                    <button ng-click="goBack()" class="button button-light button-small" horizontal layout center center-justified>
-                        <i  class="ion ion-ios-plus-empty"></i> Cancelar
-                    </button>
-                    <button ng-click="showPopup()" class="button button-light button-small" horizontal layout center center-justified>
-                        <i class="ion ion-ios-plus-empty"></i> Enviar
-                    </button>
+    <form name="signinForm" novalidate="" ng-submit="signIn(signinForm)">
+        <ion-content class="bg-app-edit light" scroll="false" vertical layout>
+            <div flex>
+                <div class="panel-body">
+                    <div class="text-center">
+                        <div style="font-size: 18px">Si quieres ser parte de tu club favorito! Registrate aquí!</div>
+                    </div>
+                    <div class="profile-img-edit-profile col-xs-5" >
+                        <img id="fotoPerfil" ng-src="./img/photo.png" alt="" width="100" height="100" />
+                        <input name="archivoPerfil" id="archivoPerfil" type="file" accept="image/*" style="display:none" capture="filesystem" fileread="solicitud.foto" > 
+                    </div>
+                    <div class="form-group input-group col-xs-7 first-custome-edit" ng-class="{ 'has-error' : signinForm.nombre.$invalid}">
+                        <span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" ng-model="solicitud.nombres" placeholder="Nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group input-group col-xs-7" ng-class="{ 'has-error' : signinForm.nombre.$invalid}">
+                        <span class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" ng-model="solicitud.apellidos" placeholder="Apellido" name="apellido" required>
+                    </div>
+                    <div class="form-group input-group col-xs-12" ng-class="{ 'has-error' : signinForm.cedula.$invalid}">
+                        <span class="input-group-addon"><i class="fa fa-id-card-o" aria-hidden="true"></i></span>
+                        <input type="number" class="form-control" ng-model="solicitud.identificacion" placeholder="Cédula" name="cedula" required>
+                    </div>
+                    <div class="form-group input-group" ng-class="{ 'has-error' : signinForm.club.$invalid}">
+                        <span class="input-group-addon"><i class="ion ion-ios-americanfootball"></i></span>
+                        <select id="clubId" class="form-control"ng-change="obtenerEquipos()"  ng-model="solicitud.clubId" name="club" required>
+                            <option ng-repeat="club in clubes" value="{{club.IdClub}}">{{club.NombreClub}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group" ng-class="{ 'has-error' : signinForm.equipo.$invalid}">
+                        <span class="input-group-addon"><i class="ion ion-ios-americanfootball"></i></span>
+                        <select id="equipoId" class="form-control" ng-model="solicitud.equipoId" name="equipo" required>
+                            <option ng-repeat="equipo in equipos" value="{{equipo.IdEquipo}}">{{equipo.NombreEquipo}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group" ng-class="{ 'has-error' : signinForm.fecha.$invalid}" ion-datetime-picker="" date="" monday-first="" ng-model="solicitud.fechaDeNacimiento" >
+                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        <input type="text" name="fecha" required class="form-control"  value='{{solicitud.fechaDeNacimiento| date: "yyyy-MM-dd"}}' placeholder="Fecha de Nacimiento">
+                    </div>
+                    <div class="form-group input-group" ng-class="{ 'has-error' : signinForm.direccion.$invalid}">
+                        <span class="input-group-addon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                        <input type="text" name="direccion" required class="form-control" ng-model="solicitud.direccion" placeholder="Dirección / Barrio ">
+                    </div>
+                    <div class="form-group input-group" ng-class="{ 'has-error' : signinForm.eps.$invalid}">
+                        <span class="input-group-addon"><i class="fa fa-hospital-o" aria-hidden="true"></i></span>
+                        <input type="text" name="eps" required class="form-control" ng-model="solicitud.eps" placeholder="EPS ">
+                    </div>
+                    <div class="button-profile" horizontal layout center center-justified>
+                        <button ng-click="goBack()" class="button button-light button-small" horizontal layout center center-justified>
+                            <i class="ion ion-ios-plus-empty"></i> Cancelar
+                        </button>
+                        <button ng-click="showPopup()" class="button button-light button-small" horizontal layout center center-justified>
+                            <i class="ion ion-ios-plus-empty"></i> Enviar
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </ion-content>
+        </ion-content>
+    </form>
 </ion-view>

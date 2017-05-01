@@ -6,70 +6,70 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('JoinCtrl', function ($scope, $state, $ionicPopup) {
+    .controller('JoinCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
 
         $scope.solicitud = {
-            nombres: "",
-            apellidos: "",
+            Id: "",
             clubId: "",
             equipoId: "",
-            fechaDeNacimiento: "00:00:0000",
+            fechaDeNacimiento: "",
             identificacion: 0,
-            genero: "",
+            genero: 0,
             direccion: "",
             eps: "",
-            foto: ""
+            foto: "",
+            nombres: "",
+            apellidos: ""
         };
-        $scope.items = [
-            {
-                avatar: './img/a1.jpg',
-                like: '1k',
-                comment: 376,
-                active: true,
-                name: 'Stove'
-            },
-            {
-                avatar: './img/a2.jpg',
-                img: './img/d1.jpg',
-                like: '284',
-                comment: 124,
-                active: false,
-                name: 'Thor'
-            },
-            {
-                avatar: './img/a3.jpg',
-                img: './img/d2.jpg',
-                like: '8k',
-                comment: 422,
-                active: false,
-                name: 'Ninja'
-            },
-            {
-                avatar: './img/a4.jpg',
-                like: '532',
-                comment: 142,
-                active: true,
-                name: 'Kid'
-            },
-            {
-                avatar: './img/a5.png',
-                img: './img/d3.jpg',
-                like: '190k',
-                comment: 5532,
-                active: true,
-                name: 'Zzz'
-            },
-            {
-                avatar: './img/a6.jpg',
-                like: '12k',
-                comment: 376,
-                active: false,
-                name: 'David Bone'
-            }
-        ];
 
+        var url = $rootScope.APIurl + "api/Club/ObtenerClubs";
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.clubes = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta de clubes");
+        });
+        $scope.obtenerEquipos = function () {
+            var urlEquipos = $rootScope.APIurl + "api/Equipo/ObtenerEquipoPorClub/" + $scope.solicitud.clubId;
+
+
+            $http.get(urlEquipos, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+                $scope.equipos = response.data;
+
+            }, function () {
+                window.alert("No se pudo realizar la consulta de clubes");
+            });
+        }
         $scope.showPopup = function () {
-            $scope.data = {}
+            if (!($scope.signinForm.$valid)) {
+                alert("Favor llene todos los campos requeridos");
+                return;
+            }
+            $scope.solicitud.clubId = $("#clubId").children(":selected").attr("value");
+            $scope.solicitud.equipoId = $("#equipoId").children(":selected").attr("value");
+            var urlPost = $rootScope.APIurl + "api/Solicitud/EnviarSolicitud/";
+            $http({
+                method: 'POST',
+                url: urlPost,
+                data: JSON.stringify($scope.solicitud),
+                cache: false,
+            }).then(function (success) {
+                //window.alert("Aceptado");
+                $scope.solicitud = {
+                    nombres: "",
+                    apellidos: "",
+                    clubId: "",
+                    equipoId: "",
+                    fechaDeNacimiento: "00:00:0000",
+                    identificacion: 0,
+                    genero: "",
+                    direccion: "",
+                    eps: "",
+                    foto: ""
+                };
+            }, function (error) {
+                window.alert(error);
+            });
+
 
             // Custom popup
             var myPopup = $ionicPopup.show({
