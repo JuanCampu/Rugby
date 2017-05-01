@@ -45,6 +45,7 @@ angular.module('starter')
       ];
 
       $scope.goNav = function () {
+          localStorage.clubFavorito = "SI";
           $state.go('nav')
       }
       $scope.goBack = function () {

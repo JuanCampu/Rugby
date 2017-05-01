@@ -10,7 +10,7 @@
     <div flex>
       <div class="profile-img">
         <img id="perfilFoto" ng-src="{{juez.foto}}" alt="" width="100" height="100"/>
-        <a class="edit-photo" ng-click="editarImagen()"><i class="ion ion-edit"></i></a>
+        <a class="edit-photo" ng-click="editarImagen()"><i class="ion-plus-round"></i></a>
         <input name="archivoPerfil" id="archivoPerfil"  type="file" accept="image/*" style="display:none" capture="filesystem">
       </div>
       <div class="text-center">
@@ -22,7 +22,7 @@
             No has pitado ningún partido.
         </div>
         <div id="ultimoPartido" class="text-center" style="padding: 20px 25px; display:none">
-            El resultado del último partido acá.
+           {{juez.identificacion}}
         </div>
         <div class="button-profile" horizontal layout center center-justified>
             <button ng-click="changePassword()" class="button button-light button-custome" horizontal layout center center-justified>
@@ -32,16 +32,8 @@
     </div>
     <div class="list-social-profile">
       <div class="item-social-profile" vertical layout center center-justified>
-        <div class="bold">{{juez.experiencia}}</div>
-        <div>Experiencia</div>
-      </div>
-      <div class="item-social-profile" vertical layout center center-justified>
-        <div class="bold">{{juez.edad}}</div>
-        <div>Edad</div>
-      </div>
-      <div class="item-social-profile" vertical layout center center-justified>
-        <div class="bold">{{juez.partidos}}</div>
-        <div>Partidos Pitados</div>
+        <div class="bold">{{juez.fechaDeNacimiento}}</div>
+        <div>Fecha de Nacimiento</div>
       </div>
       <div class="item-social-profile" vertical layout center center-justified>
         <div class="bold">{{juez.email}}</div>
