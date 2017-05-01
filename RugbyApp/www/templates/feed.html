@@ -1,4 +1,4 @@
-<ion-view>
+﻿<ion-view>
   <ion-nav-title>
     Noticias
   </ion-nav-title>
@@ -29,9 +29,8 @@
       </div>
     </div>
     <div class="button-profile-custome" horizontal layout center center-justified>
-        <button type="button" ng-click="refresh()" class="btn btn-primary btn-lg  btn-lg-custome">Cargar m�s</button>
+        <button type="button" ng-click="refresh()" class="btn btn-primary btn-lg  btn-lg-custome">Cargar más</button>
     </div>
   </ion-content>
 </ion-view>
-<<<<<<< HEAD
-<a class="add-news" ng-click="addNews()"><i class="ion ion-edit"></i></a>
+<a class="add-news" ng-click="goToAdd()" ng-show="Rol == 'Admin'"><i class="ion ion-plus"></i></a>
