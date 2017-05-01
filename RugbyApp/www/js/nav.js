@@ -7,7 +7,6 @@
 angular.module('starter')
 
     .controller('NavCtrl', function ($scope, $state, $rootScope) {
-    // go to Nav page
     $scope.goLogOut = function () {
         $rootScope.UserName = null;
         $rootScope.Rol = null;

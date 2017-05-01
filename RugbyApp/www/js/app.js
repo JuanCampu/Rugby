@@ -55,7 +55,15 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
         };
     })
 
-    .run(function ($ionicPlatform, $rootScope, $state, $ionicPickerI18n) {
+    .run(function ($ionicPlatform, $rootScope, $state, $ionicPickerI18n, $location) {
+
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            if (!next.includes("sign") && current.includes("index.html#") && ($rootScope.Invitado == null || $rootScope.Invitado == undefined)) {
+                if ($rootScope.UserName == null || $rootScope.Rol == null) {
+                    $location.path('/inicio');
+                }
+            }
+        });
 
         // Universal values for Date Time Picker
         $ionicPickerI18n.weekdays = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sá"];
@@ -87,6 +95,11 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
               $state.go('nav');
           }
       }
+      $rootScope.goLogOut = function () {
+          $rootScope.UserName = null;
+          $rootScope.Rol = null;
+          $state.go('inicio');
+      };
     });
   })
 

@@ -12,12 +12,13 @@ angular.module('starter')
   .controller('InicioCtrl', function($scope , $state, $rootScope) {
 
     //Crear variable global del API
-      $rootScope.APIurl = "http://localhost:49656/";
+    $rootScope.APIurl = "http://localhost:49656/";
 
     $scope.goSign = function () {
       $state.go('sign')
     }
     $scope.goGuest = function () {
+        $rootScope.Invitado = "Yes";
         if (!(localStorage.clubFavorito)) {
             $state.go('favorite')
         } else {
