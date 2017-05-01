@@ -121,6 +121,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
 
       .state('sign', {
         url: '/sign',
+        cache: false,
         templateUrl: 'templates/sign.html',
         controller: 'SignCtrl'
       })
@@ -180,6 +181,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
 
         .state('app.prev-whistle', {
             url: '/prev-whistle',
+            cache: false,
             views: {
                 'menuContent': {
                     templateUrl: 'templates/prev-whistle.html',
@@ -221,6 +223,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
 
         .state('app.add-players', {
             url: '/add-player',
+            cache: false,
             views: {
                 'menuContent': {
                     templateUrl: 'templates/add-players.html',
@@ -244,6 +247,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
 
         .state('app.pre-edit-match', {
             url: '/pre-edit-match',
+            cache: false,
             views: {
                 'menuContent': {
                     templateUrl: 'templates/prev-edit-match.html',
@@ -255,6 +259,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
 
       .state('app.prev-rank', {
             url: '/prev-rank',
+            cache: false,
             views: {
                 'menuContent': {
                     templateUrl: 'templates/prev-rank.html',
@@ -265,6 +270,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
 
       .state('app.rank', {
             url: '/rank',
+            cache: false,
             views: {
                 'menuContent': {
                     templateUrl: 'templates/rank.html',
@@ -278,6 +284,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
 
       .state('app.prev-score', {
           url: '/prev-score',
+          cache: false,
             views: {
                 'menuContent': {
                     templateUrl: 'templates/prev-score.html',
