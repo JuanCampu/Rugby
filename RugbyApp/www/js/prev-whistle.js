@@ -22,7 +22,7 @@ angular.module('starter')
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
                 title: 'Estado del mensaje',
-                template: 'El partido ha sido prograamado de manera exitosa!',
+                template: 'El partido ha sido programado de manera exitosa!',
                 scope: $scope,
 
                 buttons: [
