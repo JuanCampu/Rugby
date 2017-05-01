@@ -21,6 +21,8 @@ angular.module('starter')
             tiempoProgramado: new Date(),
             tiempoTotal: new Date(),
             IdPartido: "",
+            marcadorEquipo1: -1,
+            marcadorEquipo2: -1,
             timeValue: "00:00",
             dateValue: "00-00-0000"
         }
@@ -108,6 +110,8 @@ angular.module('starter')
                     tiempoProgramado: new Date(),
                     tiempoTotal: new Date(),
                     IdPartido: "",
+                    marcadorEquipo1: -1,
+                    marcadorEquipo2: -1,
                     timeValue: "00:00",
                     dateValue: "00-00-0000"
                 }

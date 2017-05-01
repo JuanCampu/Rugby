@@ -550,8 +550,8 @@ angular.module('starter')
         $scope.team1 = [];
         $scope.team2 = [];
        
-        var clubId2;
-        var clubId1;
+        var equipoId2;
+        var equipoId1;
         var torneoId;
         var cantidadPlayers = 0; //sdfadfa
         var arrayFormatEventList = [];
@@ -574,11 +574,11 @@ angular.module('starter')
         $http.get(url,{
             cache: false
         }).then(function (response) {
-            clubId1 = response.data["clubId1"];
-            clubId2 = response.data["clubId2"];
+            equipoId1 = response.data["equipoId1"];
+            equipoId2 = response.data["equipoId2"];
             torneoId = response.data["torneoId"];
-            $scope.team1 = response.data["jugadoresClub1"];
-            $scope.team2 = response.data["jugadoresClub2"];
+            $scope.team1 = response.data["jugadoresEquipo1"];
+            $scope.team2 = response.data["jugadoresEquipo2"];
             $scope.pastFaults = [];
             localStorage.eventosClub1 = "";
             localStorage.eventosClub2 = "";
@@ -660,7 +660,7 @@ angular.module('starter')
                     listFaults[key] =
                         {
                             "NA": arrayEvents[key][0]["nombreCompleto"],
-                            "NC": $scope.team1[key]["numCamiseta"], 
+                            "NC": $scope.team2[key]["numCamiseta"], 
                             "TR": 0,
                             "TA": 0,
                             "TT": 0,   
@@ -701,11 +701,11 @@ angular.module('starter')
                 return;
             var data = {
                 "partidoId": $state.params.partidoId,
-                "marcadorClub1": 0,
+                "marcadorEquipo1": $scope.scoreTeam1,
                 "torneoId": torneoId,
-                "clubId1": clubId1,
-                "clubId2": clubId2,
-                "marcadorClub2": 1,
+                "equipoId1": equipoId1,
+                "equipoId2": equipoId2,
+                "marcadorEquipo2": $scope.scoreTeam2,
                 "amonestacionesClub1": localStorage.amonestacionesClub1,
                 "amonestacionesClub2": localStorage.amonestacionesClub2,
                 "jugadasClub1": localStorage.eventosClub1,
