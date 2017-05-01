@@ -660,7 +660,7 @@ angular.module('starter')
                     listFaults[key] =
                         {
                             "NA": arrayEvents[key][0]["nombreCompleto"],
-                            "NC": $scope.team1[key]["numCamiseta"], 
+                            "NC": $scope.team2[key]["numCamiseta"], 
                             "TR": 0,
                             "TA": 0,
                             "TT": 0,   
