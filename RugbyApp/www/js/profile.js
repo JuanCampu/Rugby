@@ -6,7 +6,37 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('ProfileCtrl', function ($scope, $http, $rootScope, $state, $ionicPopup) {
+    .controller('ProfileCtrl', function ($scope, $http, $rootScope, $state, $ionicPopup, $ionicLoading) {
+
+        $("#archivoPerfil").change(function () {
+            var input = this;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $ionicLoading.show({
+                        template: '<p>Actualizando...</p><ion-spinner></ion-spinner>'
+                    });
+                    var data = {
+                        userName: $rootScope.UserName,
+                        foto: e.target.result
+                    };
+                    var urlPost = $rootScope.APIurl + "api/Juez/CambiarFoto/";
+                    $http({
+                        method: 'POST',
+                        url: urlPost,
+                        data: JSON.stringify(data),
+                        cache: false,
+                    }).then(function () {
+                        $("#perfilFoto").attr('src', e.target.result);
+                        $ionicLoading.hide();
+                    });
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+        $scope.editarImagen = function () {
+            $("#archivoPerfil").click();
+        };
 
         $scope.changePassword = function () {
             $scope.data = {}
@@ -61,55 +91,6 @@ angular.module('starter')
         } else {
             $state.go('sign');
         }
-    $scope.items = [
-      {
-        avatar: './img/a1.jpg',
-        like: '1k',
-        comment: 376,
-        active: true,
-        name: 'Stove'
-      },
-      {
-        avatar: './img/a2.jpg',
-        img: './img/d1.jpg',
-        like: '284',
-        comment: 124,
-        active: false,
-        name: 'Thor'
-      },
-      {
-        avatar: './img/a3.jpg',
-        img: './img/d2.jpg',
-        like: '8k',
-        comment: 422,
-        active: false,
-        name: 'Ninja'
-      },
-      {
-        avatar: './img/a4.jpg',
-        like: '532',
-        comment: 142,
-        active: true,
-        name: 'Kid'
-      },
-      {
-        avatar: './img/a5.png',
-        img: './img/d3.jpg',
-        like: '190k',
-        comment: 5532,
-        active: true,
-        name: 'Zzz'
-      },
-      {
-        avatar: './img/a6.jpg',
-        like: '12k',
-        comment: 376,
-        active: false,
-        name: 'David Bone'
-      }
-        ]
-
-
 
   });
 

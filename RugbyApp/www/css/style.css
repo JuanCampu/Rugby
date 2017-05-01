@@ -261,6 +261,37 @@ label.item.valid-lr {
   color: #173865;
   background-color: #fff !important;
 }
+
+.edit-photo {
+  position: fixed;
+  z-index: 999;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  border: 1px solid #173865;
+  background-color: #173865;
+  box-shadow: 0 0 5px #173865;
+}
+.edit-photo :active {
+  color: #173865;
+  background-color: #fff !important;
+}
+.edit-photo :hover {
+  color: #fff;
+  background-color: #173865 !important;
+}
+.edit-photo .activated {
+  color: #173865;
+  background-color: #fff !important;
+}
+
+
+
+
+
 .modal-open .modal {
   display: block !important;
 }

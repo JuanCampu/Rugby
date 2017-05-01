@@ -9,9 +9,10 @@
   <ion-content class="bg-app light" scroll="false" vertical layout>
     <div flex>
       <div class="profile-img">
-        <img ng-src="./img/a2.jpg" alt="" width="100" height="100"/>
+        <img id="perfilFoto" ng-src="{{juez.foto}}" alt="" width="100" height="100"/>
+        <a class="edit-photo" ng-click="editarImagen()"><i class="ion ion-edit"></i></a>
+        <input name="archivoPerfil" id="archivoPerfil"  type="file" accept="image/*" style="display:none" capture="filesystem">
       </div>
-
       <div class="text-center">
         <div style="font-size: 18px">{{juez.nombres}} {{juez.apellidos}}</div>
         <div><i class="ion ion-ios-location-outline"></i> {{juez.direccion}}</div>
@@ -29,8 +30,6 @@
             </button>
         </div>
     </div>
-
-
     <div class="list-social-profile">
       <div class="item-social-profile" vertical layout center center-justified>
         <div class="bold">{{juez.experiencia}}</div>
