@@ -31,8 +31,8 @@
                     <div class="input-label">
                         <i class="ion-trophy positive  match-icon"></i>
                     </div>
-                    <select id="partidoSelect">
-                        <option ng-repeat="partido in partidos" value="{{partido.GuidPartido}}">{{partido.NombrePartido}}</option>
+                    <select ng-model='match.torneoId' id="partidoSelect" ng-change="obtenerPartidosPorIdTorneo()">
+                        <option ng-repeat="torneo in torneos" value="{{torneo.GuidTorneo}}">{{torneo.NombreTorneo}}</option>
                     </select>
                 </label>
                 <div class="item item-divider">Seleccione el partido :</div>
@@ -41,7 +41,7 @@
                         <i class="icon ion-ios-americanfootball-outline positive match-icon"></i>
                     </div>
                     <select id="partidoSelect">
-                        <option ng-repeat="partido in partidos" value="{{partido.GuidPartido}}">{{partido.NombrePartido}}</option>
+                        <option ng-repeat="partido in partidos" value="{{partido.Id}}">{{partido.nombre}}</option>
                     </select>
                 </label>
                                

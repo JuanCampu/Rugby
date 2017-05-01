@@ -15,56 +15,35 @@ angular.module('starter')
         $scope.timeString = "" + (($scope.hours > 12) ? $scope.hours - 12 : $scope.hours);
         $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
         $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
-        $scope.items = [
-            {
-                avatar: './img/a1.jpg',
-                like: '1k',
-                comment: 376,
-                active: true,
-                name: 'Stove'
-            },
-            {
-                avatar: './img/a2.jpg',
-                img: './img/d1.jpg',
-                like: '284',
-                comment: 124,
-                active: false,
-                name: 'Thor'
-            },
-            {
-                avatar: './img/a3.jpg',
-                img: './img/d2.jpg',
-                like: '8k',
-                comment: 422,
-                active: false,
-                name: 'Ninja'
-            },
-            {
-                avatar: './img/a4.jpg',
-                like: '532',
-                comment: 142,
-                active: true,
-                name: 'Kid'
-            },
-            {
-                avatar: './img/a5.png',
-                img: './img/d3.jpg',
-                like: '190k',
-                comment: 5532,
-                active: true,
-                name: 'Zzz'
-            },
-            {
-                avatar: './img/a6.jpg',
-                like: '12k',
-                comment: 376,
-                active: false,
-                name: 'David Bone'
-            }
-        ];
+
+        $scope.match = {
+           
+            torneoId: "",
+            IdPartido: ""
+        }
+
+        var url = $rootScope.APIurl + "api/Torneo/ObtenerTorneos/";
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.torneos = response.data;
+        }, function () {
+            window.alert("No se pudo realizar la consulta");
+        });
+
+        $scope.obtenerPartidosPorIdTorneo = function () {
+            var url = $rootScope.APIurl + "api/Partido/ObtenerPartidosPorTorneo?torneoId=" + $scope.match.torneoId;
+            $http({
+                method: 'GET',
+                url: url,
+                cache: false,
+            }).then(function (success) {
+                $scope.partidos = success.data;
+            }, function (error) {
+                window.alert(error);
+            });
+
+        };
 
         $scope.showPopup = function () {
-            $scope.data = {}
 
             var myPopup = $ionicPopup.show({
                 template: '<input type = "text" ng-model = "data.model">',
