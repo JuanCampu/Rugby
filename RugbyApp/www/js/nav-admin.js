@@ -98,13 +98,5 @@ angular.module('starter')
     $scope.goFeed = function () {
       $state.go('app.feed')
     }
-
-    //Log out Method
-    $scope.goLogOut = function () {
-        $rootScope.UserName = null;
-        $rootScope.Rol = null;
-        $state.go('inicio');
-    };
-
   });
 
