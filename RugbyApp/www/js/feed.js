@@ -17,7 +17,7 @@ angular.module('starter')
             $scope.noticias = response.data;
             $ionicLoading.hide();
         });
-        $scope.refresh = function() {
+        $scope.cargarMas = function() {
             $ionicLoading.show({
                 template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
             });
@@ -32,6 +32,18 @@ angular.module('starter')
         }
         $scope.goToAdd = function () {
             $state.go('app.add-news');
+        }
+        $scope.refresh = function () {
+            $ionicLoading.show({
+                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+            });
+            $scope.noticias = []
+            cantidad = 0;
+            var url = $rootScope.APIurl + "api/Noticia/ObtenerNoticias?start=" + cantidad;
+            $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+                $scope.noticias = response.data;
+                $ionicLoading.hide();
+            });
         }
   });
 

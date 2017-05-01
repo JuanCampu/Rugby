@@ -7,11 +7,6 @@
 angular.module('starter')
 
     .controller('NavCtrl', function ($scope, $state, $rootScope) {
-
-    $scope.goFeed = function () {
-      $state.go('app.feed')
-    }
-
     // go to Nav page
     $scope.goLogOut = function () {
         $rootScope.UserName = null;
