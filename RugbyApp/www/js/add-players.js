@@ -40,6 +40,20 @@ angular.module('starter')
             genero: 0
         };
 
+        $scope.checkGenero = function (genero) {
+            if (genero == 0) {
+                if ($('input#womanCheck').is(':checked')) {
+                    $('#womanCheck').attr('checked', false);
+                }
+                $scope.player.genero = 0;
+            } else {
+                if ($('input#manCheck').is(':checked')) {
+                    $('#manCheck').attr('checked', false);
+                }
+                $scope.player.genero = 1;
+            }
+        };
+
         $scope.showPopup = function () {
             if (!($scope.signinForm.$valid)) {
                 alert("Favor llene todos los campos requeridos");
@@ -60,7 +74,10 @@ angular.module('starter')
                     numCamiseta: 0,
                     equipoId: "",
                     genero: 0
-                }; 
+                };
+                $('#womanCheck').attr('checked', false);
+                $('#manCheck').attr('checked', false);
+
             }, function (error) {
                 window.alert(error);
             });
