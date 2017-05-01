@@ -11,7 +11,18 @@ angular.module('starter')
          * if given group is the selected group, deselect it
          * else, select the given group
          */
+        $scope.team1 = [];
+        $scope.team2 = [];
 
+        var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/" + $state.params.partidoId;
+
+        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+            $scope.team1 = response.data["jugadoresEquipo1"];
+            $scope.team2 = response.data["jugadoresEquipo2"];
+
+        }, function () {
+            window.alert("No se pudo realizar la consulta");
+        });
         /*******************************************************************
         ********************************************************************
 

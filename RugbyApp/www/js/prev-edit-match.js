@@ -92,5 +92,12 @@ angular.module('starter')
             }
             $state.go('app.edit-match', { 'partidoId': $("#partidoSelect").children(":selected").attr("value")});
         }
+
+
+
+     
+     
+
+
     });
 

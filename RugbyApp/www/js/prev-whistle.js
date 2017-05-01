@@ -30,10 +30,33 @@
                 console.log('Tapped!', res);
             });
         };
+
+
+        $scope.noSeTienenPartidos = function () {
+            $scope.data = {}
+
+            var myPopup = $ionicPopup.show({
+                template: '<input type = "text" ng-model = "data.model">',
+                title: 'Estado del mensaje',
+                template: 'El partido ha sido prograamado de manera exitosa!',
+                scope: $scope,
+
+                buttons: [
+                    {
+                        text: '<b>Cerrar</b>',
+                        type: 'button-positive'
+                    }
+                ]
+            });
+            myPopup.then(function (res) {
+                console.log('Tapped!', res);
+            });
+        };
         
         var url = $rootScope.APIurl + "api/Juez/ObtenerPartidos/" + $rootScope.UserName;
         $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
             $scope.partidos = response.data;
+
         }, function () {
             window.alert("No se pudo realizar la consulta");
         });

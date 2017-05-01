@@ -32,7 +32,7 @@
                         <div class="input-label">
                             <i class="ion-trophy positive  match-icon"></i>
                         </div>
-                        <select ng-model='match.torneoId' id="partidoSelect" ng-change="obtenerPartidosPorIdTorneo()" name="torneo" required>
+                        <select ng-model='match.torneoId' id="torneoSelect" ng-change="obtenerPartidosPorIdTorneo()" name="torneo" required>
                             <option ng-repeat="torneo in torneos" value="{{torneo.GuidTorneo}}">{{torneo.NombreTorneo}}</option>
                         </select>
                     </label>
