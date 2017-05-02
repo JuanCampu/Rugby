@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('AddUseCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+    .controller('AddUseCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope, $ionicLoading) {
 
         $scope.user = {
             nombres: "",
@@ -40,6 +40,9 @@ angular.module('starter')
                 alert("Favor llene todos los campos requeridos");
                 return;
             } 
+            $ionicLoading.show({
+                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+            });
             $scope.data = {}
             var urlPost = $rootScope.APIurl + "api/Usuario/CrearUsuario";
             $http({
@@ -62,27 +65,29 @@ angular.module('starter')
             userName:"",
         }
                 $("#infoJuez").hide();
+                $ionicLoading.hide();
+                var myPopup = $ionicPopup.show({
+                    template: '<input type = "text" ng-model = "data.model">',
+                    title: 'Agregar Usuario',
+                    template: '!El usuario ha sido creado¡',
+                    scope: $scope,
+
+                    buttons: [
+                        {
+                            text: '<b>Cerrar</b>',
+                            type: 'button-positive'
+                        }
+                    ]
+                });
+
+                myPopup.then(function (res) {
+                    console.log('Tapped!', res);
+                });
             }, function (error) {
                 window.alert(error);
             });
             // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'Agregar Usuario',
-                template: '!El usuario ha sido creado¡',
-                scope: $scope,
-
-                buttons: [
-                    {
-                        text: '<b>Cerrar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
+         
         };
 
         // go to Nav page

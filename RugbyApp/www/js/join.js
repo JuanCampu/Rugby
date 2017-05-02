@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('JoinCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+    .controller('JoinCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope, $ionicLoading) {
 
         $scope.solicitud = {
             Id: "",
@@ -44,6 +44,9 @@ angular.module('starter')
                 alert("Favor llene todos los campos requeridos");
                 return;
             }
+            $ionicLoading.show({
+                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+            });
             $scope.solicitud.clubId = $("#clubId").children(":selected").attr("value");
             $scope.solicitud.equipoId = $("#equipoId").children(":selected").attr("value");
             var urlPost = $rootScope.APIurl + "api/Solicitud/EnviarSolicitud/";
@@ -54,6 +57,7 @@ angular.module('starter')
                 cache: false,
             }).then(function (success) {
                 //window.alert("Aceptado");
+                $ionicLoading.hide();
                 $scope.solicitud = {
                     nombres: "",
                     apellidos: "",
@@ -66,25 +70,26 @@ angular.module('starter')
                     eps: "",
                     foto: ""
                 };
+                var myPopup = $ionicPopup.show({
+                    template: '<input type = "text" ng-model = "data.model">',
+                    title: 'Estado del mensaje',
+                    template: '!Su solicitud ha sido enviada de manera exitosa',
+                    scope: $scope,
+
+                    buttons: [
+                        {
+                            text: '<b>Cerrar</b>',
+                            type: 'button-positive'
+                        }
+                    ]
+                });
             }, function (error) {
                 window.alert(error);
             });
 
 
             // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'Estado del mensaje',
-                template: '!Su solicitud ha sido enviada de manera exitosa',
-                scope: $scope,
-
-                buttons: [
-                    {
-                        text: '<b>Cerrar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
+          
 
             myPopup.then(function (res) {
                 console.log('Tapped!', res);

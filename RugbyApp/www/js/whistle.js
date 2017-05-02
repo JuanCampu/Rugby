@@ -48,9 +48,6 @@ angular.module('starter')
         ********************************************************************/
         $scope.toggleGroup = function (group, type) {
 
-            if ((checkMatchStart()) == true)
-                return;
-          
             if (type == 1) {
                 if ($scope.isGroupShown(group,type)) {
                   
@@ -549,6 +546,10 @@ angular.module('starter')
 
         $scope.team1 = [];
         $scope.team2 = [];
+        $scope.logoClub1 = "";
+        $scope.logoClub1 = "";
+        $scope.nombreEquipo1 = "";
+        $scope.nombreEquipo2 = "";
        
         var equipoId2;
         var equipoId1;
@@ -576,9 +577,13 @@ angular.module('starter')
         }).then(function (response) {
             equipoId1 = response.data["equipoId1"];
             equipoId2 = response.data["equipoId2"];
+            $scope.logoClub1 = response.data["logoClub1"];
+            $scope.logoClub2 = response.data["logoClub2"];
             torneoId = response.data["torneoId"];
             $scope.team1 = response.data["jugadoresEquipo1"];
             $scope.team2 = response.data["jugadoresEquipo2"];
+            $scope.nombreEquipo1 = response.data["nombreEquipo1"];
+            $scope.nombreEquipo2 = response.data["nombreEquipo2"];
             $scope.pastFaults = [];
             localStorage.eventosClub1 = "";
             localStorage.eventosClub2 = "";

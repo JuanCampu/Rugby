@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('AddPlaCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+    .controller('AddPlaCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope, $ionicLoading) {
 
         var url = $rootScope.APIurl + "api/Club/ObtenerClubs";
         $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
@@ -59,6 +59,9 @@ angular.module('starter')
                 alert("Favor llene todos los campos requeridos");
                 return;
             }
+            $ionicLoading.show({
+                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+            });
             var urlPost = $rootScope.APIurl + "api/Usuario/AdicionarJugador";
             $http({
                 method: 'POST',
@@ -75,31 +78,33 @@ angular.module('starter')
                     equipoId: "",
                     genero: 0
                 };
+                $ionicLoading.hide();
                 $('#womanCheck').attr('checked', false);
                 $('#manCheck').attr('checked', false);
+                // Custom popup
+                var myPopup = $ionicPopup.show({
+                    template: '<input type = "text" ng-model = "data.model">',
+                    title: 'Agregar Usuario',
+                    template: '!El usuario ha sido creado¡',
+                    scope: $scope,
+
+                    buttons: [
+                        {
+                            text: '<b>Cerrar</b>',
+                            type: 'button-positive'
+                        }
+                    ]
+                });
+
+                myPopup.then(function (res) {
+                    console.log('Tapped!', res);
+                });
 
             }, function (error) {
                 window.alert(error);
             });
 
-            // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'Agregar Usuario',
-                template: '!El usuario ha sido creado¡',
-                scope: $scope,
-
-                buttons: [
-                    {
-                        text: '<b>Cerrar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
+           
         };
 
         // go to Nav page

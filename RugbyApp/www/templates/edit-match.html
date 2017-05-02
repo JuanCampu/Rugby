@@ -58,14 +58,16 @@
                                                         <th>GC</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody ng-repeat="(key ,jugador) in team1">
+                                                <tbody ng-repeat="jugador in team1" ng-init="parentIndex = $index">
                                                     <tr>
                                                         <td>{{jugador.nombres}}&nbsp;{{jugador.apellidos}}</td>
                                                         <td ng-repeat="jugada  in jugador.jugadas track by $index">
-
-                                                            <ionic-numberpicker id="number3" input-obj="numberPickerObject">
-                                                                <input type="text" id="#" class="item-edit-texbox" value="{{jugada}}">
-                                                            </ionic-numberpicker>
+                                                           
+                                                          
+                                                                <input type="number" ng-click="setNumber($event)" class="item-edit-texbox" ng-model='team1[$parent.$index]["jugadas"][$index]'>
+                                                            
+                                                                
+                                                            
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -74,6 +76,8 @@
                                     </div>
                                 </div>
                             </ion-item>
+                            <ionic-numberpicker id="myselector" input-obj="numberPickerObject">
+                            </ionic-numberpicker>
                             <ion-item class="item-stable"
                                       ng-click="toggleGroup('past-fault-team-one',2)"
                                       ng-class="{active: isGroupShown('past-fault-team-one',2)}">
@@ -242,7 +246,7 @@
     </ion-content>
     <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
         <div class="button-profile col-xs-6" horizontal layout center center-justified>
-            <button type="button" class="btn btn-danger" >Finalizar Edición</button>
+            <button type="button" ng-click="showme()" class="btn btn-danger" >Finalizar Edición</button>
         </div>
         
 

@@ -8,8 +8,13 @@ label.item.has-error {
     border-bottom: 2px solid red;
 }
 
+.text-center-title {
+    text-align:center!important;
+}
+
+
 .team-repeated {
-    display:none;
+    display: none;
 }
 /** Styling for the password field when an error exists**/
 label.item.has-error-lr {
@@ -124,7 +129,7 @@ label.item.valid-lr {
 @media (max-width: 1500px) and (orientation : portrait) {
     .great-family-first {
         font-family: Stencil;
-        font-size: 50px !important;
+        font-size: 2em;
         margin-top: 12%;
         font-weight: bold;
         text-align: center;
@@ -134,7 +139,7 @@ label.item.valid-lr {
 @media (max-width: 1700px) and (orientation : landscape) {
     .great-family-first {
         font-family: Stencil;
-        font-size: 50px !important;
+        font-size: 2em;
         margin-top: 5%;
         font-weight: bold;
         text-align: center;
@@ -142,7 +147,7 @@ label.item.valid-lr {
 }
 .great-family-second {
     font-family: Stencil;
-    font-size: 50px !important;
+    font-size: 2em;
     color: #c10000;
     font-weight: bold;
     text-align: center;

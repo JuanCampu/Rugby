@@ -5,6 +5,12 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ionic-numberpicker', 'ionic-numberpicker.templates', 'timer', 'ngMessages'])
+    .filter('iif', function () {
+        return function (input, trueValue, falseValue) {
+            return input ? trueValue : falseValue;
+        };
+    })
+
     .directive("fileread", [function () {
         return {
             scope: {
@@ -294,7 +300,8 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
       })
 
       .state('app.score', {
-        url: '/score',
+          url: '/score',
+          cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/score.html',

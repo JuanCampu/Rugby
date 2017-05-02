@@ -6,11 +6,27 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('EdiMatCtrl', function ($scope, $state, $ionicPopup,  $http, $rootScope) {
-                /*
-         * if given group is the selected group, deselect it
-         * else, select the given group
-         */
+    .controller('EdiMatCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+
+
+        $scope.showme = function () {
+            var s = "";
+            for (var jugador = 0; jugador < $scope.team1.length; jugador++) {
+                for (var jugadas = 0; jugadas < $scope.team1[i]["jugadas"].length; jugadas++) {
+                    //s = s + i + ": " + $scope.team1[i]["jugadas"][jugadas] + "\n";
+                }
+            }
+            alert(s);
+        };
+
+
+        /*******************************************************************
+        ********************************************************************
+
+        Obtener Informacion Partido - Traer la información del partido seleccionado.
+
+        ********************************************************************
+        ********************************************************************/
 
         var editMatch = [0, 0, 0, 0, 0,0];
 
@@ -54,7 +70,18 @@ angular.module('starter')
                 editMatch = [0, 0, 0, 0, 0, 0];
             }; 
         }
+        /*******************************************************************
+        ********************************************************************
 
+        End - obtener partido seccción .
+
+        ********************************************************************
+        ********************************************************************/
+        
+        $scope.setNumber = function (e) {
+            $scope.numberPickerObject.inputValue = e.currentTarget.value;
+            $("#myselector").trigger("click");
+        };
         /*******************************************************************
         ********************************************************************
 
@@ -119,7 +146,7 @@ angular.module('starter')
         /*******************************************************************
         ********************************************************************
 
-        End Date Section.
+        Number Picker -PopUp para cambair los valores de los eventos
 
         ********************************************************************
         ********************************************************************/
@@ -132,6 +159,7 @@ angular.module('starter')
 
             }
         }
+
 
 
 
@@ -148,20 +176,10 @@ angular.module('starter')
             setButtonType: 'button-positive',  //Optional 
             closeButtonType: 'button-stable',  //Optional 
             callback: function (val) {    //Mandatory 
-                $(this).text(val);
+                $scope.itemJugada = val;
                 timePickerCallback(val);
             }
         };
-
-
-   
-
-
-
-      
-       
-    });
-
 
         /*******************************************************************
         ********************************************************************
@@ -169,4 +187,11 @@ angular.module('starter')
        End - Function Finalizar partdio
 |
         ********************************************************************
-        ********************************************************************/
+        ********************************************************************/   
+    });
+
+
+
+
+
+      

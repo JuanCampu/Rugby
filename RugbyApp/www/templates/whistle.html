@@ -18,12 +18,12 @@
         <div horizontal layout center center-justified style="padding: 10px 0">
             <span class="match-team-icon-left">{{scoreTeam1}}</span>
             <div class="draft-club-list text-center">
-                <img ng-src="./img/c1.jpg" alt="" />
+                <img ng-src="{{logoClub1}}" alt="" />
                
             </div>
             <div>VS</div>
             <div class="draft-club-list text-center">
-                <img ng-src="./img/c11.jpg" alt="" />
+                <img ng-src="{{logoClub2}}" alt="" />
             </div>
             <span class="match-team-icon-rigth">{{scoreTeam2}}</span>
         </div>
@@ -41,11 +41,13 @@
                           
 
                             <div class="form-group col-xs-6" horizontal layout center center-justified>
-                                <label center center-justified for="disabledSelect">Alianza</label>
+                                <label class="text-center-title" center center-justified for="disabledSelect">{{nombreEquipo1}}</label>
                             </div>
+                            <br />
                             <div class="form-group col-xs-6 " horizontal layout center center-justified>
-                                <label center center-justified for="disabledSelect">Azules</label>
+                                <label  class="text-center-title" center center-justified for="disabledSelect">{{nombreEquipo2}}</label>
                             </div>
+                            <br />
                             <div class="form-group col-xs-6 form-group-left-match">
                                 <div class="form-group form-group-left-match-select">
                                     <label>Selecciones el evento</label>
@@ -76,8 +78,7 @@
                                             </li>
                                         </div>
                                     </ul>
-                                    <ionic-numberpicker id="number3" input-obj="numberPickerObject">
-                                    </ionic-numberpicker>
+                                   
                                 </div>
                             </div>
                         </div>

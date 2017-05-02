@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('MatchCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+    .controller('MatchCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope, $ionicLoading) {
 
 
         $scope.match = {
@@ -65,20 +65,19 @@ angular.module('starter')
         }, function () {
             window.alert("No se pudo realizar la consulta");
         });
-        $scope.obtenerEquiposPorIdTorneo = function () {
-            var url = $rootScope.APIurl + "api/Equipo/ObtenerEquipoPorTorneo?torneoId=" + $scope.match.torneoId;
 
-            $http({
-                method: 'GET',
-                url: url,
-                cache: false,
-            }).then(function (success) {
-                $scope.equipos = success.data;
-            }, function (error) {
-                window.alert(error);
-            });
+        var url = $rootScope.APIurl + "api/Equipo/ObtenerEquipos";
 
-        };
+        $http({
+            method: 'GET',
+            url: url,
+            cache: false,
+        }).then(function (success) {
+            $scope.equipos = success.data;
+        }, function (error) {
+            window.alert(error);
+        });
+     
 
         $scope.showPopup = function () {
             if (!($scope.signinForm.$valid)) {
@@ -88,6 +87,9 @@ angular.module('starter')
                 alert("Revise los campos hora y fecha");
                 return;
             }
+            $ionicLoading.show({
+                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+            });
             $scope.match.NombrePartido = ($("#equipo1").children(":selected").text() + " VS " + $("#equipo2").children(":selected").text());
             var urlPost = $rootScope.APIurl + "api/Partido/AdicionarPartido/";
             $http({
@@ -115,27 +117,29 @@ angular.module('starter')
                     timeValue: "00:00",
                     dateValue: "00-00-0000"
                 }
+                $ionicLoading.hide();
+                var myPopup = $ionicPopup.show({
+                    template: '<input type = "text" ng-model = "data.model">',
+                    title: 'Estado del mensaje',
+                    template: '!El partido ha sido prograamado de manera exitosa',
+                    scope: $scope,
+
+                    buttons: [
+                        {
+                            text: '<b>Cerrar</b>',
+                            type: 'button-positive'
+                        }
+                    ]
+                });
+
+                myPopup.then(function (res) {
+                    console.log('Tapped!', res);
+                });
             }, function (error) {
                 window.alert(error);
             });
             // Custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<input type = "text" ng-model = "data.model">',
-                title: 'Estado del mensaje',
-                template: '!El partido ha sido prograamado de manera exitosa',
-                scope: $scope,
-
-                buttons: [
-                    {
-                        text: '<b>Cerrar</b>',
-                        type: 'button-positive'
-                    }
-                ]
-            });
-
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
+           
         };
 
 

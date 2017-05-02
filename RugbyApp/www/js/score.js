@@ -6,64 +6,23 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-  .controller('ScoreCtrl', function($scope) {
+    .controller('ScoreCtrl', function ($scope, $rootScope, $http, $ionicLoading, $state) {
+        $ionicLoading.show({
+            template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+        });
+      var url = $rootScope.APIurl + "api/Partido/ObtenerPartidosMiClubFavorito?clubId=" + localStorage.clubFavorito;
+      $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
+          $scope.partidos = response.data;
+          if ($scope.partidos == 0) {
+              alert("Lo sentimos, no se encuentran partidos para este club!");
+              $ionicLoading.hide();
+              //$state.go('nav');
+          }
+          $ionicLoading.hide();
+      }, function () {
+          window.alert("No se pudo realizar la consulta de clubes");
+      });
 
-    $scope.items = [
-      {
-        logo1: './img/c1.jpg',
-        logo2: './img/c2.jpg',
-        name1: 'ALIANZA',
-        name2: 'JAGUAR',
-        score1: 21,
-        score2: 0,
-        isFinal: false
-      },
-      {
-        logo1: './img/c3.jpg',
-        logo2: './img/c6.jpg',
-        name1: 'WAS',
-        name2: 'ARI',
-        score1: 14,
-        score2: 3,
-        isFinal: false
-      },
-      {
-        logo1: './img/c10.jpg',
-        logo2: './img/c11.jpg',
-        name1: 'CLE',
-        name2: 'NYG',
-        score1: 7,
-        score2: 8,
-        isFinal: false
-      },
-      {
-        logo1: './img/c14.jpg',
-        logo2: './img/c2.jpg',
-        name1: 'DAL',
-        name2: 'CIN',
-        score1: 21,
-        score2: 0,
-        isFinal: true
-      },
-      {
-        logo1: './img/c6.jpg',
-        logo2: './img/c11.png',
-        name1: 'WAS',
-        name2: 'ARI',
-        score1: 14,
-        score2: 3,
-        isFinal: false
-      },
-      {
-        logo1: './img/c2.jpg',
-        logo2: './img/c11.jpg',
-        name1: 'CLE',
-        name2: 'NYG',
-        score1: 7,
-        score2: 8,
-        isFinal: false
-      }
-    ];
 
   });
 

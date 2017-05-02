@@ -7,25 +7,26 @@
     </button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear ion-ios-americanfootball-outline" ng-click="stateFavorite()"></button>
   </ion-nav-buttons>
   <ion-content class="bg-app p-5 light">
-    <div class="p-5" ng-repeat="item in items">
+    <div class="p-5" ng-repeat="partido in partidos">
       <div class="card-score">
         <div class="header-score" horizontal layout>
-          <div flex class="club-score" horizontal layout center ng-class="{active: item.score1 > item.score2}">
-            <img ng-src="{{item.logo1}}" alt="" width="40" height="40" style="padding: 5px"/>
-            <div class="bold" flex>{{item.name1}}</div>
-            <div class="bold padding">{{item.score1}}</div>
+          <div flex class="club-score" horizontal layout center ng-class="{active: partido.marcadorEquipo1 > partido.marcadorEquipo2}">
+            <img ng-src="{{partido.logoEquipo1}}" alt="" width="40" height="40" style="padding: 5px"/>
+            <div class="bold" flex>{{partido.nombreEquipo1}}</div>
+            <div class="bold padding"> {{partido.marcadorEquipo1 <= 0| iif : "0" : partido.marcadorEquipo1}}</div>
           </div>
-          <div flex class="club-score" horizontal layout center ng-class="{active: item.score1 < item.score2}">
-            <div class="bold padding">{{item.score2}}</div>
-            <div class="bold" flex horizontal layout end-justified>{{item.name2}}</div>
-            <img ng-src="{{item.logo2}}" alt="" width="40" height="40" style="padding: 5px"/>
+          <div flex class="club-score" horizontal layout center ng-class="{active: partido.marcadorEquipo1 < partido.marcadorEquipo2}">
+            <div class="bold padding">{{partido.marcadorEquipo2 <= 0| iif : "0" : partido.marcadorEquipo2}}</div>
+            <div class="bold" flex horizontal layout end-justified>{{partido.nombreEquipo2}}</div>
+            <img ng-src="{{partido.logoEquipo2}}" alt="" width="40" height="40" style="padding: 5px"/>
           </div>
         </div>
         <div class="content-score text-gray" ng-if="!item.isFinal">
           <div class="padding text-center">
-            4th 05:26
+            {{partido.tiempoProgramado | date:'yyyy-MM-dd hh:mm a'}}
           </div>
          
         
