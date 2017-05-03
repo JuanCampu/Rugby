@@ -28,17 +28,20 @@ angular.module('starter')
         ********************************************************************
         ********************************************************************/
 
-        var editMatch = [0, 0, 0, 0, 0,0];
+        var editMatch = [0, 0, 0, 0, 0, 0];
+        var editAmonestaciones = [0, 0, 0];
 
         $scope.team1 = [];
         $scope.team2 = [];
 
-        var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/" + $state.params.partidoId;
+        var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/?partidoId=" + $state.params.partidoId+"&actual=1";
       
         $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
 
             var jugadasJugador = [];
+            var amonestacionsJugador = [];
             var tipoJugada = 0;
+            var tipoJugadaAmo = 0;
 
             $scope.team1 = response.data["jugadoresEquipo1"];
             $scope.team2 = response.data["jugadoresEquipo2"];
@@ -54,6 +57,7 @@ angular.module('starter')
         function setJugadasPorTeam(team,teamId) {
             for (var keyJugador in team) {
                 jugadasJugador = team[keyJugador]["jugadas"];
+                amonestacionesJugador = team[keyJugador]["amonestaciones"];
                 for (var keyJugada in jugadasJugador) {
                     tipoJugada = jugadasJugador[keyJugada]["tipoJugada"];
                     for (var i = 0; i < 6; i++) {
@@ -62,12 +66,23 @@ angular.module('starter')
                         };
                     };
                 };
+                for (var keyAmonestacion in amonestacionesJugador) {
+                    tipoJugadaA = amonestacionesJugador[keyAmonestacion]["tipoJugada"];
+                    for (var i = 0; i < 3; i++) {
+                        if (tipoJugadaA == i) {
+                            editAmonestaciones[i] += 1;
+                        };
+                    };
+                };
                 if (teamId == 1) {
                     $scope.team1[keyJugador]["jugadas"] = editMatch;
+                    $scope.team1[keyJugador]["amonestaciones"] = editAmonestaciones;
                 } else {
                     $scope.team2[keyJugador]["jugadas"] = editMatch;
+                    $scope.team2[keyJugador]["amonestaciones"] = editAmonestaciones;
                 } 
                 editMatch = [0, 0, 0, 0, 0, 0];
+                editAmonestaciones = [0, 0, 0];
             }; 
         }
         /*******************************************************************

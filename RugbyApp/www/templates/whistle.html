@@ -193,9 +193,16 @@
                                                             <th>TT</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody ng-repeat="(key ,test) in amonestacionesClub1">
+                                                    <tbody ng-repeat="(key ,jugador1Amo) in team1">
                                                         <tr>
-                                                            <td ng-repeat="t1  in test">{{t1}}</td>
+                                                            <td>{{jugador1Amo.nombres}}&nbsp;{{jugador1Amo.apellidos}}</td>
+                                                            <td>{{jugador1Amo.numCamiseta}}</td>
+                                                            <td ng-repeat="amonesta1  in jugador1Amo.amonestaciones track by $index">
+
+                                                                <ionic-numberpicker id="number3" input-obj="numberPickerObject">
+                                                                    <input type="text" id="#" class="item-edit-texbox" value="{{amonesta1}}">
+                                                                </ionic-numberpicker>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -296,9 +303,16 @@
                                                             <th>TT</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody ng-repeat="(key ,test) in amonestacionesClub2">
+                                                    <tbody ng-repeat="(key ,jugador2Amo) in team2">
                                                         <tr>
-                                                            <td ng-repeat="t1  in test">{{t1}}</td>
+                                                            <td>{{jugador2Amo.nombres}}&nbsp;{{jugador2Amo.apellidos}}</td>
+                                                            <td>{{jugador1Amo.numCamiseta}}</td>
+                                                            <td ng-repeat="amonesta2  in jugador2Amo.amonestaciones track by $index">
+
+                                                                <ionic-numberpicker id="number3" input-obj="numberPickerObject">
+                                                                    <input type="text" id="#" class="item-edit-texbox" value="{{amonesta2}}">
+                                                                </ionic-numberpicker>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

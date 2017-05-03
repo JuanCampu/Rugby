@@ -99,9 +99,16 @@
                                                         <th>TT</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody ng-repeat="(key ,test) in amonestacionesClub1">
+                                                <tbody ng-repeat="(key ,jugador1Amo) in team1">
                                                     <tr>
-                                                        <td ng-repeat="t1  in test">{{t1}}</td>
+                                                        <td>{{jugador1Amo.nombres}}&nbsp;{{jugador1Amo.apellidos}}</td>
+                                                        <td>{{jugador1Amo.numCamiseta}}</td>
+                                                        <td ng-repeat="amonesta1  in jugador1Amo.amonestaciones track by $index">
+
+                                                            <ionic-numberpicker id="number3" input-obj="numberPickerObject">
+                                                                <input type="text" id="#" class="item-edit-texbox" value="{{amonesta1}}">
+                                                            </ionic-numberpicker>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -109,33 +116,7 @@
                                     </div>
                                 </div>
                             </ion-item>
-                            <ion-item class="item-stable"
-                                      ng-click="toggleGroup('current-fault-team-one',2)"
-                                      ng-class="{active: isGroupShown('current-fault-team-one',2)}">
-                                <i class="icon icon-second-level" ng-class="isGroupShown('current-fault-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
-                                &nbsp;
-                                Faltas Actuales
-                            </ion-item>
-                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('current-fault-team-one',2)">
-                                <div class="">
-                                    <div class="panel panel-default">
-                                        <div class="table-responsive table-responsive-custome">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nombres</th>
-                                                        <th>No</th>
-                                                        <th>TR</th>
-                                                        <th>TA</th>
-                                                        <th>TT</th>
-                                                    </tr>
-                                                </thead>
-                                                
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ion-item>
+                           
                         </ion-item>
                         <ion-item class="item-stable" ng-click="toggleGroup('team2',1)" ng-class="{active: isGroupShown(1)}">
                             <i class="icon" ng-class="isGroupShown('team2',1) ? 'ion-minus' : 'ion-plus'"></i>
@@ -203,39 +184,24 @@
                                                         <th>TT</th>
                                                     </tr>
                                                 </thead>
-                                               
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ion-item>
-                            <ion-item class="item-stable"
-                                      ng-click="toggleGroup('current-fault-team-two',2)"
-                                      ng-class="{active: isGroupShown('current-fault-team-two',2)}">
-                                <i class="icon icon-second-level" ng-class="isGroupShown('current-fault-team-two',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
-                                &nbsp;
-                                Faltas Actuales
-                            </ion-item>
-                            <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('current-fault-team-two',2)">
-                                <div class="">
-                                    <div class="panel panel-default">
-                                        <div class="table-responsive table-responsive-custome">
-                                            <table class="table table-striped">
-                                                <thead>
+                                                <tbody ng-repeat="(key ,jugador2Amo) in team2">
                                                     <tr>
-                                                        <th>Nombres</th>
-                                                        <th>No</th>
-                                                        <th>TR</th>
-                                                        <th>TA</th>
-                                                        <th>TT</th>
+                                                        <td>{{jugador2Amo.nombres}}&nbsp;{{jugador2Amo.apellidos}}</td>
+                                                        <td>{{jugador1Amo.numCamiseta}}</td>
+                                                        <td ng-repeat="amonesta2  in jugador2Amo.amonestaciones track by $index">
+
+                                                            <ionic-numberpicker id="number3" input-obj="numberPickerObject">
+                                                                <input type="text" id="#" class="item-edit-texbox" value="{{amonesta2}}">
+                                                            </ionic-numberpicker>
+                                                        </td>
                                                     </tr>
-                                                </thead>
-                                                
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </ion-item>
+                           
                         </ion-item>
                     </div>
                 </ion-list>

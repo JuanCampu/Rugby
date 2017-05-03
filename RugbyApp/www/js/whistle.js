@@ -566,10 +566,12 @@ angular.module('starter')
         var htmlJugadores = "";
         var htmlJugadores2 = "";
         var test = 0;
-        var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/" + $state.params.partidoId;
+        var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/?partidoId=" + $state.params.partidoId;
         var numeroCamiseta = 0;
         var pastFaults = [];
-
+        var amonestacionsJugador = [];
+        var editAmonestaciones = [0, 0, 0];
+        var tipoJugadaAmo = 0;
 
 
         $http.get(url,{
@@ -594,8 +596,30 @@ angular.module('starter')
           
         setTeam($scope.team1, localStorage.eventosClub1, 1, 0, 0);
         setTeam($scope.team2, localStorage.eventosClub2, 2, 0, 0);
+        setJugadasPorTeam($scope.team1, 1);
+        setJugadasPorTeam($scope.team2, 2);
         setFaultList($scope.team1, 1);
         setFaultList($scope.team2, 2);
+        function setJugadasPorTeam(team, teamId) {
+            for (var keyJugador in team) {
+              
+                amonestacionesJugador = team[keyJugador]["amonestaciones"];
+                for (var keyAmonestacion in amonestacionesJugador) {
+                    tipoJugadaA = amonestacionesJugador[keyAmonestacion]["tipoJugada"];
+                    for (var i = 0; i < 3; i++) {
+                        if (tipoJugadaA == i) {
+                            editAmonestaciones[i] += 1;
+                        };
+                    };
+                };
+                if (teamId == 1) {
+                    $scope.team1[keyJugador]["amonestaciones"] = editAmonestaciones;
+                } else {
+                    $scope.team2[keyJugador]["amonestaciones"] = editAmonestaciones;
+                }
+                editAmonestaciones = [0, 0, 0];
+            };
+        }
         function setTeam(team, locStorage, teamId, jugadorIden, eventIden) {
             setTeamVariables(team, locStorage);
             arrayEvents = getArrayEvents(eventList, teamId, jugadorIden, eventIden);
