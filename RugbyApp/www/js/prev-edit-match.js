@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('PrevEdiCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+    .controller('PrevEdiCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope,$ionicLoading) {
         $scope.timeValue = "00:00";
         $scope.dateValue = "0000-00-00";
         $scope.date = new Date();
@@ -21,24 +21,33 @@ angular.module('starter')
             torneoId: "",
             IdPartido: ""
         }
-
+        $ionicLoading.show({
+            template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+        });
         var url = $rootScope.APIurl + "api/Torneo/ObtenerTorneos/";
         $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
             $scope.torneos = response.data;
+            $ionicLoading.hide();
         }, function () {
+            $ionicLoading.hide();
             window.alert("No se pudo realizar la consulta");
         });
 
    
         $scope.obtenerPartidosPorIdTorneo = function () {
+            $ionicLoading.show({
+                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+            });
             var url = $rootScope.APIurl + "api/Partido/ObtenerPartidosPorTorneo?torneoId=" + $scope.match.torneoId;
             $http({
                 method: 'GET',
                 url: url,
                 cache: false,
             }).then(function (success) {
+                $ionicLoading.hide();
                 $scope.partidos = success.data;
-            }, function (error) {
+                }, function (error) {
+                    $ionicLoading.hide();
                 window.alert(error);
             });
 

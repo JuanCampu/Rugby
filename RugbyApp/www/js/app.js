@@ -240,6 +240,7 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
 
         .state('app.edit-match', {
             url: '/edit-match',
+            cache: false,
             views: {
                 'menuContent': {
                     templateUrl: 'templates/edit-match.html',

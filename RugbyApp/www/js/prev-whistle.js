@@ -1,6 +1,6 @@
 ﻿angular.module('starter')
 
-    .controller('PrevWhistleCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+    .controller('PrevWhistleCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope, $ionicLoading) {
         $scope.timeValue = "00:00";
         $scope.dateValue = "0000-00-00";
         $scope.date = new Date();
@@ -52,13 +52,16 @@
                 console.log('Tapped!', res);
             });
         };
-        
+        $ionicLoading.show({
+            template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+        });
         var url = $rootScope.APIurl + "api/Juez/ObtenerPartidos/" + $rootScope.UserName;
         $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
             $scope.partidos = response.data;
-
+            $ionicLoading.hide();
         }, function () {
             window.alert("No se pudo realizar la consulta");
+            $ionicLoading.hide();
         });
 
         // go to Nav page

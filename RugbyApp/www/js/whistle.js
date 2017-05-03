@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('WhistleCtrl', function ($scope, $state, $ionicPopup,  $http, $rootScope) {
+    .controller('WhistleCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope, $ionicLoading) {
                 /*
          * if given group is the selected group, deselect it
          * else, select the given group
@@ -572,11 +572,14 @@ angular.module('starter')
         var amonestacionsJugador = [];
         var editAmonestaciones = [0, 0, 0];
         var tipoJugadaAmo = 0;
-
+        $ionicLoading.show({
+            template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+        });
 
         $http.get(url,{
             cache: false
         }).then(function (response) {
+
             equipoId1 = response.data["equipoId1"];
             equipoId2 = response.data["equipoId2"];
             $scope.logoClub1 = response.data["logoClub1"];
@@ -600,6 +603,7 @@ angular.module('starter')
         setJugadasPorTeam($scope.team2, 2);
         setFaultList($scope.team1, 1);
         setFaultList($scope.team2, 2);
+        $ionicLoading.hide();
         function setJugadasPorTeam(team, teamId) {
             for (var keyJugador in team) {
               
@@ -726,8 +730,10 @@ angular.module('starter')
         ********************************************************************
         ********************************************************************/
         $scope.Finalizar = function () {
-            if ((checkMatchStart()) == true)
-                return;
+           
+            $ionicLoading.show({
+                template: '<p>Finalizando...</p><ion-spinner></ion-spinner>'
+            });
             var data = {
                 "partidoId": $state.params.partidoId,
                 "marcadorEquipo1": $scope.scoreTeam1,
@@ -747,7 +753,26 @@ angular.module('starter')
                 data: JSON.stringify(data),
                 cache: false,
             }).then(function (success) {
-                window.alert("Aceptado");
+                $ionicLoading.hide();
+                var myPopup =$ionicPopup.show({
+                    template: '<input type = "text" ng-model = "data.model">',
+                    title: 'Fin Partido',
+                    template: 'Se ha finalizado el partido',
+                    scope: $scope,
+                    buttons: [
+                        {
+                            text: '<b>Cerrar</b>',
+                            type: 'button-positive',
+                            onTap: function (e) {
+
+                                e.preventDefault();
+                                $state.go('nav');
+                                myPopup.close();
+                            }
+                        }
+                    ]
+                });
+               
             }, function (error) {
                 window.alert(error);
             });

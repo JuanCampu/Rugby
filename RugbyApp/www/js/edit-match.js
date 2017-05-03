@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter')
 
-    .controller('EdiMatCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope) {
+    .controller('EdiMatCtrl', function ($scope, $state, $ionicPopup, $http, $rootScope, $ionicLoading) {
 
 
         $scope.showme = function () {
@@ -35,7 +35,9 @@ angular.module('starter')
         $scope.team2 = [];
 
         var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/?partidoId=" + $state.params.partidoId+"&actual=1";
-      
+        $ionicLoading.show({
+            template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+        });
         $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
 
             var jugadasJugador = [];
@@ -48,10 +50,11 @@ angular.module('starter')
           
             setJugadasPorTeam($scope.team1, 1);
             setJugadasPorTeam($scope.team2, 2);
-
+            $ionicLoading.hide();
            
         }, function () {
             window.alert("No se pudo realizar la consulta");
+            $ionicLoading.hide();
         });
 
         function setJugadasPorTeam(team,teamId) {
@@ -62,7 +65,7 @@ angular.module('starter')
                     tipoJugada = jugadasJugador[keyJugada]["tipoJugada"];
                     for (var i = 0; i < 6; i++) {
                         if (tipoJugada == i) {
-                            editMatch[i] = jugadasJugador[keyJugada]["cantidad"];
+                            editMatch[i] += jugadasJugador[keyJugada]["cantidad"];
                         };
                     };
                 };
