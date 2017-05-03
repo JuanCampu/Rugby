@@ -58,6 +58,10 @@
         var url = $rootScope.APIurl + "api/Juez/ObtenerPartidos/" + $rootScope.UserName;
         $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
             $scope.partidos = response.data;
+            if ($scope.partidos.length == 0) {
+                window.alert("Lo sentimos en este momento no tiene partidos programados para pitar!");
+                $state.go('nav');
+            }
             $ionicLoading.hide();
         }, function () {
             window.alert("No se pudo realizar la consulta");

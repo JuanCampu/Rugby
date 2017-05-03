@@ -184,7 +184,7 @@ angular.module('starter')
         var faultDescpList2 = [];
         var tp = "";
         var tituloPop = "";
-        var description = "";
+        var description = "}";
 
         $scope.showEventTJ = function (team, tipo) {
 
