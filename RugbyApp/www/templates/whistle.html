@@ -86,11 +86,13 @@
                 <uib-tab index="1" heading="Faltas">
                     <div class="panel-body-match-cutome">
                         <div class="form-group col-xs-6" horizontal layout center center-justified>
-                            <label center center-justified for="disabledSelect">Alianza</label>
+                            <label class="text-center-title" center center-justified for="disabledSelect">{{nombreEquipo1}}</label>
                         </div>
+                        <br />
                         <div class="form-group col-xs-6 " horizontal layout center center-justified>
-                            <label center center-justified for="disabledSelect">Azules</label>
+                            <label class="text-center-title" center center-justified for="disabledSelect">{{nombreEquipo2}}</label>
                         </div>
+                        <br />
                         <div class="form-group col-xs-6">
                             <div class="form-group" horizontal layout>
                                 <label class="col-xs-12">Selecciones tipo de Falta</label>
@@ -135,7 +137,7 @@
                                       ng-class="{active: isGroupShown('team1',1)}">
                                 <i class="icon" ng-class="isGroupShown('team1',1) ? 'ion-minus' : 'ion-plus'"></i>
                                 &nbsp;
-                              Alianza
+                              {{nombreEquipo1}}
                             </ion-item>
                             <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('team1',1)">
                                 <ion-item class="item-stable"
@@ -143,7 +145,7 @@
                                           ng-class="{active: isGroupShown('historial-team-one',2)}">
                                     <i class="icon icon-second-level" ng-class="isGroupShown('historial-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
                                     &nbsp;
-                                   Historial eventos  Alianza
+                                   Historial eventos  {{nombreEquipo1}}
                                 </ion-item>
                                 <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('historial-team-one',2)">
                                     <div class="">
@@ -236,7 +238,7 @@
                             <ion-item class="item-stable" ng-click="toggleGroup('team2',1)" ng-class="{active: isGroupShown(1)}">
                                 <i class="icon" ng-class="isGroupShown('team2',1) ? 'ion-minus' : 'ion-plus'"></i>
                                 &nbsp;
-                                Azules
+                               {{nombreEquipo2}}
                             </ion-item>
                             <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('team2',1)">
                                 <ion-item class="item-stable"
@@ -244,7 +246,7 @@
                                           ng-class="{active: isGroupShown('historial-team-two',2)}">
                                     <i class="icon icon-second-level" ng-class="isGroupShown('historial-team-two',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
                                     &nbsp;
-                                    Historial eventos  Alianza
+                                    Historial eventos  {{nombreEquipo2}}
                                 </ion-item>
                                 <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('historial-team-two',2)">
                                     <div class="">
