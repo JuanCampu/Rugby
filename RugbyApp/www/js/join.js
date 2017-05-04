@@ -83,6 +83,9 @@ angular.module('starter')
                         }
                     ]
                 });
+                myPopup.then(function (res) {
+                    console.log('Tapped!', res);
+                });
             }, function (error) {
                 window.alert(error);
             });
@@ -91,9 +94,7 @@ angular.module('starter')
             // Custom popup
           
 
-            myPopup.then(function (res) {
-                console.log('Tapped!', res);
-            });
+            
         };
 
         // go to Nav page

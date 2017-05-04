@@ -84,6 +84,7 @@
                                 <i class="icon icon-second-level" ng-class="isGroupShown('past-fault-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
                                 &nbsp;
                                 Faltas del Partido
+                            </ion-item>
                             <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('past-fault-team-one',2)">
                                 <div class="">
                                     <div class="panel panel-default">
@@ -116,6 +117,7 @@
                                 </div>
                             </ion-item>
                            
+                        </ion-item>
                         </ion-item>
                         <ion-item class="item-stable" ng-click="toggleGroup('team2',1)" ng-class="{active: isGroupShown(1)}">
                             <i class="icon" ng-class="isGroupShown('team2',1) ? 'ion-minus' : 'ion-plus'"></i>
@@ -203,6 +205,8 @@
                             </ion-item>
                            
                         </ion-item>
+                    
+                            
                     </div>
                 </ion-list>
             
