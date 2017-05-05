@@ -106,7 +106,7 @@
                                                         <td ng-repeat="amonesta1  in jugador1Amo.amonestaciones track by $index">
 
                                                             <ionic-numberpicker id="number3" input-obj="numberPickerObject">
-                                                                <input type="text" id="#" class="item-edit-texbox" value="{{amonesta1}}">
+                                                                <input type="text" id="#" class="item-edit-texbox" value="{{amonesta1[0]}}">
                                                             </ionic-numberpicker>
                                                         </td>
                                                     </tr>
@@ -189,11 +189,11 @@
                                                 <tbody ng-repeat="(key ,jugador2Amo) in team2">
                                                     <tr>
                                                         <td>{{jugador2Amo.nombres}}&nbsp;{{jugador2Amo.apellidos}}</td>
-                                                        <td>{{jugador1Amo.numCamiseta}}</td>
+                                                        <td>{{jugador2Amo.numCamiseta}}</td>
                                                         <td ng-repeat="amonesta2  in jugador2Amo.amonestaciones track by $index">
 
                                                             <ionic-numberpicker id="number3" input-obj="numberPickerObject">
-                                                                <input type="text" id="#" class="item-edit-texbox" value="{{amonesta2}}">
+                                                                <input type="text" id="#" class="item-edit-texbox" value="{{amonesta2[0]}}">
                                                             </ionic-numberpicker>
                                                         </td>
                                                     </tr>
@@ -216,7 +216,7 @@
     </ion-content>
     <ion-footer-bar class="n-p n-m draft-footer" horizontal layout center center-justified>
         <div class="button-profile col-xs-6" horizontal layout center center-justified>
-            <button type="button" ng-click="showme()" class="btn btn-danger" >Finalizar Edición</button>
+            <button type="button" ng-click="Finalizar()" class="btn btn-danger" >Finalizar Edición</button>
         </div>
         
 

@@ -29,7 +29,8 @@ angular.module('starter')
         ********************************************************************/
 
         var editMatch = [0, 0, 0, 0, 0, 0];
-        var editAmonestaciones = [0, 0, 0];
+        var editAmonestaciones = [[0, ""], [0, ""], [0, ""]];
+        var editAmonestaciones2 = [{cantidad : 0,amonestacionId:""}, [0, ""], [0, ""]];
 
         $scope.team1 = [];
         $scope.team2 = [];
@@ -71,9 +72,11 @@ angular.module('starter')
                 };
                 for (var keyAmonestacion in amonestacionesJugador) {
                     tipoJugadaA = amonestacionesJugador[keyAmonestacion]["tipoJugada"];
+                    
                     for (var i = 0; i < 3; i++) {
                         if (tipoJugadaA == i) {
-                            editAmonestaciones[i] += 1;
+                            editAmonestaciones[i][0] = amonestacionesJugador[keyAmonestacion]["cantidad"];
+                            editAmonestaciones[i][1] =  amonestacionesJugador[keyAmonestacion]["amonestacionId"];
                         };
                     };
                 };
@@ -85,8 +88,9 @@ angular.module('starter')
                     $scope.team2[keyJugador]["amonestaciones"] = editAmonestaciones;
                 } 
                 editMatch = [0, 0, 0, 0, 0, 0];
-                editAmonestaciones = [0, 0, 0];
+                editAmonestaciones = [[0, ""], [0, ""], [0, ""]];
             }; 
+            console.log($scope.team2);
         }
         /*******************************************************************
         ********************************************************************
@@ -202,10 +206,52 @@ angular.module('starter')
         /*******************************************************************
         ********************************************************************
 
-       End - Function Finalizar partdio
+      
 |
         ********************************************************************
-        ********************************************************************/   
+        ********************************************************************/
+
+     
+        $scope.Finalizar = function () {
+
+            $ionicLoading.show({
+                template: '<p>Finalizando...</p><ion-spinner></ion-spinner>'
+            });
+            var data = {
+                "jugadores1": $scope.team1,
+                "jugadores2": $scope.team2,
+            };
+            var urlPost = $rootScope.APIurl + "api/Partido/EditarPartido";
+            $http({
+                method: 'POST',
+                url: urlPost,
+                data: JSON.stringify(data),
+                cache: false,
+            }).then(function (success) {
+                $ionicLoading.hide();
+                var myPopup = $ionicPopup.show({
+                    template: '<input type = "text" ng-model = "data.model">',
+                    title: 'Fin Partido',
+                    template: 'Se ha finalizado el partido',
+                    scope: $scope,
+                    buttons: [
+                        {
+                            text: '<b>Cerrar</b>',
+                            type: 'button-positive',
+                            onTap: function (e) {
+
+                                e.preventDefault();
+                                $state.go('nav');
+                                myPopup.close();
+                            }
+                        }
+                    ]
+                });
+
+            }, function (error) {
+                window.alert(error);
+            });
+        };
     });
 
 
