@@ -195,6 +195,26 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
                 }
             }
         })
+        .state('app.edit-user', {
+            url: '/edit-user',
+            cache: false,
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/edit-user.html',
+                    controller: 'EditUserCtrl'
+                }
+            }
+        })
+        .state('app.config-whistle', {
+            url: '/config-whistle',
+            cache: false,
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/config-whistle.html',
+                    controller: 'ConfigWhistleCtrl'
+                }
+            }
+        })
 
       .state('app.draft', {
         url: '/draft',
