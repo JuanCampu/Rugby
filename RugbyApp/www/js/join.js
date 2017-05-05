@@ -44,9 +44,7 @@ angular.module('starter')
                 alert("Favor llene todos los campos requeridos");
                 return;
             }
-            $ionicLoading.show({
-                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
-            });
+         
             $scope.solicitud.clubId = $("#clubId").children(":selected").attr("value");
             $scope.solicitud.equipoId = $("#equipoId").children(":selected").attr("value");
             var urlPost = $rootScope.APIurl + "api/Solicitud/EnviarSolicitud/";
@@ -57,7 +55,7 @@ angular.module('starter')
                 cache: false,
             }).then(function (success) {
                 //window.alert("Aceptado");
-                $ionicLoading.hide();
+               
                 $scope.solicitud = {
                     nombres: "",
                     apellidos: "",
