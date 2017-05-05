@@ -10,6 +10,10 @@ angular.module('starter')
 
 
         $scope.match = {
+            torneoId: "",
+            IdPartido: ""
+        }
+        $scope.matchEdit = {
             NombrePartido: "",
             equipoId1: "",
             equipoId2: "",
@@ -29,7 +33,6 @@ angular.module('starter')
 
 
         $scope.isSelectedTeam = function (idTeam, numteam) {
-
             if (numteam == 1 && idTeam == $scope.match.equipoId1) {
                 return true;
             } else if (numteam == 2 && idTeam == $scope.match.equipoId2) {
@@ -100,7 +103,7 @@ angular.module('starter')
                 crossDomain: true,
             }).then(function (success) {
                 //window.alert("Aceptado");
-                $scope.match = {
+                $scope.matchEdit = {
                     NombrePartido: "",
                     equipoId1: "",
                     equipoId2: "",
@@ -137,11 +140,43 @@ angular.module('starter')
                 });
             }, function (error) {
                 window.alert(error);
-            });
-            // Custom popup
-           
+            });   
         };
 
+        $scope.obtenerPartidosPorIdTorneo = function () {
+            $ionicLoading.show({
+                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+            });
+            var url = $rootScope.APIurl + "api/Partido/ObtenerPartidosPorTorneo?torneoId=" + $scope.match.torneoId;
+            $http({
+                method: 'GET',
+                url: url,
+                cache: false,
+            }).then(function (success) {
+                $ionicLoading.hide();
+                $scope.partidos = success.data;
+            }, function (error) {
+                $ionicLoading.hide();
+                window.alert(error);
+            });
+        };
+        $scope.obtenerInformacionPartido = function () {
+            $ionicLoading.show({
+                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
+            });
+            var url = $rootScope.APIurl + "api/Partido/ObtenerPartido?partidoId=" + $scope.match.partidoId;
+            $http({
+                method: 'GET',
+                url: url,
+                cache: false,
+            }).then(function (success) {
+                $ionicLoading.hide();
+                $scope.partidos = success.data;
+            }, function (error) {
+                $ionicLoading.hide();
+                window.alert(error);
+            });
+        };
 
 
         // go to Nav page

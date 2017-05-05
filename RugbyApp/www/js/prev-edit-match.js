@@ -17,7 +17,6 @@ angular.module('starter')
         $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
 
         $scope.match = {
-           
             torneoId: "",
             IdPartido: ""
         }
