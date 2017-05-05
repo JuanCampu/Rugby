@@ -28,7 +28,7 @@ angular.module('starter')
         ********************************************************************
         ********************************************************************/
 
-        var editMatch = [0, 0, 0, 0, 0, 0];
+        var editMatch = [[0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""]];
         var editAmonestaciones = [[0, ""], [0, ""], [0, ""]];
         var editAmonestaciones2 = [{cantidad : 0,amonestacionId:""}, [0, ""], [0, ""]];
 
@@ -66,7 +66,8 @@ angular.module('starter')
                     tipoJugada = jugadasJugador[keyJugada]["tipoJugada"];
                     for (var i = 0; i < 6; i++) {
                         if (tipoJugada == i) {
-                            editMatch[i] += jugadasJugador[keyJugada]["cantidad"];
+                            editMatch[i][0] += jugadasJugador[keyJugada]["cantidad"];
+                            editMatch[i][1] += jugadasJugador[keyJugada]["jugadaId"];
                         };
                     };
                 };
@@ -87,10 +88,10 @@ angular.module('starter')
                     $scope.team2[keyJugador]["jugadas"] = editMatch;
                     $scope.team2[keyJugador]["amonestaciones"] = editAmonestaciones;
                 } 
-                editMatch = [0, 0, 0, 0, 0, 0];
+                editMatch = [[0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""]];
                 editAmonestaciones = [[0, ""], [0, ""], [0, ""]];
             }; 
-            console.log($scope.team2);
+     
         }
         /*******************************************************************
         ********************************************************************
@@ -206,20 +207,74 @@ angular.module('starter')
         /*******************************************************************
         ********************************************************************
 
-      
+     
 |
         ********************************************************************
         ********************************************************************/
+        function guid() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1);
+            }
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                s4() + '-' + s4() + s4() + s4();
+        }
+        function setStringAmonestaciones(jugadores) {
+            var amonestacionesStringFormat = "";
+            var amonestacionesJugador = [];
+            for (var indexJugador in jugadores) {
+                amonestacionesJugador = jugadores[indexJugador]["amonestaciones"];
+                for (var indexAmonestacion in amonestacionesJugador) {
+                    var newGuid = guid();
+                    if (amonestacionesJugador[indexAmonestacion][0] != 0 && amonestacionesJugador[indexAmonestacion][1] == "") {
+                        amonestacionesStringFormat += amonestacionesJugador[indexAmonestacion][0] + ";" + newGuid +"|";
+                    } else if(amonestacionesJugador[indexAmonestacion][1] != ""){
+                        amonestacionesStringFormat += amonestacionesJugador[indexAmonestacion][0] + ";" + amonestacionesJugador[indexAmonestacion][1] + "|";
+                    }
+                }
+            }
+            return amonestacionesStringFormat;
+
+        }
+        function setStringJugadas(jugadores) {
+            var jugadasStringFormat = "";
+            var jugadasJugador = [];
+            for (var indexJugador in jugadores) {
+                jugadasJugador = jugadores[indexJugador]["jugadas"];
+                for (var indexJugada in jugadasJugador) {
+                    var newGuid = guid();
+                    if (jugadasJugador[indexJugada][0] != 0 && jugadasJugador[indexJugada][1] == "") {
+                        jugadasStringFormat += jugadasJugador[indexJugada][0] + ";" + newGuid + "|";
+                    } else if (jugadasJugador[indexJugada][1] != "") {
+                        jugadasStringFormat += jugadasJugador[indexJugada][0] + ";" + jugadasJugador[indexJugada][1] + "|";
+                    }
+                }
+            }
+            return jugadasStringFormat;
+
+        }
 
      
         $scope.Finalizar = function () {
-
+            var stringAmonestaciones1 = "";
+            var stringAmonestaciones2 = "";
+            var stringJugadas1 = "";
+            var stringJugadas2 = "";
             $ionicLoading.show({
                 template: '<p>Finalizando...</p><ion-spinner></ion-spinner>'
             });
+            stringJugadas1 = setStringJugadas($scope.team1);
+            stringJugadas2 = setStringJugadas($scope.team2);
+            stringAmonestaciones1 =  setStringAmonestaciones($scope.team1);
+            stringAmonestaciones2 = setStringAmonestaciones($scope.team2);
+           
+           ;
             var data = {
-                "jugadores1": $scope.team1,
-                "jugadores2": $scope.team2,
+                "jugadas1": stringJugadas1,
+                "amonestaciones1": stringAmonestaciones1,
+                "jugadas2": stringJugadas1 ,
+                "amonestaciones2": stringAmonestaciones2,
             };
             var urlPost = $rootScope.APIurl + "api/Partido/EditarPartido";
             $http({

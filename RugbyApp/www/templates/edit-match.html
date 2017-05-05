@@ -64,7 +64,7 @@
                                                         <td ng-repeat="jugada  in jugador.jugadas track by $index">
                                                            
                                                           
-                                                                <input type="number" ng-click="setNumber($event)" class="item-edit-texbox" ng-model='team1[$parent.$index]["jugadas"][$index]'>
+                                                                <input type="number" ng-click="setNumber($event)" class="item-edit-texbox" ng-model='team1[$parent.$index]["jugadas"][$index][0]'>
                                                             
                                                                 
                                                             
@@ -106,7 +106,7 @@
                                                         <td ng-repeat="amonesta1  in jugador1Amo.amonestaciones track by $index">
 
                                                             <ionic-numberpicker id="number3" input-obj="numberPickerObject">
-                                                                <input type="text" id="#" class="item-edit-texbox" value="{{amonesta1[0]}}">
+                                                                <input type="text" id="#" class="item-edit-texbox" ng-model='team1[$parent.$index]["amonestaciones"][$index][0]'>
                                                             </ionic-numberpicker>
                                                         </td>
                                                     </tr>
@@ -151,11 +151,10 @@
                                                 <tbody ng-repeat="(key ,jugador2) in team2">
                                                     <tr>
                                                         <td>{{jugador2.nombres}}&nbsp;{{jugador2.apellidos}}</td>
-                                                        <td>{{jugador2Amo.numCamiseta}}</td>
                                                         <td ng-repeat="jugada2  in jugador2.jugadas track by $index">
 
                                                             <ionic-numberpicker id="number3" input-obj="numberPickerObject">
-                                                                <input type="text" id="#" class="item-edit-texbox" value="{{jugada2}}">
+                                                                <input type="text" id="#" class="item-edit-texbox" ng-model='team2[$parent.$index]["jugadas"][$index][0]'>
                                                             </ionic-numberpicker>
                                                         </td>
                                                     </tr>
@@ -193,7 +192,7 @@
                                                         <td ng-repeat="amonesta2  in jugador2Amo.amonestaciones track by $index">
 
                                                             <ionic-numberpicker id="number3" input-obj="numberPickerObject">
-                                                                <input type="text" id="#" class="item-edit-texbox" value="{{amonesta2[0]}}">
+                                                                <input type="text" id="#" class="item-edit-texbox" ng-model='team2[$parent.$index]["amonestaciones"][$index][0]'>
                                                             </ionic-numberpicker>
                                                         </td>
                                                     </tr>
