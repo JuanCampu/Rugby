@@ -223,12 +223,14 @@ angular.module('starter')
         function setStringAmonestaciones(jugadores) {
             var amonestacionesStringFormat = "";
             var amonestacionesJugador = [];
+            var jugadorId = "";
             for (var indexJugador in jugadores) {
                 amonestacionesJugador = jugadores[indexJugador]["amonestaciones"];
+                jugadorId = jugadores[indexJugador]["jugadorId"];
                 for (var indexAmonestacion in amonestacionesJugador) {
                     var newGuid = guid();
                     if (amonestacionesJugador[indexAmonestacion][0] != 0 && amonestacionesJugador[indexAmonestacion][1] == "") {
-                        amonestacionesStringFormat += amonestacionesJugador[indexAmonestacion][0] + ";" + newGuid +"|";
+                        amonestacionesStringFormat += amonestacionesJugador[indexAmonestacion][0] + ";" + newGuid + ";" + jugadorId+"|";
                     } else if(amonestacionesJugador[indexAmonestacion][1] != ""){
                         amonestacionesStringFormat += amonestacionesJugador[indexAmonestacion][0] + ";" + amonestacionesJugador[indexAmonestacion][1] + "|";
                     }
@@ -240,12 +242,14 @@ angular.module('starter')
         function setStringJugadas(jugadores) {
             var jugadasStringFormat = "";
             var jugadasJugador = [];
+            var jugadorId = "";
             for (var indexJugador in jugadores) {
                 jugadasJugador = jugadores[indexJugador]["jugadas"];
+                jugadorId = jugadores[indexJugador]["jugadorId"];
                 for (var indexJugada in jugadasJugador) {
                     var newGuid = guid();
                     if (jugadasJugador[indexJugada][0] != 0 && jugadasJugador[indexJugada][1] == "") {
-                        jugadasStringFormat += jugadasJugador[indexJugada][0] + ";" + newGuid + "|";
+                        jugadasStringFormat += jugadasJugador[indexJugada][0] + ";" + newGuid + ";" + jugadorId + "|";
                     } else if (jugadasJugador[indexJugada][1] != "") {
                         jugadasStringFormat += jugadasJugador[indexJugada][0] + ";" + jugadasJugador[indexJugada][1] + "|";
                     }
@@ -262,7 +266,7 @@ angular.module('starter')
             var stringJugadas1 = "";
             var stringJugadas2 = "";
             $ionicLoading.show({
-                template: '<p>Finalizando...</p><ion-spinner></ion-spinner>'
+                template: '<p>Actulizando...</p><ion-spinner></ion-spinner>'
             });
             stringJugadas1 = setStringJugadas($scope.team1);
             stringJugadas2 = setStringJugadas($scope.team2);
@@ -275,6 +279,7 @@ angular.module('starter')
                 "amonestaciones1": stringAmonestaciones1,
                 "jugadas2": stringJugadas1 ,
                 "amonestaciones2": stringAmonestaciones2,
+                "partidoId": $state.params.partidoId
             };
             var urlPost = $rootScope.APIurl + "api/Partido/EditarPartido";
             $http({

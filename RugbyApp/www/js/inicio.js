@@ -11,7 +11,7 @@ angular.module('starter')
 
   .controller('InicioCtrl', function($scope , $state, $rootScope) {
     //Crear variable global del API
-      $rootScope.APIurl = "http://apirugby.azurewebsites.net/";
+      $rootScope.APIurl = "http://localhost:49656/";
 
     $scope.goSign = function () {
       $state.go('sign')
