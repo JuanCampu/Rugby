@@ -28,8 +28,8 @@ angular.module('starter')
         ********************************************************************
         ********************************************************************/
 
-        var editMatch = [[0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""]];
-        var editAmonestaciones = [[0, ""], [0, ""], [0, ""]];
+        var editMatch = [[0, "","IN"], [0, "","OUT"], [0, "","TRY"], [0, "","C"], [0, "","P"], [0, "","GC"]];
+        var editAmonestaciones = [[0, "","TR"], [0, "","TA"], [0, "","TT"]];
         var editAmonestaciones2 = [{cantidad : 0,amonestacionId:""}, [0, ""], [0, ""]];
 
         $scope.team1 = [];
@@ -88,8 +88,8 @@ angular.module('starter')
                     $scope.team2[keyJugador]["jugadas"] = editMatch;
                     $scope.team2[keyJugador]["amonestaciones"] = editAmonestaciones;
                 } 
-                editMatch = [[0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""]];
-                editAmonestaciones = [[0, ""], [0, ""], [0, ""]];
+                editMatch = [[0, "", "IN"], [0, "", "OUT"], [0, "", "TRY"], [0, "", "C"], [0, "", "P"], [0, "", "GC"]];
+                editAmonestaciones = [[0, "", "TR"], [0, "", "TA"], [0, "", "TT"]];
             }; 
      
         }
@@ -230,7 +230,7 @@ angular.module('starter')
                 for (var indexAmonestacion in amonestacionesJugador) {
                     var newGuid = guid();
                     if (amonestacionesJugador[indexAmonestacion][0] != 0 && amonestacionesJugador[indexAmonestacion][1] == "") {
-                        amonestacionesStringFormat += amonestacionesJugador[indexAmonestacion][0] + ";" + newGuid + ";" + jugadorId+"|";
+                        amonestacionesStringFormat += amonestacionesJugador[indexAmonestacion][0] + ";" + newGuid + ";" + jugadorId + ";" + amonestacionesJugador[indexAmonestacion][2] + "|";
                     } else if(amonestacionesJugador[indexAmonestacion][1] != ""){
                         amonestacionesStringFormat += amonestacionesJugador[indexAmonestacion][0] + ";" + amonestacionesJugador[indexAmonestacion][1] + "|";
                     }
@@ -249,7 +249,7 @@ angular.module('starter')
                 for (var indexJugada in jugadasJugador) {
                     var newGuid = guid();
                     if (jugadasJugador[indexJugada][0] != 0 && jugadasJugador[indexJugada][1] == "") {
-                        jugadasStringFormat += jugadasJugador[indexJugada][0] + ";" + newGuid + ";" + jugadorId + "|";
+                        jugadasStringFormat += jugadasJugador[indexJugada][0] + ";" + newGuid + ";" + jugadorId + ";" + jugadasJugador[indexJugada][2]+ "|";
                     } else if (jugadasJugador[indexJugada][1] != "") {
                         jugadasStringFormat += jugadasJugador[indexJugada][0] + ";" + jugadasJugador[indexJugada][1] + "|";
                     }
@@ -277,7 +277,7 @@ angular.module('starter')
             var data = {
                 "jugadas1": stringJugadas1,
                 "amonestaciones1": stringAmonestaciones1,
-                "jugadas2": stringJugadas1 ,
+                "jugadas2": stringJugadas2 ,
                 "amonestaciones2": stringAmonestaciones2,
                 "partidoId": $state.params.partidoId
             };
@@ -301,7 +301,7 @@ angular.module('starter')
                             onTap: function (e) {
 
                                 e.preventDefault();
-                                $state.go('nav');
+                              
                                 myPopup.close();
                             }
                         }
