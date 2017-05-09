@@ -195,6 +195,18 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
                 }
             }
         })
+
+        .state('app.history', {
+            url: '/history',
+            cache: false,
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/history.html',
+                    controller: 'HistoryCtrl'
+                }
+            }
+        })
+
         .state('app.edit-user', {
             url: '/edit-user',
             cache: false,
