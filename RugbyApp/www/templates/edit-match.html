@@ -32,7 +32,7 @@
                                   ng-class="{active: isGroupShown('team1',1)}">
                             <i class="icon" ng-class="isGroupShown('team1',1) ? 'ion-minus' : 'ion-plus'"></i>
                             &nbsp;
-                            Alianza
+                            {{nombreEquipo1}}
                         </ion-item>
                         <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('team1',1)">
                             <ion-item class="item-stable"
@@ -118,11 +118,11 @@
                             </ion-item>
                            
                         </ion-item>
-                        </ion-item>
+ 
                         <ion-item class="item-stable" ng-click="toggleGroup('team2',1)" ng-class="{active: isGroupShown(1)}">
                             <i class="icon" ng-class="isGroupShown('team2',1) ? 'ion-minus' : 'ion-plus'"></i>
                             &nbsp;
-                            Azules
+                           {{nombreEquipo2}}
                         </ion-item>
                         <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('team2',1)">
                             <ion-item class="item-stable"

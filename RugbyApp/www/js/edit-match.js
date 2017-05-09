@@ -30,10 +30,11 @@ angular.module('starter')
 
         var editMatch = [[0, "","IN"], [0, "","OUT"], [0, "","TRY"], [0, "","C"], [0, "","P"], [0, "","GC"]];
         var editAmonestaciones = [[0, "","TR"], [0, "","TA"], [0, "","TT"]];
-        var editAmonestaciones2 = [{cantidad : 0,amonestacionId:""}, [0, ""], [0, ""]];
 
         $scope.team1 = [];
         $scope.team2 = [];
+        $scope.nombreEquipo1 = "";
+        $scope.nombreEquipo2 = "";
 
         var url = $rootScope.APIurl + "api/Partido/ObtenerInformacionPartido/?partidoId=" + $state.params.partidoId+"&actual=1";
         $ionicLoading.show({
@@ -48,6 +49,8 @@ angular.module('starter')
 
             $scope.team1 = response.data["jugadoresEquipo1"];
             $scope.team2 = response.data["jugadoresEquipo2"];
+            $scope.nombreEquipo1 = response.data["nombreEquipo1"];
+            $scope.nombreEquipo2 = response.data["nombreEquipo2"];
           
             setJugadasPorTeam($scope.team1, 1);
             setJugadasPorTeam($scope.team2, 2);
@@ -291,8 +294,8 @@ angular.module('starter')
                 $ionicLoading.hide();
                 var myPopup = $ionicPopup.show({
                     template: '<input type = "text" ng-model = "data.model">',
-                    title: 'Fin Partido',
-                    template: 'Se ha finalizado el partido',
+                    title: 'Fin Edición',
+                    template: 'Se ha finalizado la edición del partido',
                     scope: $scope,
                     buttons: [
                         {
