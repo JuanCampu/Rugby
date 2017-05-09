@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ionic-numberpicker', 'ionic-numberpicker.templates', 'timer', 'ngMessages'])
+angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ionic-numberpicker', 'ionic-numberpicker.templates', 'timer', 'ngMessages', 'ngSanitize'])
     .filter('iif', function () {
         return function (input, trueValue, falseValue) {
             return input ? trueValue : falseValue;

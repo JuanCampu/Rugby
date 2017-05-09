@@ -27,8 +27,22 @@
             -->
             <div flex class="light-bg" style="color: #444; overflow-y: scroll">
                 <uib-tabset active="activeJustified" justified="true" class="list-tabs-draft">
-                  
-
+                    
+                    <div class="col-lg-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading text-center">
+                                {{club.nombres}}
+                            </div>
+                            <div class="panel-body">
+                                <div class=" text-center">
+                                    <img ng-src="{{club.logo}}" alt="" />
+                                </div>
+                                <p ng-bind-html="club.historia"></p>
+                               
+                            </div>
+                            
+                        </div>
+                    </div>
                 </uib-tabset>
             </div>
         </ion-content>

@@ -16,16 +16,19 @@ angular.module('starter')
         $scope.timeString += (($scope.minutes < 10) ? ":0" : ":") + $scope.minutes;
         $scope.timeString += ($scope.hours >= 12) ? " P.M." : " A.M.";
 
-        $scope.match = {
-            torneoId: "",
-            IdPartido: ""
+        $scope.club = {
+            Id: "",
+            nombres: "",
+            logo: "",
+            historia: "",
+            slogan: ""
         }
         $ionicLoading.show({
             template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
         });
-        var url = $rootScope.APIurl + "api/Torneo/ObtenerTorneos/";
+        var url = $rootScope.APIurl + "api/Club/ObtenerInformacionClub?clubId=" + localStorage.clubFavorito;
         $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
-            $scope.torneos = response.data;
+            $scope.club = response.data;
             $ionicLoading.hide();
         }, function () {
             $ionicLoading.hide();
@@ -33,24 +36,6 @@ angular.module('starter')
         });
 
    
-        $scope.obtenerPartidosPorIdTorneo = function () {
-            $ionicLoading.show({
-                template: '<p>Cargando...</p><ion-spinner></ion-spinner>'
-            });
-            var url = $rootScope.APIurl + "api/Partido/ObtenerPartidosPorTorneo?torneoId=" + $scope.match.torneoId;
-            $http({
-                method: 'GET',
-                url: url,
-                cache: false,
-            }).then(function (success) {
-                $ionicLoading.hide();
-                $scope.partidos = success.data;
-                }, function (error) {
-                    $ionicLoading.hide();
-                window.alert(error);
-            });
-
-        };
 
         $scope.showPopup = function () {
             if (!($scope.signinForm.$valid)) {
@@ -75,13 +60,7 @@ angular.module('starter')
             });
         };
         
-        var url = $rootScope.APIurl + "api/Juez/ObtenerPartidos/" + $rootScope.UserName;
-        $http.get(url, { headers: { 'Cache-Control': 'no-cache' } }).then(function (response) {
-            $scope.partidos = response.data;
-        }, function () {
-            window.alert("No se pudo realizar la consulta");
-        });
-
+     
         // go to Nav page
         $scope.goBack = function () {
             $state.go('nav')
