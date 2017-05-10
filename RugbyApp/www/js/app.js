@@ -350,7 +350,8 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
       })
 
       .state('nav', {
-        url: '/nav',
+          url: '/nav',
+          cache: false,
         templateUrl: 'templates/nav.html',
         controller: 'NavCtrl'
         })

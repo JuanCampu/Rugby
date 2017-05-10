@@ -766,8 +766,9 @@ angular.module('starter')
                             onTap: function (e) {
 
                                 e.preventDefault();
-                                $state.go('nav');
                                 myPopup.close();
+                                $rootScope.stateNav();
+                                
                             }
                         }
                     ]
