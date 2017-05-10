@@ -22,7 +22,7 @@ angular.module('starter')
 
     }, function () {
         $ionicLoading.hide();
-        window.alert("No se pudo realizar la consulta");
+       
     });
 
     var url = $rootScope.APIurl + "api/Partido/ObtenerUltimoPartidoByClub?clubId=" + localStorage.clubFavorito;
@@ -44,7 +44,7 @@ angular.module('starter')
         
     }, function () {
   
-        window.alert("No se pudo realizar la consulta");
+        
     });
 
     $scope.showPopup = function (partido) {
