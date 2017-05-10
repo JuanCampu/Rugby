@@ -35,6 +35,7 @@ angular.module('starter')
                
             } else {
                 if (localStorage.alertPartido != response.data["Id"]) {
+                    localStorage.alertPartido = response.data["Id"];
                     $scope.showPopup(response.data);
                 }
             }
@@ -51,7 +52,7 @@ angular.module('starter')
         var myPopup = $ionicPopup.show({
             template: '<input type = "text" ng-model = "data.model">',
             title: '!Resultado del último partido¡',
-            template: '<div class="header-score" horizontal layout> <div flex class="club-score" horizontal layout center> <div class="bold" flex>' + equipos[0] + '</div> <div class="bold padding"> ' + partido["marcadorEquipo1"] + '</div> </div> <div flex class="club-score" horizontal layout center> <div class="bold padding">' + partido["marcadorEquipo2"] + '</div> <div class="bold" flex horizontal layout end-justified>' + equipos[1] + '</div> </div></div><div class="content-score text-gray" > <div class="padding text-center"> ' + partido["tiempoProgramado"] +' </div></div>',
+            template: '<div class="header-score" horizontal layout> <div flex class="club-score" horizontal layout center> <div class="bold" flex>' + equipos[0] + '</div> <div class="bold padding"> ' + partido["marcadorEquipo1"] + '</div> </div> <div flex class="club-score" horizontal layout center> <div class="bold padding">' + partido["marcadorEquipo2"] + '</div> <div class="bold" flex horizontal layout end-justified>' + equipos[1] + '</div> </div></div><div class=" text-gray" > <div class="padding text-center"> ' + partido["tiempoProgramado"] +' </div></div>',
             scope: $scope,
 
             buttons: [
