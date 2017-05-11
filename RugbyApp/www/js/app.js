@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ionic-numberpicker', 'ionic-numberpicker.templates', 'timer', 'ngMessages', 'ngSanitize'])
+angular.module('starter', ['ionic', 'ngCordova', 'starter.services', 'starter.controllers', 'ui.bootstrap', "ion-datetime-picker", 'ionic-numberpicker', 'ionic-numberpicker.templates', 'timer', 'ngMessages', 'ngSanitize'])
     .filter('iif', function () {
         return function (input, trueValue, falseValue) {
             return input ? trueValue : falseValue;
@@ -106,6 +106,18 @@ angular.module('starter', ['ionic', 'ui.bootstrap', "ion-datetime-picker", 'ioni
           $rootScope.Rol = null;
           $state.go('inicio');
       };
+      if (window.cordova) {
+          //quick check for presence of ngCordovaFile plugin
+          console.log('starting cordovaFile check');
+          console.log($cordovaFile);
+          //check for the docs directory suing File plugin
+          $cordovaFile.checkDir(cordova.file.documentsDirectory, "")
+              .then(function (success) {
+                  console.log(success);
+              }, function (error) {
+                  console.log(error);
+              });
+      } else { console.log(' no cordova plugins available '); }  
     });
   })
 

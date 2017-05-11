@@ -41,10 +41,22 @@
     <!-- Angular timer  - Lib -->
     <script type="text/javascript" src="lib/angular-timer/dist/assets/js/angular-timer-bower.js"></script>
     <script type="text/javascript" src="lib/angular-timer/dist/assets/js/angular-timer-all.min.js"></script>
+    
+    <!--Added to provide the ngCordova library for best ionic plugin best practices      -->
+    <script src="lib/ng-cordova.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
+    <!-- Pdf maker libraries-->
+    <script src="lib/pdfmake/pdfmake.min.js"></script>
+	<script src="lib/pdfmake/vfs_fonts.js"></script>  
     <!--<script src="cordova.js"></script>-->
+
+
+
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
     <script src="js/feed.js"></script>
     <script src="js/favorite.js"></script>
     <script src="js/nav.js"></script>
@@ -75,5 +87,10 @@
         <div class="form-error" ng-message="minlength">This field is must be at least 5 characters.</div>
         <div class="form-error" ng-message="maxlength">This field is must be less than 50 characters</div>
     </script>  
+
+    
+    <!--encapsulates the report feature as a service split into docDef builder and the report gen service-->
+    <script src="js/reportBuilderSvc.js"></script>
+    <script src="js/reportService.js"></script>
   </body>
 </html>
