@@ -40,7 +40,7 @@
                                       ng-class="{active: isGroupShown('historial-team-one',2)}">
                                 <i class="icon icon-second-level" ng-class="isGroupShown('historial-team-one',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
                                 &nbsp;
-                                Historial eventos  Alianza
+                                Historial eventos  {{nombreEquipo1}}
                             </ion-item>
                             <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('historial-team-one',2)">
                                 <div class="">
@@ -130,7 +130,7 @@
                                       ng-class="{active: isGroupShown('historial-team-two',2)}">
                                 <i class="icon icon-second-level" ng-class="isGroupShown('historial-team-two',2) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
                                 &nbsp;
-                                Historial eventos  Alianza
+                                Historial eventos  {{nombreEquipo2}}
                             </ion-item>
                             <ion-item class="item-accordion item-accordion-pad" ng-show="isGroupShown('historial-team-two',2)">
                                 <div class="">
@@ -217,7 +217,5 @@
         <div class="button-profile col-xs-6" horizontal layout center center-justified>
             <button type="button" ng-click="Finalizar()" class="btn btn-danger" >Finalizar Edición</button>
         </div>
-        
-
     </ion-footer-bar>
 </ion-view>
