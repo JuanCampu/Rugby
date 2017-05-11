@@ -24,7 +24,8 @@ angular.module('starter')
                     .then(function (dataURL) {
                         //set the iframe source to the dataURL created
                         console.log('report run in browser using dataURL and iframe');
-                        document.getElementById('pdfImage').src = dataURL;
+                        //document.getElementById('pdfImage').src = dataURL;
+                        window.open(dataURL, '_blank', 'location=no,closebuttoncaption=Close,enableViewportScale=yes');
                     });
                 return true;
             } else {
